@@ -1,4 +1,4 @@
-ClassQuiz
-=========
+lab4
+====
 
-The repository for our class quiz website
+Lab 4: Programming with Javascript
