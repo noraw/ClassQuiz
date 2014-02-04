@@ -15,7 +15,12 @@ var viewClassResults = require('./routes/viewClassResults');
 var viewQuestionResultsStudent = require('./routes/viewQuestionResultsStudent');
 var studentHome = require('./routes/studentHome');
 var teacherHome = require('./routes/teacherHome');
-
+var studentClass = require('./routes/studentClass');
+var questionResponse = require('./routes/questionResponse');
+var viewResultsStudent = require('./routes/viewResultsStudent');
+var teacherClass = require('./routes/teacherClass');
+var addQuestion = require('./routes/addQuestion');
+var publishQuestion = require('./routes/publishQuestion');
 
 //ar project = require('./routes/project');
 // Example route
@@ -51,12 +56,12 @@ app.get('/viewClassResults', viewClassResults.view);
 app.get('/viewQuestionResultsStudent', viewQuestionResultsStudent.view);
 app.get('/studentHome', studentHome.view);
 app.get('/teacherHome', teacherHome.view);
-//app.get('/', .view);
-//app.get('/', .view);
-//app.get('/', .view);
-//app.get('/', .view);
-//app.get('/', .view);
-//app.get('/', .view);
+app.get('/studentClass', studentClass.view);
+app.get('/questionResponse', questionResponse.view);
+app.get('/viewResultsStudent', viewResultsStudent.view);
+app.get('/teacherClass', teacherClass.view);
+app.get('/addQuestion', addQuestion.view);
+app.get('/publishQuestion', publishQuestion.view);
 //app.get('/', .view);
 //app.get('/', .view);
 //app.get('/', .view);

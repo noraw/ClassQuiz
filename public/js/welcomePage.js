@@ -13,7 +13,7 @@ function initializePage() {
 }
 
 function signInBtn(e) {
-	window.location.href="signIn";
+	window.location.href="studentHome";
 }
 
 function newUserBtn(e) {

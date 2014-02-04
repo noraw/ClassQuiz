@@ -23,20 +23,24 @@
 		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
 		<!-- p means paragraph -->
 		<div class="jumbotron">
-			<h1>Results for "{{question}}"</h1>
+			<h1>{{class}}</h1>
 		</div>
 
-	    <ol type="a">
-	    {{#each answers}}
-	      <li>{{answerText}}</li>
-	    {{/each}}
-	    </ol>
+		<p>Have students enter code {{code}} to join.</p>
+		<br>
 
+		<button type="button" onClick="addQuestionBtn();">Add a question</button>
+		<br>
+		<button type="button" onClick="publishQuestionBtn();">Publish a question</button>
+		<br>
+		<button type="button" onClick="viewResultsBtn();">View Results</button>
+		<br>
 		<button type="button" onClick="backBtn();">Back</button>
 	
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/viewQuestionResults.js"></script>
+	<script src="/js/teacherClass.js"></script>
+
 </body>
 </html>

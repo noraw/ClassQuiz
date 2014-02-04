@@ -12,11 +12,18 @@ function initializePage() {
 	// add any functionality and listeners you want here
 }
 
-function signInBtn(e) {
-	window.location.href="signIn";
+function backBtn(e) {
+	window.location.href="teacherHome";
 }
 
-function newUserBtn(e) {
-	console.log("clicked newuser");
-	window.location.href="newUser";
+function viewResultsBtn(e) {
+	window.location.href="viewClassResults";	
+}
+
+function addQuestionBtn(e) {
+	window.location.href="addQuestion";
+}
+
+function publishQuestionBtn(e) {
+	window.location.href="publishQuestion";
 }

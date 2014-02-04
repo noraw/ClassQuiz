@@ -47,12 +47,3 @@ exports.view = function(req, res){
   	});
 }
 
-
-function signInBtn(e) {
-	window.location.href="signIn";
-}
-
-function newUserBtn(e) {
-	console.log("clicked newuser");
-	window.location.href="newUser";
-}

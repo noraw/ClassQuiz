@@ -12,11 +12,10 @@ function initializePage() {
 	// add any functionality and listeners you want here
 }
 
-function signInBtn(e) {
-	window.location.href="signIn";
+function backBtn(e) {
+	window.location.href="teacherClass";
 }
 
-function newUserBtn(e) {
-	console.log("clicked newuser");
-	window.location.href="newUser";
+function publishBtn(e) {
+	window.location.href="viewQuestionResults"	
 }

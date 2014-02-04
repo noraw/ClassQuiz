@@ -23,20 +23,23 @@
 		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
 		<!-- p means paragraph -->
 		<div class="jumbotron">
-			<h1>Results for "{{question}}"</h1>
+			<h1>Publish a question for {{class}}</h1>
 		</div>
 
-	    <ol type="a">
-	    {{#each answers}}
-	      <li>{{answerText}}</li>
-	    {{/each}}
-	    </ol>
+ 	    <form>
+		    {{#each questions}}
+		   		<input name="questions" value="{{questionText}}" type="radio" >{{questionText}}
+		    {{/each}}
+		</form>
+
+	   	<br>
 
 		<button type="button" onClick="backBtn();">Back</button>
+		<button type="button" onClick="publishBtn();">Publish</button>
 	
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/viewQuestionResults.js"></script>
+	<script src="/js/publishQuestion.js"></script>
 </body>
 </html>
