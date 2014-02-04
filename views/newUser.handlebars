@@ -2,7 +2,7 @@
 
 <html>
 <head>
-	<title>HCI Project Portfolio</title>	
+	<title>Welcome to QuizNow!</title>	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -23,29 +23,22 @@
 		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
 		<!-- p means paragraph -->
 		<div class="jumbotron">
-			<h1>Michael Bernstein</h1>
-			<p>human-computer interaction &middot; social computing &middot; crowdsourcing</p>
+			<h1>Create New User</h1>
 		</div>
+		<form action ="">
+			<input type="radio" name="personType" value="student">Student
+			<input type="radio" name="personType" value="teacher">Teacher
+		</form>
 
-	    <ol>
-	    {{#each projects}}
-	      <li><a href="#{{id}}">{{name}}</a></li>
-	    {{/each}}
-	    </ol>
-	    
-		<h4>Projects</h4>
-		<!-- divs are invisible structuring elements that stack vertically by default. Use them to organize your code -->
-		<!-- img tags are images. Lorem Pixel will deliver random images; handy! -->
-		<!-- a are anchors, also known as hyperlinks. Use the href attribute to tell the browser where to go when the user clicks -->
-		{{#each projects}}
-			<div class="project" id="{{id}}">
-				<a href="project/{{name}}" class="thumbnail">
-					<img src="images/{{image}}" alt="Lorem Pixel image" class="img">
-					<p>{{name}}</p>
-				</a>
-			</div>
-		{{/each}}
-	</div>
+
+		<form action ="">
+			Username: <input type="text" name="fullname"><br>
+			Password: <input type="password" name="password">
+			Confrim Password: <input type="password" name="password">
+		</form>
+		<button type="button">Back</button>
+		<button type="button">Submit</button>
+
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>

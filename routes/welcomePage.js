@@ -3,8 +3,13 @@
  * GET home page.
  */
 
+/*
+ * Function that is called when the document is ready.
+ */
+
 exports.view = function(req, res){
-	res.render('index', {
+
+	res.render('welcomePage', {
 	    'projects': [
 	      { 'name': 'Waiting in Line',
 	        'image': 'lorempixel.people.1.jpeg',
@@ -40,4 +45,14 @@ exports.view = function(req, res){
 	      }
 	    ]  
   	});
+}
+
+
+function signInBtn(e) {
+	window.location.href="signIn";
+}
+
+function newUserBtn(e) {
+	console.log("clicked newuser");
+	window.location.href="newUser";
 }
