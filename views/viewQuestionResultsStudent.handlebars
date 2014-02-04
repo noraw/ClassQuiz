@@ -23,22 +23,17 @@
 		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
 		<!-- p means paragraph -->
 		<div class="jumbotron">
-			<h1>Create New User</h1>
+			<h1>{{class}}</h1><br>
+			<h1>"{{question}}"</h1>
 		</div>
-		<form action ="">
-			<input type="radio" name="personType" value="student">Student
-			<input type="radio" name="personType" value="teacher">Teacher
-		</form>
 
+		<p>Your Answer:</p><br>
+		<p>{{studentAnswer}}</p>
+		<p>Correct Answer:</p><br>
+		<p>{{correctAnswer}}</p>
 
-		<form action ="">
-			Username: <input type="text" name="fullname"><br>
-			Password: <input type="password" name="password"><br>
-			Confrim Password: <input type="password" name="password">
-		</form>
-		<button type="button">Back</button>
-		<button type="button">Submit</button>
-
+		<button type="button">Return to {{class}}</button>
+	
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>

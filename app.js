@@ -10,6 +10,13 @@ var handlebars = require('express3-handlebars')
 
 var welcomePage = require('./routes/welcomePage');
 var newUser = require('./routes/newUser');
+var viewQuestionResults = require('./routes/viewQuestionResults');
+var viewClassResults = require('./routes/viewClassResults');
+var viewQuestionResultsStudent = require('./routes/viewQuestionResultsStudent');
+var studentHome = require('./routes/studentHome');
+var teacherHome = require('./routes/teacherHome');
+
+
 //ar project = require('./routes/project');
 // Example route
 // var user = require('./routes/user');
@@ -39,6 +46,20 @@ if ('development' == app.get('env')) {
 // Add routes here
 app.get('/', welcomePage.view);
 app.get('/newUser', newUser.view);
+app.get('/viewQuestionResults', viewQuestionResults.view);
+app.get('/viewClassResults', viewClassResults.view);
+app.get('/viewQuestionResultsStudent', viewQuestionResultsStudent.view);
+app.get('/studentHome', studentHome.view);
+app.get('/teacherHome', teacherHome.view);
+//app.get('/', .view);
+//app.get('/', .view);
+//app.get('/', .view);
+//app.get('/', .view);
+//app.get('/', .view);
+//app.get('/', .view);
+//app.get('/', .view);
+//app.get('/', .view);
+//app.get('/', .view);
 // Example route
 // app.get('/users', user.list);
 
