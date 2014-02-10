@@ -6,7 +6,7 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var handlebars = require('express3-handlebars')
+var handlebars = require('express3-handlebars');
 
 var welcomePage = require('./routes/welcomePage');
 var newUser = require('./routes/newUser');
@@ -21,6 +21,8 @@ var viewResultsStudent = require('./routes/viewResultsStudent');
 var teacherClass = require('./routes/teacherClass');
 var addQuestion = require('./routes/addQuestion');
 var publishQuestion = require('./routes/publishQuestion');
+
+var database = require('./routes/database');
 
 //ar project = require('./routes/project');
 // Example route
