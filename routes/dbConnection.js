@@ -2,31 +2,47 @@ var mongoose = require('mongoose');
 var database = require('./database.js');
 
 exports.isUser = function(name, callback){
-	return database.usersTable.find({namt: name}, {_id: 1}).limit(1)
+	return database.usersTable.find({name: name}, {_id: 1}).limit(1)
 }
 
-exports.addUser = function(name, pwd, type, callback){
-	db.
+exports.addUser = function(name, pwd, type){
+	var userData = {
+		name = name,
+		pwd = pwd,
+		type = type
+	};
+	var Users = mongoose.model('Users');
+	var newUser = new Users(userData);
+	newUser.save(function(err, data){
+		if(err){
+			console.log(err);
+			return False;
+		}else{
+			console.log(data);
+			return True;
+		}
+	});
 }
 
-exports.teamlist = function teamlist(gname,callback){
-4
- var Team = mongoose.model( 'Team' );
-5
- Team.find({'GroupName':gname}, function (err, teams) {
-6
-  if(err){
-7
-   console.log(err);
-8
-  }else{
-9
-   console.log(teams);
-10
-   callback("",teams);
-11
-  }
-12
- })// end Team.find
-13
-}// end exports.teamlist
+exports.getClassesNames = function(name, callback){
+	var classesNames = [];
+	var userInfo = [];
+	var Users = mongoose.model('Users');
+	Users.find({'name':name}, function(err, userInfo){
+		if(err){console.log(err)}else{
+			console.log(userInfo);
+			var userClasses = userInfo[0].classesIDArray;
+			var Classes = mongoose.model('Classes');
+			var className = [];
+			for(var i=0; i < userClasses.length; i++){
+				Classes.find({'_id':userClasses[i]._id}, function(err, classesName) {
+					if(err){console.log(err)}else{
+						console.log(classesName);
+						classesNames.add(classesName[0]);
+					}
+				})
+			}
+			callback("", classesNames);
+		}
+	})
+}
