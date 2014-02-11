@@ -7,23 +7,24 @@ exports.isUsername = function(name){
 	Users.find({'name':name}, function(err, userInfo){
 		if(err){console.log(err)}else{
 			if(userInfo.length == 0){
-				return False;
+				return false;
 			}else{
-				return True;
+				return true;
 			}
 		}
 	});
 }
 
 exports.isUser = function(name, pwd){
+	console.log("Checking if "+ name + ", " + pwd + " is a user.")
 	var userInfo = [];
 	var Users = mongoose.model('Users');
-	Users.find({'name':name, 'pwd':pwd}, function(err, userInfo){
-		if(err){console.log(err)}else{
-			if(userInfo.length == 0){
-				return False;
+	Users.findOne({'name':name, 'pwd':pwd}, function(err, userInfo){
+		if(err){console.log("isUser Error: " + err)}else{
+			if(userInfo == null){
+				return false;
 			}else{
-				return True;
+				return true;
 			}
 		}
 	});
@@ -31,19 +32,20 @@ exports.isUser = function(name, pwd){
 
 exports.addUser = function(name, pwd, type){
 	var userData = {
-		name = name,
-		pwd = pwd,
-		type = type
+		name: name,
+		pwd: pwd,
+		type: type
 	};
+	console.log(userData);
 	var Users = mongoose.model('Users');
 	var newUser = new Users(userData);
 	newUser.save(function(err, data){
 		if(err){
 			console.log(err);
-			return False;
+			return false;
 		}else{
 			console.log(data);
-			return True;
+			return true;
 		}
 	});
 }
@@ -83,7 +85,7 @@ exports.getUsersClassesNames = function(userName, callback){
 	});
 	*/
 }
-
+/*
 exports.addClass = function(className){
 	var classData = {
 		name = className
@@ -153,3 +155,4 @@ exports.getAllQuestionsText = function(classID){
 	});
 }
 
+*/

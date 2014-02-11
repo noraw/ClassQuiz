@@ -36,9 +36,9 @@ db.once('open', function() {
 	//module.exports = db.questionsTable('Questions', questionsSchema);
 
 	var studentAnswers = new Schema({
-		studentName = {type: String, ref: 'Users'},
-		questionId = {type: Number, ref: 'Questions'},
-		answer = String
+		studentName: {type: String, ref: 'Users'},
+		questionId: {type: Number, ref: 'Questions'},
+		answer: String
 	}, {collection: 'studentAnswers'});
 	mongoose.model('StudentAnswers', studentAnswers);
 	//module.exports = db.studentAnswersTable('StudentAnswers', studentAnswers);
