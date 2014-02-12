@@ -8,22 +8,20 @@ db.once('open', function() {
 	  name:  String,
 	  pwd: String,
 	  type: String,
-	  classesIDArray: [{type: Number, ref: 'Classes'}]
+	  classesIDArray: [{type: Schema.ObjectId, ref: 'Classes'}]
 	}, {collection: 'userSchema'});
 	mongoose.model('Users', userSchema);
 	//module.exports = db.usersTable('Users', userSchema);
 
 	var classesSchema = new Schema({
 		name: String,
-		_id: Number,
-		questionIds: [{type: Number, ref: 'Questions'}]
+		questionIds: [{type: Schema.ObjectId, ref: 'Questions'}]
 	}, {collection: 'classesSchema'});
 	mongoose.model('Classes', classesSchema);
 	//module.exports = db.classesTable('Classes', classesSchema);
 
 	var questionsSchema = new Schema({
-		classId: {type: Number, ref: 'Classes'},
-		_id: Number,
+		classId: {type: Schema.ObjectId, ref: 'Classes'},
 		text: String,
 		answerA: String,
 		answerB: String,
