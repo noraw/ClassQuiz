@@ -4,16 +4,15 @@ var database = require('./database.js');
 // takes in the username and password and 
 // returns true if the user exists and false otherwise
 exports.isUser = function(name, pwd, callback){
-	console.log("Checking if "+ name + ", " + pwd + " is a user.")
 	var userInfo = [];
 	var Users = mongoose.model('Users');
-	console.log("1");
 	Users.findOne({'name':name, 'pwd':pwd}, function(err, userInfo){
-		if(err){console.log("isUser Error: " + err)}else{
-			console.log("isUserInfo: " + userInfo);
+		if(err){console.log(err)}else{
 			if(userInfo == null){
+				console.log("isUser(" +name+ "): false");
 				callback(false);
 			}else{
+				console.log("isUser(" +name+ "): true");
 				callback(true);
 			}
 		}
@@ -28,8 +27,10 @@ exports.isUsername = function(name, callback){
 	Users.find({'name':name}, function(err, userInfo){
 		if(err){console.log(err)}else{
 			if(userInfo == null){
+				console.log("isUsername(" +name+ "): false");
 				callback(false);
 			}else{
+				console.log("isUsername(" +name+ "): true");
 				callback(true);
 			}
 		}
@@ -48,7 +49,9 @@ exports.addUser = function(name, pwd, type){
 	var Users = mongoose.model('Users');
 	var newUser = new Users(userData);
 	newUser.save(function(err, data){
-		if(err){console.log(err)}
+		if(err){console.log(err)}else{
+			console.log("addUser: successful");
+		}
 	});
 }
 
@@ -62,15 +65,13 @@ exports.createClass = function(userName, className, callback){
 	var newClass = new Classes(classData);
 	newClass.save(function(err, data){
 		if(err){console.log(err)}else{
-			console.log(data);
 			var Users = mongoose.model('Users');
 			Users.findOne({'name':userName}, function(err, user){
 				if(err){console.log(err)}else{
-					console.log("Found User:")
-					console.log(user);
 					user.classesIDArray.push(newClass);
 					user.save(function(err){
 						if(err){console.log(err)}else{
+							console.log("createClass("+username+", "+className+"): classID - "+ data._id);
 							callback(data._id);
 						}
 					});
@@ -87,11 +88,11 @@ exports.enrollInClass = function(userName, classID){
 	var Classes = mongoose.model('Classes');
 	Users.findOne({'name':userName}, function(err, user){
 		if(err){console.log(err)}else{
-			console.log("Found User:")
-			console.log(user);
 			user.classesIDArray.push(classID);
 			user.save(function(err){
-				if(err){console.log(err)}
+				if(err){console.log(err)}else{
+					console.log("enrollInClass: successful");
+				}
 			});
 		}
 	});
@@ -101,15 +102,12 @@ exports.enrollInClass = function(userName, classID){
 // get all the classes that the user either teaches or is enrolled in
 // returns a json with the class name and class id
 exports.getUsersClassesNames = function(userName, callback){
-	console.log("getUsersClassesNames:")
 	var Users = mongoose.model('Users');
 	Users.findOne({'name':userName})
 	.populate('classesIDArray')
 	.exec(function(err, user){
 		if(err){console.log(err)}else{
-			console.log("Names:")
-			console.log(user);
-			console.log(user.classesIDArray);
+			console.log("getUsersClassesNames("+userName+"): "+user.classesIDArray);
 			callback(user.classesIDArray);
 		}
 	});
@@ -126,6 +124,7 @@ exports.addQuestion = function(classID, questionText, answerA, answerB, answerC,
 		answerC: answerC,
 		answerD: answerD,
 		correctAnswer: correctAnswer,
+		//date: new Date(),
 		isPublished: false
 	}
 	var Questions = mongoose.model('Questions');
@@ -137,11 +136,11 @@ exports.addQuestion = function(classID, questionText, answerA, answerB, answerC,
 	var Classes = mongoose.model('Classes');
 	Classes.findOne({'_id':classID}, function(err, classData){
 		if(err){console.log(err)}else{
-			console.log("Found User:")
-			console.log(classData);
 			classData.questionIds.push(newQuestion);
 			classData.save(function(err){
-				if(err){console.log(err)}
+				if(err){console.log(err)}else{
+					console.log("addQuestion: successful");
+				}
 			});
 		}
 	});
@@ -161,38 +160,84 @@ exports.publishQuestion = function(questionID){
 }
 
 // gets all the unpublished questions in a class
-// returns a list of classNames and classIDs
+// calls the callback function each time for a found question
 exports.getNewQuestionsList = function(classID, callback){
 	var Classes = mongoose.model('Classes');
+	var Questions = mongoose.model('Questions');
 	Classes.findOne({'_id':classID})
 	.populate('questionIds')
-	//.where({'questionIds.isPublished':false})
 	.exec(function(err, classData){
 		if(err){console.log(err)}else{
-			console.log(classData);
-			callback(classData.questionIds);
+			classData.questionIds.forEach(function(question){
+				Questions.findOne({'_id':question._id, 'isPublished':false})
+				.exec(function(err, questionFound){
+					if(questionFound != null){
+						console.log("getNewQuestionsList("+classID+"): "+questionFound);
+						callback(questionFound);
+					}
+				});
+			});
 		}
 	});
 }
 
 // gets all the published questions in a class
 // returns a list of classNames and classIDs
-exports.getPublishedQuestionsList = function(classID){
-	return [];
+var getPublishedQuestionsListPrivate = function(classID, callback){
+	var Classes = mongoose.model('Classes');
+	var Questions = mongoose.model('Questions');
+	Classes.findOne({'_id':classID})
+	.populate('questionIds')
+	.exec(function(err, classData){
+		if(err){console.log(err)}else{
+			classData.questionIds.forEach(function(question){
+				Questions.findOne({'_id':question._id, 'isPublished':true})
+				.exec(function(err, questionFound){
+					if(err){console.log(err)}else{
+						if(questionFound != null){
+							console.log("getPublishedQuestionsList("+classID+"): "+questionFound);
+							callback(questionFound);
+						}
+					}
+				});
+			});
+		}
+	});
 }
-/*
+exports.getPublishedQuestionsList = getPublishedQuestionsListPrivate;
+
 // gets all the published questions in a class that the student has not answered
 // returns a list of classNames and classIDs
-exports.getPublishedQuestionsListUnanswered = function(userName, classID){
-	return [];
+exports.getPublishedQuestionsListUnanswered = function(userName, classID, callback){
+	getPublishedQuestionsListPrivate(classID, function(question){
+		var StudentAnswers = mongoose.model("StudentAnswers");
+		StudentAnswers.findOne({studentName:userName, questionId:question._id})
+		.exec(function(err, studentAnswer){
+			if(err){console.log(err)}else{
+				if(studentAnswer != null){
+					callback(question);
+				}
+			}
+		});
+	});
 }
 
 // gets all the published questions in a class that the student has answered
 // returns a list of classNames and classIDs
-exports.getPublishedQuestionsListAnswered = function(userName, classID){
-	return [];
+exports.getPublishedQuestionsListAnswered = function(userName, classID, callback){
+	getPublishedQuestionsListPrivate(classID, function(question){
+		var StudentAnswers = mongoose.model("StudentAnswers");
+		StudentAnswers.findOne({studentName:userName, questionId:question._id})
+		.exec(function(err, studentAnswer){
+			if(err){console.log(err)}else{
+				if(studentAnswer != null){
+					callback(question);
+				}
+			}
+		});
+	});
 }
-
+/*
 // looks for the question with that ID and
 // returns a json object with all the question stuff in it
 exports.getQuestionInfo = function(questionID){
@@ -221,10 +266,29 @@ exports.getAllQuestionsText = function(classID){
 		}
 	});
 }
-
+*/
 // saves the data that a student has answered the question
 // returns true if successdul, false otherwise
 exports.submitStudentAnswer = function(userName, questionID, answer){
-	return false;
+	var studentAnswerData = {
+		studentName: userName,
+		questionId: questionID,
+		answer: answer
+	};
+	var StudentAnswers = mongoose.model('StudentAnswers');
+	var newAnswer = new StudentAnswers(studentAnswerData);
+	newAnswer.save(function(err, data){
+		if(err){console.log(err)}
+	});
 }
-*/
+
+exports.getStudentAnswer = function(userName, questionID, callback){
+	getPublishedQuestionsListPrivate(classID, function(question){
+		var StudentAnswers = mongoose.model("StudentAnswers");
+		StudentAnswers.findOne({studentName:userName, questionId:question._id})
+		.exec(function(err, studentAnswer){
+			callback(studentAnswer.answer);
+		});
+	});
+
+}
