@@ -7,10 +7,10 @@ exports.view = function(req, res){
 	//database.createClass('test2', 'TestClass3');
 	//database.enrollInClass('test1', '52fad2e22d9af5a506d82f3e');
 	//database.addQuestion('52fad2e22d9af5a506d82f3e', 'question', 'a','b','c','d','c');
-	database.getNewQuestionsList('52fad2e22d9af5a506d82f3e', function(questions){
+	/*database.getNewQuestionsList('52fad2e22d9af5a506d82f3e', function(questions){
 		console.log("new questions: ");
 		console.log(questions);
-	})
+	})*/
 	/*
 	database.isUser('test1', 'test', function(isuser){
 		if(isuser){

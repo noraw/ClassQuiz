@@ -9,10 +9,30 @@ $(document).ready(function() {
  * Function that is called when the document is ready.
  */
 function initializePage() {
-	// add any functionality and listeners you want here
+	$('#CreateNewClass').click(CreateNewClass);
 }
 
-function proceedBtn(e) {
+
+function UseExistingClassBtn(e) {
 	window.location.href="teacherClass";
 }
+
+var newClassID;
+function callback(classID) {
+	newClassID = classID;
+}
+
+function CreateNewClass(e) {
+	$.get('teacherClass', createClass);
+	//window.location.href="teacherClass";
+}
+
+function RemoveClassBtn(e) {
+	window.location.href="teacherClass";
+}
+
+function SignOutBtn(e) {
+	window.location.href="/";
+}
+
 

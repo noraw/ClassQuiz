@@ -25,29 +25,30 @@
 		<div class="jumbotron">
 			<h1>Home page for {{username}}</h1>
 		</div>
-
-		<p>Select a current class:</p><br>
+		<p>Select a current class:</p>
 	    <select>
 	    {{#each classes}}
 	      <option value="{{class}}">{{class}}</option>
 	    {{/each}}
 	    </select>
-	    <br>
 
+	    <button type="button" onClick="UseExistingClassBtn();">Use Existing Class</button><br><br>
+	    <p>Create a new class:</p>
+		<form action ="">
+			<input type="text" name="newClass">
+		</form>
+		<button type="button" id="createNewClass">Create New Class</button><br><br>
 		<p>Remove a class:</p><br>
 	    <select>
 	    {{#each classes}}
 	      <option value="{{class}}">{{class}}</option>
 	    {{/each}}
 	    </select>
-	    <br>
+	    
+	    <button type="button" onClick="RemoveClassBtn();">Remove Class</button><br><br><br>
 
-	    <p>Create a new class:</p>
-		<form action ="">
-			<input type="text" name="newClass">
-		</form>
-
-		<button type="button" onClick="proceedBtn();">Proceed</button>
+		<button type="button" onClick="SignOutBtn();">Sign Out</button>
+	</div>
 	
 
 	<script src="https://code.jquery.com/jquery.js"></script>

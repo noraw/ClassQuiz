@@ -10,8 +10,8 @@
 exports.view = function(req, res){
 
 	res.render('teacherClass', {
-		'class': 'Biology',
-		'code': '112314'
+		'class': req.query.newClass,
+		'code': req.query.classID
 	  	});
 }
 
