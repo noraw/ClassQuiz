@@ -16,5 +16,16 @@ exports.view = function(req, res){
 		    ]  
   	});
 }
+exports.chooseFunction = function(req, res){
+	console.log(req.body);
+	if(req.params.func === 'createClass'){
+		createClass(req, res);
+	}
+}
 
+exports.createClass = function(req, res){
+	console.log(req.params);
+	//console.log(res);
+
+}
 

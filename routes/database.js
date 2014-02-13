@@ -28,14 +28,15 @@ db.once('open', function() {
 		answerC: String,
 		answerD: String,
 		correctAnswer: String,
+		date: Date,
 		isPublished: Boolean
 	}, {collection: 'questionsSchema'});
 	mongoose.model('Questions', questionsSchema);
 	//module.exports = db.questionsTable('Questions', questionsSchema);
 
 	var studentAnswers = new Schema({
-		studentName: {type: String, ref: 'Users'},
-		questionId: {type: Number, ref: 'Questions'},
+		studentName: String,
+		questionId: String,
 		answer: String
 	}, {collection: 'studentAnswers'});
 	mongoose.model('StudentAnswers', studentAnswers);
