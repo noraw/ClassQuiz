@@ -1,3 +1,4 @@
+var database = require('./dbConnection');
 
 /*
  * GET home page.
@@ -11,7 +12,7 @@ exports.view = function(req, res){
 	console.log("\n\n\nviewClassResults");
 	console.log(req.body);
 	database.getPublishedQuestionsList(req.body.classID, function(question){
-		//console.log(question);
+		console.log(question);
 		res.render('viewClassResults', {
 			'className': req.body.className,
 			'classID': req.body.classID,

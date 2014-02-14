@@ -175,15 +175,24 @@ exports.getNewQuestionsList = function(classID, callback){
 	.populate('questionIds')
 	.exec(function(err, classData){
 		if(err){console.log(err)}else{
-			classData.questionIds.forEach(function(question){
-				Questions.findOne({'_id':question._id, 'isPublished':false})
-				.exec(function(err, questionFound){
-					if(questionFound != null){
-						console.log("getNewQuestionsList("+classID+"): "+questionFound);
-						callback(questionFound);
+			var counter = classData.questionIds.length;
+			if(classData != null && classData.questionIds.length != 0){
+				classData.questionIds.forEach(function(question){
+					Questions.findOne({'_id':question._id, 'isPublished':false})
+					.exec(function(err, questionFound){
+						if(questionFound != null){
+							console.log("getNewQuestionsList("+classID+"): "+questionFound);
+							callback(questionFound);
+						}
+					});
+					counter--;
+					if(counter === 0){
+						callback();
 					}
 				});
-			});
+			}else{
+				callback();
+			}
 		}
 	});
 }
@@ -197,7 +206,8 @@ var getPublishedQuestionsListPrivate = function(classID, callback){
 	.populate('questionIds')
 	.exec(function(err, classData){
 		if(err){console.log(err)}else{
-			if(classData != null){
+			if(classData != null && classData.questionIds.length != 0){
+				var counter = classData.questionIds.length;
 				classData.questionIds.forEach(function(question){
 					Questions.findOne({'_id':question._id, 'isPublished':true})
 					.exec(function(err, questionFound){
@@ -208,7 +218,13 @@ var getPublishedQuestionsListPrivate = function(classID, callback){
 							}
 						}
 					});
+					counter--;
+					if(counter === 0){
+						callback();
+					}
 				});
+			}else{
+				callback();
 			}
 		}
 	});
