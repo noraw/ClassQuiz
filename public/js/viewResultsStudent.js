@@ -19,3 +19,10 @@ function backBtn(e) {
 function viewResultsBtn(e) {
 	window.location.href="viewQuestionResultsStudent";	
 }
+
+function signOutBtn(e) {
+	window.location.href="/";
+}
+function homeBtn(e) {
+	window.location.href="studentHome";
+}

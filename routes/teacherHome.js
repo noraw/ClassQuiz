@@ -1,4 +1,3 @@
-
 var database = require('./dbConnection');
 
 /*

@@ -56,7 +56,7 @@ app.get('/newUser', newUser.view);
 app.get('/viewQuestionResults', viewQuestionResults.view);
 app.get('/viewClassResults', viewClassResults.view);
 app.get('/viewQuestionResultsStudent', viewQuestionResultsStudent.view);
-app.get('/studentHome', studentHome.view);
+app.get('/studentHome/:userName', studentHome.view);
 app.get('/teacherHome/:userName', teacherHome.view);
 app.get('/studentClass', studentClass.view);
 app.get('/questionResponse', questionResponse.view);

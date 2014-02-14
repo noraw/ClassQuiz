@@ -15,3 +15,10 @@ function initializePage() {
 function returnBtn(e) {
 	window.location.href="studentClass";	
 }
+
+function signOutBtn(e) {
+	window.location.href="/";
+}
+function homeBtn(e) {
+	window.location.href="studentHome";
+}

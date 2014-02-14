@@ -24,3 +24,7 @@ function submitBtn(e) {
 	window.location.href="questionResponse";
 
 }
+
+function signOutBtn(e) {
+	window.location.href="/";
+}

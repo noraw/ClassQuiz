@@ -29,13 +29,12 @@
 			<input type="radio" name="personType" value="student">Student
 			<input type="radio" name="personType" value="teacher">Teacher
 		</form>
-
-
-		<form action ="">
-			Username: <input type="text" name="fullname"><br>
+		<form id="addUserForm" role="form" method="post" action ="/teacherHome/:userName">
+			Username: <input type="text" name="username"><br>
 			Password: <input type="password" name="password"><br>
-			Confrim Password: <input type="password" name="password">
+			Confirm Password: <input type="password" name="password">
 		</form>
+		
 		<button type="button" onClick="backBtn();">Back</button>
 		<button type="button" onClick="submitBtn();">Submit</button>
 

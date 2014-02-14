@@ -16,6 +16,10 @@ function backBtn(e) {
 	window.location.href="teacherClass";
 }
 
+function homeBtn(e) {
+	window.location.href="teacherHome";
+}
+
 function submitBtn(e) {
 	window.location.href="teacherClass"	
 }
