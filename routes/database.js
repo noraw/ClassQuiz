@@ -42,4 +42,4 @@ mongoose.model('StudentAnswers', studentAnswers);
 
 
 
-mongoose.connect( 'mongodb://localhost/quiz' );
+//mongoose.connect( 'mongodb://localhost/testing' );
