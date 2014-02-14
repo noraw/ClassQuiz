@@ -3,8 +3,8 @@ var database = require('./dbConnection');
 exports.view = function(req, res){
 	console.log("newUser");
 	//database.addUser('test1', 'test', 'student');
-	database.addUser('test4', 'test', 'student');
-	database.createClass('test4', 'TestClass5');
+	//database.addUser('test4', 'test', 'student');
+	//database.createClass('test4', 'TestClass5');
 	//database.enrollInClass('test1', '52fad2e22d9af5a506d82f3e');
 
 	//database.addQuestion('52fad2e22d9af5a506d82f3e', 'question1', 'a','b','c','d','c');
@@ -33,5 +33,10 @@ exports.view = function(req, res){
 	*/
 	//console.log(database.isUser('TestName', 'test'));
 	
-	res.render('newUser', {});
+
+	//database.addUser(username, password, personType);
+	//var userName = req.params.userName;
+	res.render('newUser', {
+		'userName': res.req.body.userName,
+	});
 }

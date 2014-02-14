@@ -23,7 +23,11 @@
 		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
 		<!-- p means paragraph -->
 		<div class="jumbotron">
-			<h1>{{className}}</h1>
+			<div>
+				<button type="button" onClick="homeBtn();">Home</button>
+				<button type="button" onClick="signOutBtn();">Sign Out</button>
+			</div>
+			<h1>{{class}}</h1>
 		</div>
 
 	    <form id="addQuestionForm" role="form" method="post" action="/teacherClass">

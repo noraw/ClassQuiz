@@ -23,36 +23,51 @@
 		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
 		<!-- p means paragraph -->
 		<div class="jumbotron">
-			<h1>Home page for {{username}}</h1>
+			<div>
+				<button type="button" onClick="signOutBtn();">Sign Out</button>
+			</div>
+			<h1>Home page for</h1>
+			<h1 id="userName">{{username}}</h1>
 		</div>
 
-		<p>Select a current class:</p><br>
-	    <select>
-	    {{#each classes}}
-	      <option value="{{class}}">{{class}}</option>
-	    {{/each}}
-	    </select>
-	    <br>
-	    
+		<form id="selectClassForm" role="form" method="post" action="/studentClass">
+	    	<input type="hidden" name="userName" value="{{username}}"></input>
+	    	<input id="classID" type="hidden" name="_id" value=""></input>
+	    	<input id="className" type="hidden" name="name" value=""></input>
+			<div class="form-group">
+				<label for="classList">Select a current class:</label>
+			    <select form="selectClassForm" class="form-control" onClick="useExistingClassBtn();" id="classList" name="classList">
+			    {{#each classes}}
+			      <option id="{{_id}}" value="{{_id}}" name="{{_id}}">{{name}}</option>
+			    {{/each}}
+			    </select>
+			</div>
+			<input type="submit" id="existingClassBtn" name="button" value="Use Existing Class"></input>
+		</form>
+
+		<form id="joinClassForm" role="form" method="post" action="/studentClass">
+		    <div class="form-group">
+		    	<input type="hidden" name="userName" value="{{username}}"></label>
+			    <label for="newClassName">Enter a code to join a new class:</label>
+				<input type="text" class="form-control" placeHolder="newClass" id="newClassName" name="newClassName">
+			</div>
+			<input type="submit" id="joinClassBtn" name="button" value="Join a New Class"></input>
+		</form>
+
 		<p>Remove a class:</p><br>
 	    <select>
 	    {{#each classes}}
 	      <option value="{{class}}">{{class}}</option>
 	    {{/each}}
 	    </select>
-	    <br>
+	    
+	    <button type="button" onClick="removeClassBtn();">Remove Class</button><br><br><br>
 
-
-	    <p>Enter a code to enroll in a new class:</p>
-		<form action ="">
-			<input type="text" name="classCode">
-		</form>
-		<br>
-		<button type="button" onClick="proceedBtn();">Proceed</button>
+	</div>
 	
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/studentHome.js"></script>
+	<script src="/js/teacherHome.js"></script>
 </body>
 </html>

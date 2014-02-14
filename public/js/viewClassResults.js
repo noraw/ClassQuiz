@@ -13,9 +13,19 @@ function initializePage() {
 }
 
 
+
 function selectQuestion(e) {
 	var questionID = $("#questionList").val();
 	console.log(questionID);
 
 	$("#questionID").val(questionID);
+
+function viewResultsBtn(e) {
+	window.location.href="viewQuestionResults";	
+}
+function signOutBtn(e) {
+	window.location.href="/";
+}
+function homeBtn(e) {
+	window.location.href="teacherHome";
 }

@@ -23,7 +23,11 @@
 		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
 		<!-- p means paragraph -->
 		<div class="jumbotron">
-			<h1>Results for "{{className}}"</h1>
+			<div>
+				<button type="button" onClick="homeBtn();">Home</button>
+				<button type="button" onClick="signOutBtn();">Sign Out</button>
+			</div>
+			<h1>Results for questionName?"{{className}}"</h1>
 		</div>
 
 		<form id="viewQuestionResponseForm" role="form" method="post" action="/publishQuestion">

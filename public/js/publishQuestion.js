@@ -19,3 +19,10 @@ function selectQuestion(e) {
 
 	$("#questionID").val(questionID);
 }
+
+function signOutBtn(e) {
+	window.location.href="/";
+}
+function homeBtn(e) {
+	window.location.href="teacherHome";
+}

@@ -16,3 +16,9 @@ function backBtn(e) {
 	window.location.href="viewClassResults";
 }
 
+function signOutBtn(e) {
+	window.location.href="/";
+}
+function homeBtn(e) {
+	window.location.href="teacherHome";
+}

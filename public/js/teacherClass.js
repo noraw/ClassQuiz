@@ -27,3 +27,11 @@ function addQuestionBtn(e) {
 function publishQuestionBtn(e) {
 	window.location.href="publishQuestion";
 }
+
+function signOutBtn(e) {
+	window.location.href="/";
+}
+
+function homeBtn(e) {
+	window.location.href="teacherHome/:userName";
+}
