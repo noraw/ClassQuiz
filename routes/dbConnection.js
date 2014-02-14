@@ -24,8 +24,9 @@ exports.isUser = function(name, pwd, callback){
 exports.isUsername = function(name, callback){
 	var userInfo = [];
 	var Users = mongoose.model('Users');
-	Users.find({'name':name}, function(err, userInfo){
+	Users.findOne({'name':name}, function(err, userInfo){
 		if(err){console.log(err)}else{
+			console.log(userInfo);
 			if(userInfo == null){
 				console.log("isUsername(" +name+ "): false");
 				callback(false);

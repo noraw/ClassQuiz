@@ -25,16 +25,20 @@
 		<div class="jumbotron">
 			<h1>Create New User</h1>
 		</div>
-		<form id="addUserForm" role="form" method="post" action ="/teacherHome/:userName">
-			<input type="radio" name="personType" value="student">Student
-			<input type="radio" name="personType" value="teacher">Teacher
-			Username: <input class="form-control" type="text" id="username" name="username"><br>
-			Password: <input class="form-control" type="password" id="password" sname="password"><br>
-			Confirm Password: <input type="password" name="password">
+		<form id="addUserForm" role="form" method="post" action ="/teacherHome">
+			<input type="radio" name="personType" value="student">Student</input>
+			<input type="radio" name="personType" value="teacher">Teacher</input>
+			<label for="userName">Username:</label>
+			<input class="form-control" type="text" id="username" name="userName"><br>
+			<label for="password">Password:</label>
+			<input class="form-control" type="password" id="password" name="password"><br>
+			<label for="password">Confirm Password:</label>
+			<input class="form-control" type="password" id="passwordConfirm" name="passwordConfirm">
+			<input type="submit" id="submitBtn" name="button" value="Create New User">
 		</form>
 		
 		<button type="button" onClick="backBtn();">Back</button>
-		<button type="button" onClick="submitBtn();">Submit</button>
+
 
 
 	<script src="https://code.jquery.com/jquery.js"></script>

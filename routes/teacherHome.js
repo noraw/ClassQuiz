@@ -12,14 +12,8 @@ exports.view = function(req, res){
 	console.log("\n\n\n\nteacherHome");
 	console.log(req.body);
 	console.log(res);
-	if(req.body.radio === "student"){
-		pType='student';
-	}else if(req.body.radio === "teacher"){
-		pType='teacher';
-	}
-	if(req.body.button === "Submit"){
-		createUser(req.body, pType, res, render);
-		render(req.body, res);
+	if(req.body.button === "Create New User"){
+		createUser(req.body, res, render);
 	}else if(req.body.button === "signInBtn"){
 		render(req.body, res);
 	}else if(req.body.button === "Back"){
@@ -27,18 +21,21 @@ exports.view = function(req, res){
 	} 
 }
 
-var createUser = function(data, type, res, callback){
-	database.addUser(data.username, data.password, type, res, callback);
+var createUser = function(data, res, callback){
+	database.isUsername(data.userName, function(isUsername){
+		if(isUsername){
+			alert("That userName is already taken.");
+		}else{
+			database.addUser(data.userName, data.password, data.personType, res, callback);
+		}
+	})
 }
 
 
-var render = function(data, res){
+var render = function(res){
 	console.log("rending");
-	console.log(data);
 	res.render('teacherHome', {
-		'userName': res.req.body.userName,
-		'className': data.name,
-		'classID': data._id
+		'userName': res.req.body.userName
 	  	});
 }
 
