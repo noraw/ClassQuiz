@@ -30,14 +30,30 @@
 			<h1>{{class}}</h1>
 		</div>
 
-		<p>Have students enter code {{code}} to join.</p>
+		<p>Have students enter code {{classID}} to join.</p>
 		<br>
 
-		<button type="button" onClick="addQuestionBtn();">Add a question</button>
+		<form id="addQuestionForm" role="form" method="post" action="/addQuestion">
+	    	<input type="hidden" name="userName" value="{{userName}}"></input>
+	    	<input type="hidden" name="classID" value="{{classID}}"></input>
+	    	<input type="hidden" name="className" value="{{className}}"></input>
+			<input type="submit" id="addQuestionBtn" name="button" value="Add a question"></input>
+		</form>
+
 		<br>
-		<button type="button" onClick="publishQuestionBtn();">Publish a question</button>
+		<form id="publishQuestionForm" role="form" method="post" action="/publishQuestion">
+	    	<input type="hidden" name="userName" value="{{userName}}"></input>
+	    	<input type="hidden" name="classID" value="{{classID}}"></input>
+	    	<input type="hidden" name="className" value="{{className}}"></input>
+			<input type="submit" id="publishQuestionBtn" name="button" value="Publish a question"></input>
+		</form>
 		<br>
-		<button type="button" onClick="viewResultsBtn();">View Results</button>
+		<form id="viewResultsForm" role="form" method="post" action="/viewClassResults">
+	    	<input type="hidden" name="userName" value="{{userName}}"></input>
+	    	<input type="hidden" name="classID" value="{{classID}}"></input>
+	    	<input type="hidden" name="className" value="{{className}}"></input>
+			<input type="submit" id="viewResultsBtn" name="button" value="ViewResults"></input>
+		</form>
 		<br>
 		<button type="button" onClick="backBtn();">Back to Homepage</button>
 	

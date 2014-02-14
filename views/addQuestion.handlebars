@@ -30,22 +30,26 @@
 			<h1>{{class}}</h1>
 		</div>
 
-	    <form>
-			<input name="answerChoices" value="answerA" type="radio" >a.
+	    <form id="addQuestionForm" role="form" method="post" action="/teacherClass">
+	    	<input type="hidden" name="userName" value="{{userName}}"></input>
+	    	<input type="hidden" name="_id" value="{{classID}}"></input>
+	    	<input type="hidden" name="name" value="{{className}}"></input>
+
+			<label for="questionText">Question Text:</label>
+			<input type="text" name="questionText"><br>
+			<label for="aText">a.</label>
 			<input type="text" name="aText"><br>
-			<input name="answerChoices" value="answerB" type="radio" >b.
+			<label for="bText">b.</label>
 			<input type="text" name="bText"><br>
-			<input name="answerChoices" value="answerC" type="radio" >c.
+			<label for="cText">c.</label>
 			<input type="text" name="cText"><br>
-			<input name="answerChoices" value="answerD" type="radio" >d.
+			<label for="dText">d.</label>
 			<input type="text" name="dText"><br>
-			<input name="answerChoices" value="answerE" type="radio" >e. I don't know
+			<label for="eText">e. I don't know.</label>
 			<br>
-			<p>Correct Answer:</p>
-			<input type="text" name="correctAnswer"><br>
+			<input type="submit" id="backBtn" name="button" value="Back"></input>
+			<input type="submit" id="submitBtn" name="button" value="Submit Question"></input>
 	   	</form>
-		<button type="button" onClick="backBtn();">Back</button>
-		<button type="button" onClick="submitBtn();">Submit</button>
 	
 
 	<script src="https://code.jquery.com/jquery.js"></script>
