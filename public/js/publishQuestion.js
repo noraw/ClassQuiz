@@ -17,7 +17,14 @@ function backBtn(e) {
 }
 
 function publishBtn(e) {
-	window.location.href="viewQuestionResults"	
+	console.log("existing class:");
+	var classID = $("#classList").val();
+	console.log(classID);
+	var className = $('#'+classID).text();
+	console.log(className);
+
+	$("#classID").val(classID);
+	$("#className").val(className);
 }
 
 function signOutBtn(e) {

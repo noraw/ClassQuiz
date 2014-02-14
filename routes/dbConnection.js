@@ -39,7 +39,7 @@ exports.isUsername = function(name, callback){
 
 // adds the user to the database
 // returns true if successful false if failed.
-exports.addUser = function(name, pwd, type){
+exports.addUser = function(name, pwd, type, res, callback){
 	var userData = {
 		name: name,
 		pwd: pwd,
@@ -51,6 +51,7 @@ exports.addUser = function(name, pwd, type){
 	newUser.save(function(err, data){
 		if(err){console.log(err)}else{
 			console.log("addUser: successful");
+			callback(res);
 		}
 	});
 }
