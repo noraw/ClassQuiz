@@ -11,7 +11,7 @@ var pType;
 exports.view = function(req, res){
 	console.log("\n\n\n\nteacherHome");
 	console.log(req.body);
-	console.log(res);
+	//console.log(res);
 	if(req.body.button === "Create New User"){
 		createUser(req.body, res, render);
 	}else if(req.body.button === "signInBtn"){
