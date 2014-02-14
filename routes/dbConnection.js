@@ -5,7 +5,7 @@ var database = require('./database.js');
 // returns true if the user exists and false otherwise
 exports.isUser = function(name, pwd, callback){
 	var userInfo = [];
-	var Users = mongoose.model('Users');
+	var Users = database.Users;
 	Users.findOne({'name':name, 'pwd':pwd}, function(err, userInfo){
 		if(err){console.log(err)}else{
 			if(userInfo == null){
@@ -23,7 +23,7 @@ exports.isUser = function(name, pwd, callback){
 // return true if taken, false if free
 exports.isUsername = function(name, callback){
 	var userInfo = [];
-	var Users = mongoose.model('Users');
+	var Users = database.Users;
 	Users.findOne({'name':name}, function(err, userInfo){
 		if(err){console.log(err)}else{
 			console.log(userInfo);
@@ -46,8 +46,9 @@ exports.addUser = function(name, pwd, type, res, callback){
 		pwd: pwd,
 		type: type
 	};
+	console.log("UserData");
 	console.log(userData);
-	var Users = mongoose.model('Users');
+	var Users = database.Users;
 	var newUser = new Users(userData);
 	newUser.save(function(err, data){
 		if(err){console.log(err)}else{
