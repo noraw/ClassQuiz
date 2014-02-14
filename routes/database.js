@@ -10,14 +10,14 @@ db.once('open', function() {
 	  type: String,
 	  classesIDArray: [{type: Schema.ObjectId, ref: 'Classes'}]
 	}, {collection: 'userSchema'});
-	mongoose.model('Users', userSchema);
+	module.exports = mongoose.model('Users', userSchema);
 	module.exports = db.usersTable('Users', userSchema);
 
 	var classesSchema = new Schema({
 		name: String,
 		questionIds: [{type: Schema.ObjectId, ref: 'Questions'}]
 	}, {collection: 'classesSchema'});
-	mongoose.model('Classes', classesSchema);
+	module.exports = mongoose.model('Classes', classesSchema);
 	module.exports = db.classesTable('Classes', classesSchema);
 
 	var questionsSchema = new Schema({
@@ -31,7 +31,7 @@ db.once('open', function() {
 		date: Date,
 		isPublished: Boolean
 	}, {collection: 'questionsSchema'});
-	mongoose.model('Questions', questionsSchema);
+	module.exports = mongoose.model('Questions', questionsSchema);
 	module.exports = db.questionsTable('Questions', questionsSchema);
 
 	var studentAnswers = new Schema({
@@ -39,7 +39,7 @@ db.once('open', function() {
 		questionId: String,
 		answer: String
 	}, {collection: 'studentAnswers'});
-	mongoose.model('StudentAnswers', studentAnswers);
+	module.exports = mongoose.model('StudentAnswers', studentAnswers);
 	module.exports = db.studentAnswersTable('StudentAnswers', studentAnswers);
 });
 
