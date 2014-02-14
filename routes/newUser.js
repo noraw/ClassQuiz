@@ -3,7 +3,7 @@ var database = require('./dbConnection');
 exports.view = function(req, res){
 	console.log("newUser");
 	//database.addUser('test1', 'test', 'student');
-	//database.addUser('test4', 'test', 'student');
+	database.addUser('test4', 'test', 'student');
 	database.createClass('test4', 'TestClass5');
 	//database.enrollInClass('test1', '52fad2e22d9af5a506d82f3e');
 
