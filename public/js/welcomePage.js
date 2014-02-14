@@ -15,13 +15,19 @@ function initializePage() {
 function callback(bool){
 	if(bool == 'false') $('.container h2').text("Your username and password combination is invalid.<br> Please try again.");
 }
-function signInBtn(e) {
+function signInBtn(e){
 	//var tempName = req.query.name;
 	//var tempPwd = req.query.password;
 	//isUser(tempName, tempPwd);
-	//if(Users.findOne({'name':name, 'type':'student'}, function(err, userInfo))) 
-		window.location.href="studentHome";
-	//else window.location.href="teacherHome";
+	
+	console.log("clickd sign in");
+
+	if ($('input[userName=personType]:checked').val() == 'student') {
+		window.location.href="studentHome/:userName";
+	} else {
+		window.location.href="teacherHome/:userName";
+	}
+	
 }
 
 function newUserBtn(e) {

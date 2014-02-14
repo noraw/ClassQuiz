@@ -51,14 +51,14 @@ if ('development' == app.get('env')) {
 }
 
 // Add routes here
-app.get('/', welcomePage.view);
-app.get('/newUser', newUser.view);
+app.post('/', welcomePage.view);
+app.post('/newUser', newUser.view);
 app.post('/viewQuestionResults', viewQuestionResults.view);
 app.post('/viewClassResults', viewClassResults.view);
 app.get('/viewQuestionResultsStudent', viewQuestionResultsStudent.view);
-app.get('/studentHome/:userName', studentHome.view);
+app.post('/studentHome/:userName', studentHome.view);
 app.post('/teacherHome', teacherHome.view);
-app.get('/studentClass', studentClass.view);
+app.post('/studentClass', studentClass.view);
 app.get('/questionResponse', questionResponse.view);
 app.get('/viewResultsStudent', viewResultsStudent.view);
 app.post('/teacherClass', teacherClass.view);

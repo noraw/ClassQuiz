@@ -9,6 +9,10 @@
 
 exports.view = function(req, res){
 
-	res.render('welcomePage', {});
+
+
+	res.render('welcomePage', {
+		'userName': res.req.body.userName,
+	});
 }
 
