@@ -25,9 +25,10 @@
 		<div class="jumbotron">
 			<h1>Create New User</h1>
 		</div>
-		<form id="addUserForm" role="form" method="post" action ="/teacherHome">
-			<input type="radio" name="personType" value="student">Student</input>
-			<input type="radio" name="personType" value="teacher">Teacher</input><br>
+		<form id="addUserForm" role="form" method="post" action ="/studentHome">
+			<input type="radio" id="studentRadio" name="personType" value="student" onClick="radioChange();" checked>Student</input>
+			<input type="radio" id="teacherRadio" name="personType" value="teacher" onClick="radioChange();">Teacher</input>
+			<br>
 			<label for="userName">Username:</label>
 			<input class="form-control" type="text" id="username" name="userName"><br>
 			<label for="password">Password:</label>
