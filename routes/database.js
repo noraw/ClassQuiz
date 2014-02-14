@@ -11,14 +11,14 @@ db.once('open', function() {
 	  classesIDArray: [{type: Schema.ObjectId, ref: 'Classes'}]
 	}, {collection: 'userSchema'});
 	mongoose.model('Users', userSchema);
-	//module.exports = db.usersTable('Users', userSchema);
+	module.exports = db.usersTable('Users', userSchema);
 
 	var classesSchema = new Schema({
 		name: String,
 		questionIds: [{type: Schema.ObjectId, ref: 'Questions'}]
 	}, {collection: 'classesSchema'});
 	mongoose.model('Classes', classesSchema);
-	//module.exports = db.classesTable('Classes', classesSchema);
+	module.exports = db.classesTable('Classes', classesSchema);
 
 	var questionsSchema = new Schema({
 		classId: {type: Schema.ObjectId, ref: 'Classes'},
@@ -32,7 +32,7 @@ db.once('open', function() {
 		isPublished: Boolean
 	}, {collection: 'questionsSchema'});
 	mongoose.model('Questions', questionsSchema);
-	//module.exports = db.questionsTable('Questions', questionsSchema);
+	module.exports = db.questionsTable('Questions', questionsSchema);
 
 	var studentAnswers = new Schema({
 		studentName: String,
@@ -40,7 +40,7 @@ db.once('open', function() {
 		answer: String
 	}, {collection: 'studentAnswers'});
 	mongoose.model('StudentAnswers', studentAnswers);
-	//module.exports = db.studentAnswersTable('StudentAnswers', studentAnswers);
+	module.exports = db.studentAnswersTable('StudentAnswers', studentAnswers);
 });
 
 
