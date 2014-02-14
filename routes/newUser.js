@@ -3,13 +3,14 @@ var database = require('./dbConnection');
 exports.view = function(req, res){
 	console.log("newUser");
 	//database.addUser('test1', 'test', 'student');
-	//database.addUser('test2', 'test', 'teacher');
-	//database.createClass('test2', 'TestClass3');
+	//database.addUser('test4', 'test', 'student');
+	database.createClass('test4', 'TestClass5');
 	//database.enrollInClass('test1', '52fad2e22d9af5a506d82f3e');
 
 	//database.addQuestion('52fad2e22d9af5a506d82f3e', 'question1', 'a','b','c','d','c');
 	//database.publishQuestion('52fbd4c49f2af4d7066a0614');
-	database.submitStudentAnswer('test2', '52fbd4c49f2af4d7066a0614', 'a');
+	//database.submitStudentAnswer('test2', '52fbd4c49f2af4d7066a0614', 'a');
+	/*
 	database.getPublishedQuestionsListAnswered('test2', '52fad2e22d9af5a506d82f3e', function(question){
 		console.log("answered question: ");
 		console.log(question);

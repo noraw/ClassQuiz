@@ -1,4 +1,6 @@
 
+var database = require('./dbConnection');
+
 /*
  * GET home page.
  */
@@ -8,24 +10,23 @@
  */
 
 exports.view = function(req, res){
+	var userName = req.params.userName;
+	database.getUsersClassesNames(userName, function(classes){
+		res.render('teacherHome', {
+			'username': userName,
+		    'classes': classes
+	  	});
 
-	res.render('teacherHome', {
-		'username': 'Nora',
-	    'classes': [
-	      { 'class': 'Biology' }
-		    ]  
-  	});
+	});
+
 }
 exports.chooseFunction = function(req, res){
 	console.log(req.body);
-	if(req.params.func === 'createClass'){
-		createClass(req, res);
+	console.log(req.route);
+	if(req.body.func === 'createClass'){
+		createClass(req.body, req.route.callbacks[0]);
 	}
 }
 
-exports.createClass = function(req, res){
-	console.log(req.params);
-	//console.log(res);
 
-}
 

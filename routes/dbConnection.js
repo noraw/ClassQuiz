@@ -71,8 +71,8 @@ exports.createClass = function(userName, className, callback){
 					user.classesIDArray.push(newClass);
 					user.save(function(err){
 						if(err){console.log(err)}else{
-							console.log("createClass("+username+", "+className+"): classID - "+ data._id);
-							callback(data._id);
+							console.log("createClass("+userName+", "+className+"): classID - "+ data._id);
+							callback(data);
 						}
 					});
 				}
@@ -107,8 +107,11 @@ exports.getUsersClassesNames = function(userName, callback){
 	.populate('classesIDArray')
 	.exec(function(err, user){
 		if(err){console.log(err)}else{
-			console.log("getUsersClassesNames("+userName+"): "+user.classesIDArray);
-			callback(user.classesIDArray);
+			console.log(user);
+			if(user != null){
+				console.log("getUsersClassesNames("+userName+"): "+user.classesIDArray);
+				callback(user.classesIDArray);
+			}
 		}
 	});
 }
@@ -190,17 +193,19 @@ var getPublishedQuestionsListPrivate = function(classID, callback){
 	.populate('questionIds')
 	.exec(function(err, classData){
 		if(err){console.log(err)}else{
-			classData.questionIds.forEach(function(question){
-				Questions.findOne({'_id':question._id, 'isPublished':true})
-				.exec(function(err, questionFound){
-					if(err){console.log(err)}else{
-						if(questionFound != null){
-							console.log("getPublishedQuestionsList("+classID+"): "+questionFound);
-							callback(questionFound);
+			if(classData != null){
+				classData.questionIds.forEach(function(question){
+					Questions.findOne({'_id':question._id, 'isPublished':true})
+					.exec(function(err, questionFound){
+						if(err){console.log(err)}else{
+							if(questionFound != null){
+								console.log("getPublishedQuestionsList("+classID+"): "+questionFound);
+								callback(questionFound);
+							}
 						}
-					}
+					});
 				});
-			});
+			}
 		}
 	});
 }

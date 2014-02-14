@@ -13,7 +13,16 @@ function initializePage() {
 
 
 function useExistingClassBtn(e) {
-	window.location.href="teacherClass";
+	console.log("existing class:");
+	var classID = $("#classList").val();
+	console.log(classID);
+	var className = $('#'+classID).text();
+	console.log(className);
+	var userName = $("#userName").text();
+	console.log(userName);
+	$.post('/teacherClass', {userName:userName, className:className, classID: classID}, function(){
+		window.location.href="teacherClass";
+	});
 }
 
 
@@ -24,15 +33,9 @@ function createNewClass(e) {
 	var userName = $("#userName").text();
 	console.log(userName);
 	
-	$.post('/teacherHome/createClass', {userName:userName, className:className}, function(classID){
+	$.post('/teacherHome/createClass', {userName:userName, className:className, func:"createClass"}, function(classID){
 		console.log(classID);
 	});
-	/*
-	dbConnection.createClass(userName, className, function(classID){
-		$.post('teacherClass', {newClass:className, classID:classID});
-	});
-	*/
-	//window.location.href="teacherClass";
 }
 
 function removeClassBtn(e) {
