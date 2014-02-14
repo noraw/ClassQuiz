@@ -23,17 +23,22 @@
 		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
 		<!-- p means paragraph -->
 		<div class="jumbotron">
-			<h1>Results for "{{question}}"</h1>
+			<h1>Results for "{{className}}"</h1>
 		</div>
 
-	    <ol type="a">
-	    {{#each answers}}
-	      <li>{{answerText}}</li>
-	    {{/each}}
-	    </ol>
+		<form id="viewQuestionResponseForm" role="form" method="post" action="/publishQuestion">
+	    	<input type="hidden" name="userName" value="{{userName}}"></input>
+	    	<input type="hidden" name="className" value="{{className}}"></input>
+	    	<input type="hidden" name="classID" value="{{classID}}"></input>
+	    	<input id="questionID" type="hidden" name="_id" value="{{questionID}}"></input>
 
-		<button type="button" onClick="backBtn();">Back</button>
-	
+		    <ol type="a">
+		    {{#each answers}}
+		      <li>{{answerText}}</li>
+		    {{/each}}
+		    </ol>
+ 			<input type="submit" id="backBtn" name="button" value="Back"></input>
+		</form>	
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>

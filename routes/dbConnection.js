@@ -157,7 +157,9 @@ exports.publishQuestion = function(questionID){
 	Questions.findOne({'_id':questionID}, function(err, questionData){
 		if(err){console.log(err)}else{
 			questionData.update({'isPublished':true}, function(err){
-				if(err){console.log(err)}
+				if(err){console.log(err)}else{
+					console.log("publishQuestion: successful");
+				}
 			});
 		}
 	});

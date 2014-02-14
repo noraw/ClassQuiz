@@ -27,18 +27,26 @@
 		</div>
 
 		<form id="selectQuestionForm" role="form" method="post" action="/viewQuestionResults">
-	    	<input type="hidden" name="userName" value="{{username}}"></input>
+	    	<input type="hidden" name="userName" value="{{userName}}"></input>
+	    	<input type="hidden" name="className" value="{{className}}"></input>
+	    	<input type="hidden" name="classID" value="{{classID}}"></input>
 	    	<input id="questionID" type="hidden" name="_id" value=""></input>
 			<div class="form-group">
 				<label for="questionList">Select a question:</label>
-			    <select form="selectQuestionForm" class="form-control" onClick="publishBtn();" id="questionList" name="questionList">
+			    <select form="selectQuestionForm" class="form-control" onClick="selectQuestion();" id="questionList" name="questionList">
 			    {{#each questions}}
 			      <option id="{{_id}}" value="{{_id}}" name="{{_id}}">{{text}}</option>
 			    {{/each}}
 			    </select>
 			</div>
-			<input type="submit" id="backBtn" name="button" value="Back"></input>
 			<input type="submit" id="publishBtn" name="button" value="Publish Question"></input>
+		</form>
+
+		<form id="viewResultsForm" role="form" method="post" action="/teacherClass">
+	    	<input type="hidden" name="userName" value="{{userName}}"></input>
+	    	<input type="hidden" name="classID" value="{{classID}}"></input>
+	    	<input type="hidden" name="className" value="{{className}}"></input>
+			<input type="submit" id="backBtn" name="button" value="Back"></input>
 		</form>
 
 	   	<br>

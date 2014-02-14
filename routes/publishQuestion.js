@@ -8,12 +8,13 @@ var database = require('./dbConnection');
  */
 
 exports.view = function(req, res){
-	console.log("publishQuestion");
+	console.log("\n\n\npublishQuestion");
 	console.log(req.body);
 	database.getNewQuestionsList(req.body.classID, function(question){
-		console.log(question);
+		//console.log(question);
 		res.render('publishQuestion', {
 			'className': req.body.className,
+			'classID': req.body.classID,
 			'userName': req.body.userName,
 			'questions': [question]
 	  	});

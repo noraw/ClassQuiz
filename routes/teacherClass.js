@@ -21,11 +21,6 @@ exports.view = function(req, res){
 	}else if(req.body.button === "Submit Question"){
 		render(req.body, res);
 		createQuestion(req.body);
-	}else if(req.body.button === "Publish a Question"){
-
-	}else if(req.body.button === "Publish"){
-		render(req.body, res);
-		createQuestion(req.body);
 	}
 }
 
@@ -38,13 +33,24 @@ var createQuestion = function(data){
 	database.addQuestion(data._id, data.questionText, data.aText, data.bText, data.cText, data.dText, data.dText);
 }
 
-
 var render = function(data, res){
-	console.log("rending");
+	console.log("rendering teacherClass");
 	console.log(data);
+	var classID;
+	var className;
+	if(data.classID != null){
+		classID = data.classID;
+	}else{
+		classID = data._id;
+	}
+	if(data.className != null){
+		className = data.className;
+	}else{
+		className = data.name
+	}
 	res.render('teacherClass', {
 		'userName': res.req.body.userName,
-		'className': data.name,
-		'classID': data._id
+		'className': className,
+		'classID': classID
 	  	});
 }

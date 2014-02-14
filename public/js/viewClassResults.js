@@ -12,10 +12,10 @@ function initializePage() {
 	// add any functionality and listeners you want here
 }
 
-function backBtn(e) {
-	window.location.href="teacherClass";
-}
 
-function viewResultsBtn(e) {
-	window.location.href="viewQuestionResults";	
+function selectQuestion(e) {
+	var questionID = $("#questionList").val();
+	console.log(questionID);
+
+	$("#questionID").val(questionID);
 }

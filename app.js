@@ -53,7 +53,7 @@ if ('development' == app.get('env')) {
 // Add routes here
 app.get('/', welcomePage.view);
 app.get('/newUser', newUser.view);
-app.get('/viewQuestionResults', viewQuestionResults.view);
+app.post('/viewQuestionResults', viewQuestionResults.view);
 app.post('/viewClassResults', viewClassResults.view);
 app.get('/viewQuestionResultsStudent', viewQuestionResultsStudent.view);
 app.get('/studentHome', studentHome.view);
