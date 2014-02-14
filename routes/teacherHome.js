@@ -25,7 +25,7 @@ exports.view = function(req, res){
 var createUser = function(data, res, callback){
 	database.isUsername(data.userName, function(isUsername){
 		if(isUsername){
-			alert("That User Name is already taken.");
+			console.log("That User Name is already taken.");
 		}else{
 			database.addUser(data.userName, data.password, data.personType, res, callback);
 		}

@@ -5,8 +5,7 @@ var database = require('./database.js');
 // returns true if the user exists and false otherwise
 exports.isUser = function(name, pwd, callback){
 	var userInfo = [];
-	var Users = database.Users;
-	Users.findOne({'name':name, 'pwd':pwd}, function(err, userInfo){
+	database.Users.findOne({'name':name, 'pwd':pwd}, function(err, userInfo){
 		if(err){console.log(err)}else{
 			if(userInfo == null){
 				console.log("isUser(" +name+ "): false");
@@ -23,8 +22,7 @@ exports.isUser = function(name, pwd, callback){
 // return true if taken, false if free
 exports.isUsername = function(name, callback){
 	var userInfo = [];
-	var Users = database.Users;
-	Users.findOne({'name':name}, function(err, userInfo){
+	database.Users.findOne({'name':name}, function(err, userInfo){
 		if(err){console.log(err)}else{
 			console.log(userInfo);
 			if(userInfo == null){
@@ -48,8 +46,7 @@ exports.addUser = function(name, pwd, type, res, callback){
 	};
 	console.log("UserData");
 	console.log(userData);
-	var Users = database.Users;
-	var newUser = new Users(userData);
+	var newUser = new database.Users(userData);
 	newUser.save(function(err, data){
 		if(err){console.log(err)}else{
 			console.log("addUser: successful");
@@ -64,12 +61,10 @@ exports.createClass = function(userName, className, res, callback){
 	var classData = {
 		name: className
 	};
-	var Classes = mongoose.model('Classes');
-	var newClass = new Classes(classData);
+	var newClass = new database.Classes(classData);
 	newClass.save(function(err, data){
 		if(err){console.log(err)}else{
-			var Users = mongoose.model('Users');
-			Users.findOne({'name':userName}, function(err, user){
+			database.Users.findOne({'name':userName}, function(err, user){
 				if(err){console.log(err)}else{
 					user.classesIDArray.push(newClass);
 					user.save(function(err){
@@ -87,9 +82,7 @@ exports.createClass = function(userName, className, res, callback){
 // adds the class to the user's list of classes
 // returns True if successful, false otherwise
 exports.enrollInClass = function(userName, classID){
-	var Users = mongoose.model('Users');
-	var Classes = mongoose.model('Classes');
-	Users.findOne({'name':userName}, function(err, user){
+	database.Users.findOne({'name':userName}, function(err, user){
 		if(err){console.log(err)}else{
 			user.classesIDArray.push(classID);
 			user.save(function(err){
@@ -105,8 +98,7 @@ exports.enrollInClass = function(userName, classID){
 // get all the classes that the user either teaches or is enrolled in
 // returns a json with the class name and class id
 exports.getUsersClassesNames = function(userName, callback){
-	var Users = mongoose.model('Users');
-	Users.findOne({'name':userName})
+	database.Users.findOne({'name':userName})
 	.populate('classesIDArray')
 	.exec(function(err, user){
 		if(err){console.log(err)}else{
@@ -133,14 +125,12 @@ exports.addQuestion = function(classID, questionText, answerA, answerB, answerC,
 		//date: new Date(),
 		isPublished: false
 	}
-	var Questions = mongoose.model('Questions');
-	var newQuestion = new Questions(questionData);
+	var newQuestion = new database.Questions(questionData);
 	newQuestion.save(function(err, data){
 		if(err){console.log(err)}
 	});
 	// still need to update quiz to point to question
-	var Classes = mongoose.model('Classes');
-	Classes.findOne({'_id':classID}, function(err, classData){
+	database.Classes.findOne({'_id':classID}, function(err, classData){
 		if(err){console.log(err)}else{
 			classData.questionIds.push(newQuestion);
 			classData.save(function(err){
@@ -155,8 +145,7 @@ exports.addQuestion = function(classID, questionText, answerA, answerB, answerC,
 // changes the question's published status to true
 // returns true if successful, false otherwise
 exports.publishQuestion = function(questionID){
-	var Questions = mongoose.model('Questions');
-	Questions.findOne({'_id':questionID}, function(err, questionData){
+	database.Questions.findOne({'_id':questionID}, function(err, questionData){
 		if(err){console.log(err)}else{
 			questionData.update({'isPublished':true}, function(err){
 				if(err){console.log(err)}else{
@@ -170,18 +159,18 @@ exports.publishQuestion = function(questionID){
 // gets all the unpublished questions in a class
 // calls the callback function each time for a found question
 exports.getNewQuestionsList = function(classID, callback){
-	var Classes = mongoose.model('Classes');
-	var Questions = mongoose.model('Questions');
-	Classes.findOne({'_id':classID})
+	database.Classes.findOne({'_id':classID})
 	.populate('questionIds')
 	.exec(function(err, classData){
 		if(err){console.log(err)}else{
+			console.log(classData);
 			var counter = classData.questionIds.length;
 			if(classData != null && classData.questionIds.length != 0){
 				classData.questionIds.forEach(function(question){
-					Questions.findOne({'_id':question._id, 'isPublished':false})
+					database.Questions.findOne({'_id':question._id, 'isPublished':false})
 					.exec(function(err, questionFound){
 						if(questionFound != null){
+							counter++;
 							console.log("getNewQuestionsList("+classID+"): "+questionFound);
 							callback(questionFound);
 						}
@@ -201,19 +190,18 @@ exports.getNewQuestionsList = function(classID, callback){
 // gets all the published questions in a class
 // returns a list of classNames and classIDs
 var getPublishedQuestionsListPrivate = function(classID, callback){
-	var Classes = mongoose.model('Classes');
-	var Questions = mongoose.model('Questions');
-	Classes.findOne({'_id':classID})
+	database.Classes.findOne({'_id':classID})
 	.populate('questionIds')
 	.exec(function(err, classData){
 		if(err){console.log(err)}else{
 			if(classData != null && classData.questionIds.length != 0){
 				var counter = classData.questionIds.length;
 				classData.questionIds.forEach(function(question){
-					Questions.findOne({'_id':question._id, 'isPublished':true})
+					database.Questions.findOne({'_id':question._id, 'isPublished':true})
 					.exec(function(err, questionFound){
 						if(err){console.log(err)}else{
 							if(questionFound != null){
+								counter++;
 								console.log("getPublishedQuestionsList("+classID+"): "+questionFound);
 								callback(questionFound);
 							}
