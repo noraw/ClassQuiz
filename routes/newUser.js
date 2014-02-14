@@ -36,5 +36,7 @@ exports.view = function(req, res){
 
 	//database.addUser(username, password, personType);
 	//var userName = req.params.userName;
-	res.render('newUser', {});
+	res.render('newUser', {
+		'userName': res.req.body.userName,
+	});
 }
