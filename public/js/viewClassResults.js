@@ -20,9 +20,7 @@ function selectQuestion(e) {
 
 	$("#questionID").val(questionID);
 
-function viewResultsBtn(e) {
-	window.location.href="viewQuestionResults";	
-}
+
 function signOutBtn(e) {
 	window.location.href="/";
 }
