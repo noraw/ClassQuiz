@@ -16,7 +16,6 @@ exports.view = function(req, res){
 			'username': userName,
 		    'classes': classes
 	  	});
-
 	});
 
 }

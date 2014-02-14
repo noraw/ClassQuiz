@@ -21,6 +21,11 @@ exports.view = function(req, res){
 	}else if(req.body.button === "Submit Question"){
 		render(req.body, res);
 		createQuestion(req.body);
+	}else if(req.body.button === "Publish a Question"){
+
+	}else if(req.body.button === "Publish"){
+		render(req.body, res);
+		createQuestion(req.body);
 	}
 }
 
