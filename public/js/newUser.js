@@ -9,12 +9,19 @@ $(document).ready(function() {
  * Function that is called when the document is ready.
  */
 function initializePage() {
-	
-	// add any functionality and listeners you want here
 }
 
 function backBtn(e) {
 	window.location.href=".";
+}
+function radioChange(e){
+	if($('input[id=studentRadio]:checked').val() == 'student'){
+		console.log("studentHome")
+		$("#addUserForm").attr('action','/studentHome');
+	}else{
+		console.log('teacherHome')
+		$("#addUserForm").attr('action','/teacherHome');
+	}
 }
 
 function submitBtn(e) {
