@@ -8,6 +8,7 @@ var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars');
 
+var database = require('./routes/database');
 var welcomePage = require('./routes/welcomePage');
 var newUser = require('./routes/newUser');
 var viewQuestionResults = require('./routes/viewQuestionResults');
@@ -22,7 +23,6 @@ var teacherClass = require('./routes/teacherClass');
 var addQuestion = require('./routes/addQuestion');
 var publishQuestion = require('./routes/publishQuestion');
 
-var database = require('./routes/database');
 
 //ar project = require('./routes/project');
 // Example route
