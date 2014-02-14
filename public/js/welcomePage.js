@@ -21,13 +21,13 @@ function signInBtn(e){
 	//isUser(tempName, tempPwd);
 	
 	console.log("clickd sign in");
-
+	/*
 	if ($('input[userName=personType]:checked').val() == 'student') {
-		window.location.href="studentHome/:userName";
+		window.location.href="studentHome";
 	} else {
-		window.location.href="teacherHome/:userName";
+		window.location.href="teacherHome";
 	}
-	
+	*/
 }
 
 function newUserBtn(e) {
