@@ -57,7 +57,7 @@ exports.addUser = function(name, pwd, type){
 
 // creates a new class and sets the teacher as enrolled in that class
 // returns the classId
-exports.createClass = function(userName, className, callback){
+exports.createClass = function(userName, className, res, callback){
 	var classData = {
 		name: className
 	};
@@ -72,7 +72,7 @@ exports.createClass = function(userName, className, callback){
 					user.save(function(err){
 						if(err){console.log(err)}else{
 							console.log("createClass("+userName+", "+className+"): classID - "+ data._id);
-							callback(data);
+							callback(data, res);
 						}
 					});
 				}

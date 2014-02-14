@@ -12,22 +12,22 @@ exports.view = function(req, res){
 	console.log("\n\n\n\nteacherClass");
 	console.log(req.body);
 	if(req.body.button === "Create New Class"){
-		createClass(req.body, render);
+		createClass(req.body, res, render);
+	}else if(req.body.button === "Use Existing Class"){
+		render(req.body, res);
 	}
 }
 
 
-var createClass = function(data, callback){
-	database.createClass(data.userName, data.className, callback);
+var createClass = function(data, res, callback){
+	database.createClass(data.userName, data.newClassName, res, callback);
 }
 
-var render = function(data){
-	console.log("render");
-	console.log(data);
+var render = function(data, res){
 	res.render('teacherClass', {
-		'userName': data.userName,
-		'class': data.newClassName,
-		'code': data.classID
+		'userName': res.req.body.userName,
+		'class': data.name,
+		'code': data._id
 	  	});
 
 }

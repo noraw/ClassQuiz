@@ -20,13 +20,6 @@ exports.view = function(req, res){
 	});
 
 }
-exports.chooseFunction = function(req, res){
-	console.log(req.body);
-	console.log(req.route);
-	if(req.body.func === 'createClass'){
-		createClass(req.body, req.route.callbacks[0]);
-	}
-}
 
 
 

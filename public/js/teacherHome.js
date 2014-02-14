@@ -18,14 +18,12 @@ function useExistingClassBtn(e) {
 	console.log(classID);
 	var className = $('#'+classID).text();
 	console.log(className);
-	var userName = $("#userName").text();
-	console.log(userName);
-	$.post('/teacherClass', {userName:userName, className:className, classID: classID}, function(){
-		window.location.href="teacherClass";
-	});
+
+	$("#classID").val(classID);
+	$("#className").val(className);
 }
 
-
+/*
 function createNewClass(e) {
 	console.log("creating new class");
 	var className = $("#newClassName").val();
@@ -37,7 +35,7 @@ function createNewClass(e) {
 		console.log(classID);
 	});
 }
-
+*/
 function removeClassBtn(e) {
 	window.location.href="teacherClass";
 }

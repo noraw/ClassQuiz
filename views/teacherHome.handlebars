@@ -28,16 +28,18 @@
 		</div>
 
 		<form id="selectClassForm" role="form" method="post" action="/teacherClass">
-	    	<input type="hidden" name="userName" value="{{username}}"></label>
+	    	<input type="hidden" name="userName" value="{{username}}"></input>
+	    	<input id="classID" type="hidden" name="_id" value=""></input>
+	    	<input id="className" type="hidden" name="name" value=""></input>
 			<div class="form-group">
 				<label for="classList">Select a current class:</label>
-			    <select class="form-control" id="classList" name="classList">
+			    <select form="selectClassForm" class="form-control" onClick="useExistingClassBtn();" id="classList" name="classList">
 			    {{#each classes}}
 			      <option id="{{_id}}" value="{{_id}}" name="{{_id}}">{{name}}</option>
 			    {{/each}}
 			    </select>
 			</div>
-			<input type="submit" id="existingClassBtn" name="button" onClick="useExistingClassBtn();" value="Use Existing Class"></input>
+			<input type="submit" id="existingClassBtn" name="button" value="Use Existing Class"></input>
 		</form>
 
 		<form id="createClassForm" role="form" method="post" action="/teacherClass">
@@ -46,7 +48,7 @@
 			    <label for="newClassName">Create a new class:</label>
 				<input type="text" class="form-control" placeHolder="newClass" id="newClassName" name="newClassName">
 			</div>
-			<input type="submit" id="createClassBtn" name="button" onClick="createNewClass();" value="Create New Class"></input>
+			<input type="submit" id="createClassBtn" name="button" value="Create New Class"></input>
 		</form>
 
 		<p>Remove a class:</p><br>
