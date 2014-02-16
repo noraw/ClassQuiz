@@ -25,16 +25,17 @@
 		<div class="jumbotron">
 			<h1>Create New User</h1>
 		</div>
-		<form id="addUserForm" role="form" method="post" action ="/studentHome">
-			<input type="radio" id="studentRadio" name="personType" value="student" onClick="radioChange();" checked>Student currently is not implemented</input>
-			<input type="radio" id="teacherRadio" name="personType" value="teacher" onClick="radioChange();">Teacher</input>
+		<form id="addUserForm" role="form" method="get" action ="/createUser">
+			<input type="radio" id="studentRadio" name="personType" value="student" checked>Student</input>
+			<input type="radio" id="teacherRadio" name="personType" value="teacher">Teacher</input>
 			<br>
 			<label for="userName">Username:</label>
-			<input class="form-control" type="text" id="username" name="userName"><br>
+			<input class="form-control" type="text" id="username" placeholder="username" name="userName"><br>
 			<label for="password">Password:</label>
-			<input class="form-control" type="password" id="password" name="password"><br>
+			<input class="form-control" type="password" id="password" placeholder="Password" name="password"><br>
 			<label for="password">Confirm Password:</label>
-			<input class="form-control" type="password" id="passwordConfirm" name="passwordConfirm">
+			<input class="form-control" type="password" id="passwordConfirm" placeholder="Password" name="passwordConfirm">
+			<p>{{error}}</p>
 			<input type="submit" id="submitBtn" name="button" value="Create New User">
 		</form>
 		

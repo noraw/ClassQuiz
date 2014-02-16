@@ -13,13 +13,13 @@ exports.Users = mongoose.model('Users', userSchema);
 
 var classesSchema = new Schema({
 	name: String,
-	questionIds: [{type: Schema.ObjectId, ref: 'Questions'}]
+	questionIDs: [{type: Schema.ObjectId, ref: 'Questions'}]
 }, {collection: 'classesSchema'});
 exports.Classes = mongoose.model('Classes', classesSchema);
 //module.exports = db.classesTable('Classes', classesSchema);
 
 var questionsSchema = new Schema({
-	classId: {type: Schema.ObjectId, ref: 'Classes'},
+	classID: {type: Schema.ObjectId, ref: 'Classes'},
 	text: String,
 	answerA: String,
 	answerB: String,
@@ -34,7 +34,8 @@ exports.Questions = mongoose.model('Questions', questionsSchema);
 
 var studentAnswers = new Schema({
 	studentName: String,
-	questionId: String,
+	classID: String,
+	questionID: String,
 	answer: String
 }, {collection: 'studentAnswers'});
 exports.StudentAnswers = mongoose.model('StudentAnswers', studentAnswers);

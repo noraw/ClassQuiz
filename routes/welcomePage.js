@@ -8,11 +8,8 @@
  */
 
 exports.view = function(req, res){
-
-
-
 	res.render('welcomePage', {
-		'userName': res.req.body.userName,
+		'error': req.query.error,
 	});
 }
 

@@ -33,7 +33,7 @@ mongoose.connect(uristring, function (err, res) {
 
 var database = require('./routes/database');
 var welcomePage = require('./routes/welcomePage');
-var newUser = require('./routes/newUser');
+var user = require('./routes/user');
 var viewQuestionResults = require('./routes/viewQuestionResults');
 var viewClassResults = require('./routes/viewClassResults');
 var viewQuestionResultsStudent = require('./routes/viewQuestionResultsStudent');
@@ -75,12 +75,12 @@ if ('development' == app.get('env')) {
 
 // Add routes here
 app.get('/', welcomePage.view);
-app.get('/newUser', newUser.view);
+app.get('/newUser', user.viewNewUser);
 app.post('/viewQuestionResults', viewQuestionResults.view);
 app.post('/viewClassResults', viewClassResults.view);
 app.get('/viewQuestionResultsStudent', viewQuestionResultsStudent.view);
-app.post('/studentHome', studentHome.view);
-app.post('/teacherHome', teacherHome.view);
+app.get('/studentHome', studentHome.view);
+app.get('/teacherHome', teacherHome.view);
 app.get('/studentClass', studentClass.view);
 app.get('/questionResponse', questionResponse.view);
 app.get('/viewResultsStudent', viewResultsStudent.view);
@@ -92,6 +92,9 @@ app.post('/publishQuestion', publishQuestion.view);
 //app.get('/', .view);
 // Example route
 // app.get('/users', user.list);
+app.get('/user_login', user.login);
+app.get('/user_logout', user.logout);
+app.get('/createUser', user.createUser);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

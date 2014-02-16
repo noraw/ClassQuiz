@@ -10,13 +10,13 @@ var database = require('./dbConnection');
 exports.view = function(req, res){
 	console.log("\n\n\npublishQuestion");
 	console.log(req.body);
-	database.getNewQuestionsList(req.body.classID, function(question){
-		console.log(question);
+	database.getNewQuestionsList(req.body.classID, function(questions){
+		console.log(questions);
 		res.render('publishQuestion', {
 			'className': req.body.className,
 			'classID': req.body.classID,
 			'userName': req.body.userName,
-			'questions': [question]
+			'questions': questions
 	  	});
 //		$("#questionList").append('<option id="'+question._id + '" value="' +question._id + '" name="' + question._id + '">' + question.text + '</option>');
 	});
