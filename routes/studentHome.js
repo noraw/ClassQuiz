@@ -1,12 +1,6 @@
 var database = require('./dbConnection');
 
-/*
- * GET home page.
- */
 
-/*
- * Function that is called when the document is ready.
- */
 exports.view = function(req, res){
 	req.session.classID = null;
 	req.session.className = null; 
@@ -20,7 +14,6 @@ exports.view = function(req, res){
 	});
 }
 
-
 exports.enrollInClass = function(req, res){
 	console.log(req.session);
 	console.log(req.query);
@@ -30,12 +23,15 @@ exports.enrollInClass = function(req, res){
 	}else{
 		database.isClass(req.query.classCode, function(isClass, classData){
 			if(isClass){
-				database.isAlreadyEnrolled(req.session.userName, req.query.classCode, function(isEnrolled){
+				database.isAlreadyEnrolled(req.session.userName, req.query.classCode, 
+					function(isEnrolled){
 					if(isEnrolled){
-						var error = encodeURIComponent('You have already enrolled in that class.');
+						var error = encodeURIComponent('You have already enrolled'+
+						' in that class.');
 						res.redirect('/studentHome?joinError='+error);
 					}else{
-						database.enrollInClass(req.session.userName, req.query.classCode, function(){
+						database.enrollInClass(req.session.userName, 
+							req.query.classCode, function(){
 							req.session.classID = classData._id;
 							req.session.className = classData.name; 
 							res.redirect('/studentClass');

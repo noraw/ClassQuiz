@@ -1,8 +1,11 @@
+var database = require('./dbConnection');
+
+
 exports.view = function(req, res){
-	console.log("\n\nviewQuestionResults");
+	console.log("\n\quesitonResponse");
 	console.log(req.query);
 	database.getQuestionInfo(req.query.questionList, function(data){
-		res.render('viewQuestionResults', {
+		res.render('quesitonResponse', {
 			'questionID': data._id,
 			'questionText': data.text,
 		    'aText': "a. " + data.answerA,
@@ -14,7 +17,8 @@ exports.view = function(req, res){
 }
 
 exports.submitStudentAnswer = function(req, res){
-	submitStudentAnswer
-		res.redirect("/questionResponse?questionList="+req.query.questionList);
-
+	database.submitStudentAnswer(req.session.userName, req.session.classID,
+		req.query.questionID, function(){
+		res.redirect("/viewQuestionResultsStudent?questionList="+req.query.questionID);
+	});
 }

@@ -1,12 +1,6 @@
 var database = require('./dbConnection');
 
-/*
- * GET home page.
- */
 
-/*
- * Function that is called when the document is ready.
- */
 exports.view = function(req, res){
 	req.session.classID = null;
 	req.session.className = null; 
@@ -20,7 +14,6 @@ exports.view = function(req, res){
 	});
 }
 
-
 exports.createClass = function(req, res){
 	console.log(req);
 	console.log(req.session);
@@ -28,7 +21,8 @@ exports.createClass = function(req, res){
 		var error = encodeURIComponent('Please enter a class name.');
 		res.redirect('/teacherHome?createError='+error);
 	}else{
-		database.createClass(req.session.userName, req.query.newClassName, function(classData){
+		database.createClass(req.session.userName, req.query.newClassName, 
+			function(classData){
 			req.session.classID = classData._id;
 			req.session.className = classData.name; 
 			res.redirect('/teacherClass');

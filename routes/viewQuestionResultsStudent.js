@@ -1,20 +1,20 @@
+var database = require('./dbConnection');
 
-/*
- * GET home page.
- */
-
-/*
- * Function that is called when the document is ready.
- */
 
 exports.view = function(req, res){
-
-	res.render('viewQuestionResultsStudent', {
-		'class': 'Biology',
-		'question': 'What are you doing?',
-	    'studentAnswer': 'a',
-	    'correctAnswer': 'b',
-  	});
+	console.log("\n\nviewQuestionResultsStudent");
+	console.log(req.query);
+	database.getQuestionInfo(req.query.questionList, function(data){
+		database.getStudentAnswer(req.session.userName, req.query.questionList, 
+			function(studentAnswer){
+			res.render('viewQuestionResultsStudent', {
+				'className': req.session.className,
+				'questionText': data.text,
+			    'studentAnswer': studentAnswer,
+			    'correctAnswer': data.correctAnswer
+		  	});
+		});
+	});
 }
 
 

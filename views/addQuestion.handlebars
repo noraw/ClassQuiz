@@ -8,20 +8,10 @@
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="/css/introHCI.css" rel="stylesheet">
-	<!-- this is a comment in HTML -->
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->        
 </head>
 
 <body>
 	<div class="container">
-		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
-		<!-- p means paragraph -->
 		<div class="jumbotron">
 			<div>
 				<form id="homeForm" role="form" method="get" action="/teacherHome">
@@ -48,10 +38,10 @@
 			<label for="eText">e. I don't know.</label>
 		    <select form="addQuestionForm" class="form-control" id="correctAnswer" name="correctAnswer">
 			      <option id="-" value="-" name="-">-</option>
-			      <option id="A" value="A" name="A">a</option>
-			      <option id="B" value="B" name="B">b</option>
-			      <option id="C" value="C" name="C">c</option>
-			      <option id="D" value="D" name="D">d</option>
+			      <option id="a" value="a" name="a">a</option>
+			      <option id="b" value="b" name="b">b</option>
+			      <option id="c" value="c" name="c">c</option>
+			      <option id="d" value="d" name="d">d</option>
 		    </select>
 
 			<p>{{error}}</p>
@@ -65,6 +55,6 @@
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/addQuestion.js"></script>
+
 </body>
 </html>

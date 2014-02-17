@@ -1,18 +1,13 @@
 var database = require('./dbConnection');
-/*
- * GET home page.
- */
 
-/*
- * Function that is called when the document is ready.
- */
 
 exports.view = function(req, res){
 	console.log("\n\n\n\studentClass");
-//	console.log(req.body);
 	console.log(req.session);
-	database.getPublishedQuestionsListUnanswered(req.session.classID, function(answerQuestions){
-		database.getPublishedQuestionsListAnswered(req.session.classID, function(resultsQuestions){
+	database.getPublishedQuestionsListUnanswered(req.session.classID, 
+		function(answerQuestions){
+		database.getPublishedQuestionsListAnswered(req.session.classID, 
+			function(resultsQuestions){
 			res.render('studentClass', {
 				'className': req.session.className,
 				'classID': req.session.classID,
@@ -24,8 +19,6 @@ exports.view = function(req, res){
 		});
 	});
 }
-
-
 
 exports.answerQuestion = function(req, res){
 	if(req.query.questionList == "-"){
@@ -41,7 +34,8 @@ exports.resultsQuestionStudent = function(req, res){
 		var error = encodeURIComponent('Please select a question.');
 		res.redirect('/studentClass?resultsError='+error);		
 	}else{
-		res.redirect("/viewQuestionResultsStudent?questionList="+req.query.questionList);
+		res.redirect("/viewQuestionResultsStudent?questionList="+
+			req.query.questionList);
 
 	}
 }

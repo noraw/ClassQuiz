@@ -56,6 +56,8 @@ exports.addUser = function(name, pwd, type, callback){
 	});
 }
 
+//checks to see if the class with classID exsists
+// callback with true or false and the class's data
 exports.isClass = function(classID, callback){
 	console.log("isClass");
 	try{
@@ -78,6 +80,8 @@ exports.isClass = function(classID, callback){
 
 }
 
+// checks to see if the student is already in the class
+// callback with true or false
 exports.isAlreadyEnrolled = function(userName, classID, callback){
 	database.Users.findOne({'name':userName})
 	.populate('classesIDArray')
@@ -117,7 +121,8 @@ exports.createClass = function(userName, className, callback){
 					user.classesIDArray.push(newClass);
 					user.save(function(err){
 						if(err){console.log(err)}else{
-							console.log("createClass("+userName+", "+className+"): classID - "+ data._id);
+							console.log("createClass("+userName+", "+className+
+								"): classID - "+ data._id);
 							callback(data);
 						}
 					});
@@ -178,7 +183,7 @@ exports.addQuestion = function(classID, questionText, answerA, answerB, answerC,
 	newQuestion.save(function(err, data){
 		if(err){console.log(err)}
 	});
-	// still need to update quiz to point to question
+
 	database.Classes.findOne({'_id':classID}, function(err, classData){
 		if(err){console.log(err)}else{
 			classData.questionIDs.push(newQuestion);
@@ -272,7 +277,8 @@ exports.getPublishedQuestionsListUnanswered = function(userName, classID, callba
 						unAnsweredQuestions.push(questions[i]);
 					}
 				}
-				console.log("getPublishedQuestionsListUnanswered("+userName+", "+classID+"): "+unAnsweredQuestions);
+				console.log("getPublishedQuestionsListUnanswered("+userName+", "+
+					classID+"): "+unAnsweredQuestions);
 				callback(unAnsweredQuestions);
 			}
 		});
@@ -298,7 +304,8 @@ exports.getPublishedQuestionsListAnswered = function(userName, classID, callback
 						}
 					}
 				}
-				console.log("getPublishedQuestionsListAnswered("+userName+", "+classID+"): "+answeredQuestions);
+				console.log("getPublishedQuestionsListAnswered("+userName+", "
+					+classID+"): "+answeredQuestions);
 				callback(answeredQuestions);
 			}
 		});
@@ -320,7 +327,7 @@ exports.getQuestionInfo = function(questionID, callback){
 
 // saves the data that a student has answered the question
 // returns true if successful, false otherwise
-exports.submitStudentAnswer = function(userName, classID, questionID, answer){
+exports.submitStudentAnswer = function(userName, classID, questionID, answer, callback){
 	var studentAnswerData = {
 		studentName: userName,
 		classID: classID,
@@ -330,7 +337,9 @@ exports.submitStudentAnswer = function(userName, classID, questionID, answer){
 	var newAnswer = new database.StudentAnswers(studentAnswerData);
 	newAnswer.save(function(err, data){
 		if(err){console.log(err)}else{
-			console.log("submitStudentAnswer("+userName+", "+classID+", "+questionID+"): successful");
+			console.log("submitStudentAnswer("+userName+", "+classID+", "+
+				questionID+"): successful");
+			callback();
 		}
 	});
 }
@@ -339,7 +348,8 @@ exports.getStudentAnswer = function(userName, questionID, callback){
 	database.StudentAnswers.findOne({studentName:userName, questionId:question._id})
 	.exec(function(err, studentAnswer){
 		if(err){console.log(err)}else{
-			console.log("getStudentAnswer("+userName+", "+classID+", "+questionID+"): "+ studentAnswer.answer);				
+			console.log("getStudentAnswer("+userName+", "+classID+", "+
+				questionID+"): "+ studentAnswer.answer);				
 			callback(studentAnswer.answer);
 		}
 	});
