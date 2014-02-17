@@ -9,34 +9,16 @@ var database = require('./dbConnection');
 
 exports.view = function(req, res){
 	console.log("\n\nviewQuestionResults");
-	console.log(req.body);
-	if(req.body.button === "Publish Question"){
-		render(req.body, res);
-		publishQuestion(req.body);
-
-	}else if(req.body.button === "View Results"){
-		render(req.body, res);
-	}
-
-}
-
-var publishQuestion = function(data){
-	database.publishQuestion(data._id);
-}
-
-
-var render = function(data, res){
-	console.log("viewQResult rendering");
-	console.log(data);
-	res.render('viewQuestionResults', {
-		'className': data.className,
-		'classID': data.classID,
-		'userName': data.userName,
-		'questionID': data._id,
-		'questionText': 'testing',
-	    'answers': [
-	      { 'answerText': 'sdlkfjsl' }
-		    ]  
-  	});
+	console.log(req.query);
+	database.getQuestionInfo(req.query.questionList, function(data){
+		res.render('viewQuestionResults', {
+			'questionID': data._id,
+			'questionText': data.text,
+		    'aText': "a. " + data.aText,
+		    'bText': "b. " + data.bText,
+		    'cText': "c. " + data.cText,
+		    'dText': "d. " + data.dText,
+	  	});
+	});
 }
 

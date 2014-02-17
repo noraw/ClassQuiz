@@ -24,28 +24,27 @@
 		<!-- p means paragraph -->
 		<div class="jumbotron">
 			<div>
-				<button type="button" onClick="homeBtn();">Home</button>
-				<button type="button" onClick="signOutBtn();">Sign Out</button>
+				<form id="homeForm" role="form" method="get" action="/teacherHome">
+					<input type="submit" value="Home"></input>
+				</form>
+				<form id="signOutForm" role="form" method="get" action="/user_logout">
+					<input type="submit" value="Sign Out"></input>
+				</form>
 			</div>
-			<h1>Results for questionName?"{{className}}"</h1>
+			<h1>Results for '{{questionText}}'"</h1>
 		</div>
 
-		<form id="viewQuestionResponseForm" role="form" method="post" action="/publishQuestion">
-	    	<input type="hidden" name="userName" value="{{userName}}"></input>
-	    	<input type="hidden" name="className" value="{{className}}"></input>
-	    	<input type="hidden" name="classID" value="{{classID}}"></input>
-	    	<input id="questionID" type="hidden" name="_id" value="{{questionID}}"></input>
-
-		    <ol type="a">
-		    {{#each answers}}
-		      <li>{{answerText}}</li>
-		    {{/each}}
-		    </ol>
- 			<input type="submit" id="backBtn" name="button" value="Back"></input>
+		<form id="viewQuestionResponseForm" role="form" method="get" action="/teacherClass">
+			<label>{{aText}}</label><br>
+			<label>{{bText}}</label><br>
+			<label>{{cText}}</label><br>
+			<label>{{dText}}</label><br>
+			<label>e. I don't know</label><br>
+ 			<input type="submit" id="backBtn" value="Back"></input>
 		</form>	
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/viewQuestionResults.js"></script>
+
 </body>
 </html>

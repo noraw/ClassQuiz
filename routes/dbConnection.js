@@ -56,9 +56,56 @@ exports.addUser = function(name, pwd, type, callback){
 	});
 }
 
+exports.isClass = function(classID, callback){
+	console.log("isClass");
+	try{
+		var objectType = require('mongoose').Types.ObjectId; 
+		var objectId = new objectType(classID);
+		database.Classes.findOne({'_id':classID}, function(err, classData){
+			if(err){console.log(err)}else{
+				if(classData == null){
+					console.log("isClass(" +classID+ "): false");
+					callback(false, classData);
+				}else{
+					console.log("isClass(" +classID+ "): true");
+					callback(true, classData);
+				}
+			}
+		});
+	}catch(err){
+		callback(false, null);		
+	}
+
+}
+
+exports.isAlreadyEnrolled = function(userName, classID, callback){
+	database.Users.findOne({'name':userName})
+	.populate('classesIDArray')
+	.exec(function(err, user){
+		if(err){console.log(err)}else{
+			console.log(user);
+			if(user != null){
+				var found = false;
+				for(var i=0; i<user.classesIDArray.length; i++){
+					if(user.classesIDArray[i]._id == classID){
+						found = true;
+						break;
+					}
+				}
+				if(found){
+					callback(true);					
+				}else{
+					callback(false);
+				}
+			}
+		}
+	});
+}
+
 // creates a new class and sets the teacher as enrolled in that class
 // returns the classId
-exports.createClass = function(userName, className, res, callback){
+exports.createClass = function(userName, className, callback){
+	console.log("createClass("+userName+", "+className+"): start");
 	var classData = {
 		name: className
 	};
@@ -71,7 +118,7 @@ exports.createClass = function(userName, className, res, callback){
 					user.save(function(err){
 						if(err){console.log(err)}else{
 							console.log("createClass("+userName+", "+className+"): classID - "+ data._id);
-							callback(data, res);
+							callback(data);
 						}
 					});
 				}
@@ -82,13 +129,14 @@ exports.createClass = function(userName, className, res, callback){
 
 // adds the class to the user's list of classes
 // returns True if successful, false otherwise
-exports.enrollInClass = function(userName, classID){
+exports.enrollInClass = function(userName, classID, callback){
 	database.Users.findOne({'name':userName}, function(err, user){
 		if(err){console.log(err)}else{
 			user.classesIDArray.push(classID);
 			user.save(function(err){
 				if(err){console.log(err)}else{
 					console.log("enrollInClass: successful");
+					callback();
 				}
 			});
 		}
@@ -145,12 +193,13 @@ exports.addQuestion = function(classID, questionText, answerA, answerB, answerC,
 
 // changes the question's published status to true
 // returns true if successful, false otherwise
-exports.publishQuestion = function(questionID){
+exports.publishQuestion = function(questionID, callback){
 	database.Questions.findOne({'_id':questionID}, function(err, questionData){
 		if(err){console.log(err)}else{
 			questionData.update({'isPublished':true}, function(err){
 				if(err){console.log(err)}else{
 					console.log("publishQuestion: successful");
+					callback();
 				}
 			});
 		}

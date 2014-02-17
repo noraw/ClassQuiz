@@ -24,8 +24,12 @@
 		<!-- p means paragraph -->
 		<div class="jumbotron">
 			<div>
-				<button type="button" onClick="homeBtn();">Home</button>
-				<button type="button" onClick="signOutBtn();">Sign Out</button>
+				<form id="homeForm" role="form" method="get" action="/teacherHome">
+					<input type="submit" value="Home"></input>
+				</form>
+				<form id="signOutForm" role="form" method="get" action="/user_logout">
+					<input type="submit" value="Sign Out"></input>
+				</form>
 			</div>
 			<h1>{{className}}</h1>
 		</div>
@@ -33,31 +37,44 @@
 		<p>Have students enter code {{classID}} to join.</p>
 		<br>
 
-		<form id="addQuestionForm" role="form" method="post" action="/addQuestion">
-	    	<input type="hidden" name="userName" value="{{userName}}"></input>
-	    	<input type="hidden" name="classID" value="{{classID}}"></input>
-	    	<input type="hidden" name="className" value="{{className}}"></input>
-			<input type="submit" id="addQuestionBtn" name="button" value="Add a question"></input>
+		<form id="addQuestionForm" role="form" method="get" action="/addQuestion">
+			<input type="submit" id="addQuestionBtn" value="Add a question"></input>
 		</form>
 
 		<br>
-		<form id="publishQuestionForm" role="form" method="post" action="/publishQuestion">
-	    	<input type="hidden" name="userName" value="{{userName}}"></input>
-	    	<input type="hidden" name="classID" value="{{classID}}"></input>
-	    	<input type="hidden" name="className" value="{{className}}"></input>
-			<input type="submit" id="publishQuestionBtn" name="button" value="Publish a question"></input>
+
+		<form id="publishQuestionForm" role="form" method="get" action="/publishQuestion">
+			<div class="form-group">
+				<label for="questionList">Select a question:</label>
+			    <select form="publishQuestionForm" class="form-control" id="questionList" name="questionList">
+			      <option id="-" value="-" name="-">-</option>
+			    {{#each newQuestions}}
+			      <option id="{{_id}}" value="{{_id}}" name="{{_id}}">{{text}}</option>
+			    {{/each}}
+			    </select>
+			</div>
+			<p>{{publishError}}</p>
+			<input type="submit" id="publishBtn" value="Publish Question"></input>
 		</form>
+
+
 		<br>
-		<form id="viewResultsForm" role="form" method="post" action="/viewClassResults">
-	    	<input type="hidden" name="userName" value="{{userName}}"></input>
-	    	<input type="hidden" name="classID" value="{{classID}}"></input>
-	    	<input type="hidden" name="className" value="{{className}}"></input>
-			<input type="submit" id="viewResultsBtn" name="button" value="View Results"></input>
+		<form id="resultsQuestionForm" role="form" method="get" action="/resultsQuestion">
+			<div class="form-group">
+				<label for="questionList">Select a question:</label>
+			    <select form="resultsQuestionForm" class="form-control" id="questionList" name="questionList">
+			      <option id="-" value="-" name="-">-</option>
+			    {{#each resultsQuestions}}
+			      <option id="{{_id}}" value="{{_id}}" name="{{_id}}">{{text}}</option>
+			    {{/each}}
+			    </select>
+			</div>
+			<p>{{resultsError}}</p>
+			<input type="submit" id="viewResultsBtn" value="View Results"></input>
 		</form>
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/teacherClass.js"></script>
 
 </body>
 </html>

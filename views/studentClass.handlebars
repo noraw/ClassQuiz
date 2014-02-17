@@ -24,8 +24,12 @@
 		<!-- p means paragraph -->
 		<div class="jumbotron">
 			<div>
-				<button type="button" onClick="backBtn();">Home</button>
-				<button type="button" onClick="signOutBtn();">Sign Out</button>
+				<form id="homeForm" role="form" method="get" action="/studentHome">
+					<input type="submit" value="Home"></input>
+				</form>
+				<form id="signOutForm" role="form" method="get" action="/user_logout">
+					<input type="submit" value="Sign Out"></input>
+				</form>
 			</div>
 			<h1>{{class}}</h1>
 		</div>
@@ -33,17 +37,35 @@
 		<p>Quesitons to Answer:</p>
 		<br>
 
-	    <select>
-	    {{#each questions}}
-	      <option value="{{questionText}}">{{questionText}}</option>
-	    {{/each}}
-	    </select>
-	    <br>
-		<button type="button" onClick="submitBtn();">Answer this question</button>
-		<br><br>
+		<form id="publishQuestionForm" role="form" method="get" action="/publishQuestion">
+			<div class="form-group">
+				<label for="questionList">Select a question:</label>
+			    <select form="publishQuestionForm" class="form-control" id="questionList" name="questionList">
+			      <option id="-" value="-" name="-">-</option>
+			    {{#each newQuestions}}
+			      <option id="{{_id}}" value="{{_id}}" name="{{_id}}">{{text}}</option>
+			    {{/each}}
+			    </select>
+			</div>
+			<p>{{publishError}}</p>
+			<input type="submit" id="publishBtn" value="Publish Question"></input>
+		</form>
 
-		<button type="button" onClick="viewPrevResultsBtn();">View Previous Results</button>
+
 		<br>
+		<form id="resultsQuestionForm" role="form" method="get" action="/resultsQuestion">
+			<div class="form-group">
+				<label for="questionList">Select a question:</label>
+			    <select form="resultsQuestionForm" class="form-control" id="questionList" name="questionList">
+			      <option id="-" value="-" name="-">-</option>
+			    {{#each resultsQuestions}}
+			      <option id="{{_id}}" value="{{_id}}" name="{{_id}}">{{text}}</option>
+			    {{/each}}
+			    </select>
+			</div>
+			<p>{{resultsError}}</p>
+			<input type="submit" id="viewResultsBtn" value="View Results"></input>
+		</form>
 		
 	
 

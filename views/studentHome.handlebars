@@ -24,35 +24,36 @@
 		<!-- p means paragraph -->
 		<div class="jumbotron">
 			<div>
-				<button type="button" onClick="signOutBtn();">Sign Out</button>
+				<form id="signOutForm" role="form" method="get" action="/user_logout">
+					<input type="submit" value="Sign Out"></input>
+				</form>
 			</div>
-			<h1>Home page for</h1>
-			<h1 id="userName">{{username}}</h1>
+			<h1>Home page for {{userName}}</h1>
 		</div>
 
-		<form id="selectClassForm" role="form" method="post" action="/studentClass">
-	    	<input type="hidden" name="userName" value="{{username}}"></input>
-	    	<input id="classID" type="hidden" name="_id" value=""></input>
-	    	<input id="className" type="hidden" name="name" value=""></input>
+		<form id="selectClassForm" role="form" method="get" action="/useExistingClassStudent">
 			<div class="form-group">
 				<label for="classList">Select a current class:</label>
-			    <select form="selectClassForm" class="form-control" onClick="useExistingClassBtn();" id="classList" name="classList">
+			    <select form="selectClassForm" class="form-control" id="classList" name="classList">
+			      <option id="-" value='{"classID":0,"className":""}' name="-">-</option>
 			    {{#each classes}}
-			      <option id="{{_id}}" value="{{_id}}" name="{{_id}}">{{name}}</option>
+			      <option id="{{_id}}" value='{"classID":"{{_id}}","className":"{{name}}" }' name="{{_id}}">{{name}}</option>
 			    {{/each}}
 			    </select>
 			</div>
-			<input type="submit" id="existingClassBtn" name="button" value="Use Existing Class"></input>
+			<p>{{selectError}}</p>
+			<input type="submit" id="existingClassBtn" value="Use Existing Class"></input>
 		</form>
 
-		<form id="joinClassForm" role="form" method="post" action="/studentClass">
+		<form id="createClassForm" role="form" method="get" action="/enrollInClass">
 		    <div class="form-group">
-		    	<input type="hidden" name="userName" value="{{username}}"></label>
-			    <label for="newClassName">Enter a code to join a new class:</label>
-				<input type="text" class="form-control" placeHolder="newClass" id="newClassName" name="newClassName">
+			    <label for="newClassName">Enter a code to join a class:</label>
+				<input type="text" class="form-control" placeHolder="Class code" id="classCode" name="classCode">
 			</div>
-			<input type="submit" id="joinClassBtn" name="button" value="Join a New Class"></input>
+			<p>{{joinError}}</p>
+			<input type="submit" id="enrollClassBtn" value="Enroll in Class"></input>
 		</form>
+
 
 		<p>Remove a class:</p><br>
 	    <select>
@@ -63,11 +64,12 @@
 	    
 	    <button type="button" onClick="removeClassBtn();">Remove Class</button><br><br><br>
 
+		
 	</div>
 	
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/teacherHome.js"></script>
+
 </body>
 </html>

@@ -35,7 +35,6 @@ var database = require('./routes/database');
 var welcomePage = require('./routes/welcomePage');
 var user = require('./routes/user');
 var viewQuestionResults = require('./routes/viewQuestionResults');
-var viewClassResults = require('./routes/viewClassResults');
 var viewQuestionResultsStudent = require('./routes/viewQuestionResultsStudent');
 var studentHome = require('./routes/studentHome');
 var teacherHome = require('./routes/teacherHome');
@@ -44,7 +43,7 @@ var questionResponse = require('./routes/questionResponse');
 var viewResultsStudent = require('./routes/viewResultsStudent');
 var teacherClass = require('./routes/teacherClass');
 var addQuestion = require('./routes/addQuestion');
-var publishQuestion = require('./routes/publishQuestion');
+
 
 
 //ar project = require('./routes/project');
@@ -76,17 +75,19 @@ if ('development' == app.get('env')) {
 // Add routes here
 app.get('/', welcomePage.view);
 app.get('/newUser', user.viewNewUser);
-app.post('/viewQuestionResults', viewQuestionResults.view);
-app.post('/viewClassResults', viewClassResults.view);
 app.get('/viewQuestionResultsStudent', viewQuestionResultsStudent.view);
 app.get('/studentHome', studentHome.view);
 app.get('/teacherHome', teacherHome.view);
 app.get('/studentClass', studentClass.view);
 app.get('/questionResponse', questionResponse.view);
 app.get('/viewResultsStudent', viewResultsStudent.view);
-app.post('/teacherClass', teacherClass.view);
-app.post('/addQuestion', addQuestion.view);
-app.post('/publishQuestion', publishQuestion.view);
+app.get('/teacherClass', teacherClass.view);
+app.get('/addQuestion', addQuestion.view);
+app.get('/createQuestion', addQuestion.createQuestion);
+
+app.get('/viewQuestionResults', viewQuestionResults.view);
+app.get('/resultsQuestion', teacherClass.resultsQuestion);
+app.get('/publishQuestion', teacherClass.publishQuestion);
 //app.get('/', .view);
 //app.get('/', .view);
 //app.get('/', .view);
@@ -95,6 +96,11 @@ app.post('/publishQuestion', publishQuestion.view);
 app.get('/user_login', user.login);
 app.get('/user_logout', user.logout);
 app.get('/createUser', user.createUser);
+app.get('/createClass', teacherHome.createClass);
+app.get('/useExistingClass', teacherHome.useExistingClass);
+app.get('/enrollInClass', studentHome.enrollInClass);
+app.get('/useExistingClassStudent', studentHome.useExistingClass);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

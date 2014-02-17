@@ -24,17 +24,17 @@
 		<!-- p means paragraph -->
 		<div class="jumbotron">
 			<div>
-				<button type="button" onClick="homeBtn();">Home</button>
-				<button type="button" onClick="signOutBtn();">Sign Out</button>
+				<form id="homeForm" role="form" method="get" action="/teacherHome">
+					<input type="submit" value="Home"></input>
+				</form>
+				<form id="signOutForm" role="form" method="get" action="/user_logout">
+					<input type="submit" value="Sign Out"></input>
+				</form>
 			</div>
-			<h1>{{class}}</h1>
+			<h1>{{className}}</h1>
 		</div>
 
-	    <form id="addQuestionForm" role="form" method="post" action="/teacherClass">
-	    	<input type="hidden" name="userName" value="{{userName}}"></input>
-	    	<input type="hidden" name="_id" value="{{classID}}"></input>
-	    	<input type="hidden" name="name" value="{{className}}"></input>
-
+	    <form id="addQuestionForm" role="form" method="get" action="/createQuestion">
 			<label for="questionText">Question Text:</label>
 			<input type="text" name="questionText"><br>
 			<label for="aText">a.</label>
@@ -46,9 +46,20 @@
 			<label for="dText">d.</label>
 			<input type="text" name="dText"><br>
 			<label for="eText">e. I don't know.</label>
+		    <select form="addQuestionForm" class="form-control" id="correctAnswer" name="correctAnswer">
+			      <option id="-" value="-" name="-">-</option>
+			      <option id="A" value="A" name="A">a</option>
+			      <option id="B" value="B" name="B">b</option>
+			      <option id="C" value="C" name="C">c</option>
+			      <option id="D" value="D" name="D">d</option>
+		    </select>
+
+			<p>{{error}}</p>
 			<br>
-			<input type="submit" id="backBtn" name="button" value="Back"></input>
-			<input type="submit" id="submitBtn" name="button" value="Submit Question"></input>
+			<input type="submit" id="submitBtn" value="Submit Question"></input>
+	   	</form>
+	    <form id="addQuestionForm" role="form" method="get" action="/teacherClass">
+			<input type="submit" id="backBtn" value="Back"></input>
 	   	</form>
 	
 

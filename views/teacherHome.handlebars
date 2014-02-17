@@ -24,34 +24,36 @@
 		<!-- p means paragraph -->
 		<div class="jumbotron">
 			<div>
-				<button type="button" onClick="signOutBtn();">Sign Out</button>
+				<form id="signOutForm" role="form" method="get" action="/user_logout">
+					<input type="submit" value="Sign Out"></input>
+				</form>
 			</div>
 			<h1>Home page for {{userName}}</h1>
 		</div>
 
-		<form id="selectClassForm" role="form" method="post" action="/teacherClass">
-	    	<input type="hidden" name="userName" value="{{userName}}"></input>
-	    	<input id="classID" type="hidden" name="_id" value=""></input>
-	    	<input id="className" type="hidden" name="name" value=""></input>
+		<form id="selectClassForm" role="form" method="get" action="/useExistingClass">
 			<div class="form-group">
 				<label for="classList">Select a current class:</label>
-			    <select form="selectClassForm" class="form-control" onClick="useExistingClassBtn();" id="classList" name="classList">
+			    <select form="selectClassForm" class="form-control" id="classList" name="classList">
+			      <option id="-" value='{"classID":0,"className":""}' name="-">-</option>
 			    {{#each classes}}
-			      <option id="{{_id}}" value="{{_id}}" name="{{_id}}">{{name}}</option>
+			      <option id="{{_id}}" value='{"classID":"{{_id}}","className":"{{name}}" }' name="{{_id}}">{{name}}</option>
 			    {{/each}}
 			    </select>
 			</div>
-			<input type="submit" id="existingClassBtn" name="button" value="Use Existing Class"></input>
+			<p>{{selectError}}</p>
+			<input type="submit" id="existingClassBtn" value="Use Existing Class"></input>
 		</form>
 
-		<form id="createClassForm" role="form" method="post" action="/teacherClass">
+		<form id="createClassForm" role="form" method="get" action="/createClass">
 		    <div class="form-group">
-		    	<input type="hidden" name="userName" value="{{userName}}"></label>
 			    <label for="newClassName">Create a new class:</label>
-				<input type="text" class="form-control" placeHolder="newClass" id="newClassName" name="newClassName">
+				<input type="text" class="form-control" placeHolder="New Class Name" id="newClassName" name="newClassName">
 			</div>
-			<input type="submit" id="createClassBtn" name="button" value="Create New Class"></input>
+			<p>{{createError}}</p>
+			<input type="submit" id="createClassBtn" value="Create New Class"></input>
 		</form>
+
 
 		<p>Remove a class:</p><br>
 	    <select>
@@ -68,6 +70,6 @@
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/teacherHome.js"></script>
+
 </body>
 </html>
