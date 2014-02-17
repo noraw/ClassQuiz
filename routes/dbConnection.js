@@ -316,30 +316,8 @@ exports.getQuestionInfo = function(questionID, callback){
 		}
 	});
 }
-/*
-exports.getAllQuestionsText = function(classID){
-	var questionsText = [];
-	var data = [];
-	var Classes = mongoose.model('Classes');
-	Classes.find({'_id':classID}, function(err, data){
-		if(err){console.log(err)}else{
-			console.log(data);
-			var questionIds = data[0].questionIds;
-			var Questions = mongoose.model('Questions');
-			var className = [];
-			for(var i=0; i < userClasses.length; i++){
-				Classes.find({'_id':userClasses[i]._id}, function(err, classesName) {
-					if(err){console.log(err)}else{
-						console.log(classesName);
-						classesNames.add(classesName[0]);
-					}
-				})
-			}
-			callback("", classesNames);
-		}
-	});
-}
-*/
+
+
 // saves the data that a student has answered the question
 // returns true if successful, false otherwise
 exports.submitStudentAnswer = function(userName, classID, questionID, answer){

@@ -34,26 +34,23 @@
 			<h1>{{class}}</h1>
 		</div>
 
-		<p>Quesitons to Answer:</p>
-		<br>
-
-		<form id="publishQuestionForm" role="form" method="get" action="/publishQuestion">
+		<form id="answerQuestionForm" role="form" method="get" action="/answerQuestion">
 			<div class="form-group">
-				<label for="questionList">Select a question:</label>
-			    <select form="publishQuestionForm" class="form-control" id="questionList" name="questionList">
+				<label for="questionList">Questions to Answer:</label>
+			    <select form="answerQuestionForm" class="form-control" id="questionList" name="questionList">
 			      <option id="-" value="-" name="-">-</option>
-			    {{#each newQuestions}}
+			    {{#each answerQuestions}}
 			      <option id="{{_id}}" value="{{_id}}" name="{{_id}}">{{text}}</option>
 			    {{/each}}
 			    </select>
 			</div>
-			<p>{{publishError}}</p>
-			<input type="submit" id="publishBtn" value="Publish Question"></input>
+			<p>{{answerError}}</p>
+			<input type="submit" id="answerBtn" value="Answer Question"></input>
 		</form>
 
 
 		<br>
-		<form id="resultsQuestionForm" role="form" method="get" action="/resultsQuestion">
+		<form id="resultsQuestionForm" role="form" method="get" action="/resultsQuestionStudent">
 			<div class="form-group">
 				<label for="questionList">Select a question:</label>
 			    <select form="resultsQuestionForm" class="form-control" id="questionList" name="questionList">
@@ -64,14 +61,13 @@
 			    </select>
 			</div>
 			<p>{{resultsError}}</p>
-			<input type="submit" id="viewResultsBtn" value="View Results"></input>
+			<input type="submit" id="viewResultsBtn" value="View Previous Results"></input>
 		</form>
 		
 	
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/studentClass.js"></script>
 
 </body>
 </html>

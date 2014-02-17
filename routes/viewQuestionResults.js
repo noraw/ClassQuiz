@@ -14,10 +14,10 @@ exports.view = function(req, res){
 		res.render('viewQuestionResults', {
 			'questionID': data._id,
 			'questionText': data.text,
-		    'aText': "a. " + data.aText,
-		    'bText': "b. " + data.bText,
-		    'cText': "c. " + data.cText,
-		    'dText': "d. " + data.dText,
+		    'aText': "a. " + data.answerA,
+		    'bText': "b. " + data.answerB,
+		    'cText': "c. " + data.answerC,
+		    'dText': "d. " + data.answerD,
 	  	});
 	});
 }

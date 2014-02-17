@@ -80,7 +80,6 @@ app.get('/studentHome', studentHome.view);
 app.get('/teacherHome', teacherHome.view);
 app.get('/studentClass', studentClass.view);
 app.get('/questionResponse', questionResponse.view);
-app.get('/viewResultsStudent', viewResultsStudent.view);
 app.get('/teacherClass', teacherClass.view);
 app.get('/addQuestion', addQuestion.view);
 app.get('/createQuestion', addQuestion.createQuestion);
@@ -100,7 +99,9 @@ app.get('/createClass', teacherHome.createClass);
 app.get('/useExistingClass', teacherHome.useExistingClass);
 app.get('/enrollInClass', studentHome.enrollInClass);
 app.get('/useExistingClassStudent', studentHome.useExistingClass);
-
+app.get('/answerQuestion', studentClass.answerQuestion);
+app.get('/resultsQuestionStudent', studentClass.resultsQuestionStudent);
+app.get('/submitStudentAnswer', questionResponse.submitStudentAnswer);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
