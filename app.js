@@ -40,7 +40,6 @@ var studentHome = require('./routes/studentHome');
 var teacherHome = require('./routes/teacherHome');
 var studentClass = require('./routes/studentClass');
 var questionResponse = require('./routes/questionResponse');
-var viewResultsStudent = require('./routes/viewResultsStudent');
 var teacherClass = require('./routes/teacherClass');
 var addQuestion = require('./routes/addQuestion');
 
@@ -82,16 +81,11 @@ app.get('/studentClass', studentClass.view);
 app.get('/questionResponse', questionResponse.view);
 app.get('/teacherClass', teacherClass.view);
 app.get('/addQuestion', addQuestion.view);
-app.get('/createQuestion', addQuestion.createQuestion);
-
 app.get('/viewQuestionResults', viewQuestionResults.view);
+
+
 app.get('/resultsQuestion', teacherClass.resultsQuestion);
 app.get('/publishQuestion', teacherClass.publishQuestion);
-//app.get('/', .view);
-//app.get('/', .view);
-//app.get('/', .view);
-// Example route
-// app.get('/users', user.list);
 app.get('/user_login', user.login);
 app.get('/user_logout', user.logout);
 app.get('/createUser', user.createUser);
@@ -102,6 +96,9 @@ app.get('/useExistingClassStudent', studentHome.useExistingClass);
 app.get('/answerQuestion', studentClass.answerQuestion);
 app.get('/resultsQuestionStudent', studentClass.resultsQuestionStudent);
 app.get('/submitStudentAnswer', questionResponse.submitStudentAnswer);
+app.get('/createQuestion', addQuestion.createQuestion);
+
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

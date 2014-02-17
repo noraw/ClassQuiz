@@ -4,14 +4,14 @@ var database = require('./dbConnection');
 exports.view = function(req, res){
 	console.log("\n\n\n\studentClass");
 	console.log(req.session);
-	database.getPublishedQuestionsListUnanswered(req.session.classID, 
-		function(answerQuestions){
-		database.getPublishedQuestionsListAnswered(req.session.classID, 
-			function(resultsQuestions){
+	database.getPublishedQuestionsListUnanswered(req.session.userName, 
+		req.session.classID, function(answerQuestions){
+		database.getPublishedQuestionsListAnswered(req.session.userName, 
+			req.session.classID, function(resultsQuestions){
 			res.render('studentClass', {
 				'className': req.session.className,
 				'classID': req.session.classID,
-				'newQuestions': answerQuestions,
+				'answerQuestions': answerQuestions,
 				'resultsQuestions': resultsQuestions,
 				'answerError': req.query.publishError,
 				'resultsError': req.query.resultsError

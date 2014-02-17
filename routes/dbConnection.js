@@ -331,24 +331,24 @@ exports.submitStudentAnswer = function(userName, classID, questionID, answer, ca
 	var studentAnswerData = {
 		studentName: userName,
 		classID: classID,
-		questionId: questionID,
+		questionID: questionID,
 		answer: answer
 	};
 	var newAnswer = new database.StudentAnswers(studentAnswerData);
 	newAnswer.save(function(err, data){
 		if(err){console.log(err)}else{
 			console.log("submitStudentAnswer("+userName+", "+classID+", "+
-				questionID+"): successful");
+				questionID+", "+answer+"): successful");
 			callback();
 		}
 	});
 }
 
 exports.getStudentAnswer = function(userName, questionID, callback){
-	database.StudentAnswers.findOne({studentName:userName, questionId:question._id})
+	database.StudentAnswers.findOne({studentName:userName, questionID:questionID})
 	.exec(function(err, studentAnswer){
 		if(err){console.log(err)}else{
-			console.log("getStudentAnswer("+userName+", "+classID+", "+
+			console.log("getStudentAnswer("+userName+", "+
 				questionID+"): "+ studentAnswer.answer);				
 			callback(studentAnswer.answer);
 		}

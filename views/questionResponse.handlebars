@@ -27,13 +27,13 @@
 		</div>
 
 		<form id="answerQuestionForm" role="form" method="get" action="/submitStudentAnswer">
-			<label type="hidden" name="questionID" value="{{quesitonID}}"></label>
+			<input type="hidden" name="questionID" value="{{questionID}}">{{questionID}}</input>
 			<h5>{{questionText}}</h5>
-			<input type="radio" name="answerChoices" value="{{answerA}}" checked>{{answerA}}</input>
-			<input type="radio" name="answerChoices" value="{{answerB}}" >{{answerB}}</input>
-			<input type="radio" name="answerChoices" value="{{answerC}}" >{{answerC}}</input>
-			<input type="radio" name="answerChoices" value="{{answerD}}" >{{answerD}}</input>
-			<input type="radio" name="answerChoices" value="e. I don't know." >e. I don't know.</input>
+			<input type="radio" name="answerChoices" value="{{answerA}}" checked>{{answerA}}</input><br>
+			<input type="radio" name="answerChoices" value="{{answerB}}" >{{answerB}}</input><br>
+			<input type="radio" name="answerChoices" value="{{answerC}}" >{{answerC}}</input><br>
+			<input type="radio" name="answerChoices" value="{{answerD}}" >{{answerD}}</input><br>
+			<input type="radio" name="answerChoices" value="e. I don't know." >e. I don't know.</input><br>
  			<input type="submit" id="submitBtn" value="Submit"></input>
 		</form>	
 
