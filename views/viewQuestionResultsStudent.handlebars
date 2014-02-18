@@ -14,22 +14,28 @@
 <body class="wholepage">
 	<div class="container">
 		<div class="jumbotron">
+			<nav class="navbar navbar-fixed-top" role="navigation">
+				<div class="navbar-inner">
+					<div class="container">
+						<a class="pull-left homebutton" href="/studentHome" data-role="button" data-icon="home">
+							<span class="glyphicon glyphicon-home"></span>
+						</a>
+						<form class="pull-right" id="signOutForm" role="form" method="get" action="/user_logout">
+							<input class="btn" type="submit" value="Sign Out"></input>
+						</form>
+					</div>
+				</div>
+			</nav>
 			<div>
-				<button class="homebutton" class="navbar-form navbar-left" id="homeForm" onClick="self.location='/studentHome'">
-					<span class="glyphicon glyphicon-home"></span>
-				</button>
 				<h1>{{questionText}}</h1>
-				<form class="navbar-form navbar-right" id="signOutForm" role="form" method="get" action="/user_logout">
-					<input class="btn" type="submit" value="Sign Out"></input>
-				</form>
 			</div>
 		</div>
 
 		<form id="viewQuestionResponseForm" role="form" method="get" action="/studentClass">
-			<p>Your Answer:</p>
-			<p>{{studentAnswer}}</p><br>
-			<p>Correct Answer:</p>
-			<p>{{correctAnswer}}</p><br>
+			<p class="inputText">Your Answer:</p>
+			<p class="inputText">{{studentAnswer}}</p><br>
+			<p class="inputText">Correct Answer:</p>
+			<p class="inputText">{{correctAnswer}}</p><br>
  			<input class="btn" type="submit" id="backBtn" value="Return to {{className}}"></input>
 		</form>	
 	

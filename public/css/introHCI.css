@@ -1,3 +1,16 @@
+/*
+blue: #004A4F
+bright-blue: #18D9D9
+home-blue: #29C2BC
+brown: #5A4A41
+orange: #FA996B
+tan-orange: #F2E2C3;
+yellow-orange: #F2D65A;
+off-white: #FCFAF7
+medium-gray: #6e6e6e
+btn-gray: #5D6967;
+*/
+
 /* applies to anything of class "example-class-selector" */
 .example-class-selector {
 	margin-top: 2em;
@@ -7,6 +20,10 @@
 .example-class-selector p {
 	/* Colors are in hexadecimal: http://www.colorpicker.com/ */	
 	color: #CC00AA;
+}
+
+.wholepage {
+     background: #004A4F;
 }
 
 .jumbotron {
@@ -31,19 +48,39 @@
      color: #6e6e6e;
 }
 
+.jumbotron .title {
+     font-family: 'Megrim';
+     color: #F2D65A;
+     font-weight: bolder;
+     font-size: 50px;
+     text-align: center;
+
+}
+
+.homebutton {
+     color: #29C2BC;
+}
+
+.navbar-inner {
+     background-color: #004A4F;        
+}
+
+.navbar {
+     background-color: #FA996B;        
+     border-color: #FA996B;               
+}
+
 .project a {
      text-align: center;
 }
 
-.wholepage {
-     background: #004A4F;
-     /*5A4A41 brown*/
-     /*FA996B orange*/
-
-}
-
 .container .inputText{
      color: #FCFAF7;
+     font-family: 'Noto Serif', serif;
+}
+
+.container .errorText{
+     color: #FA996B;
      font-family: 'Noto Serif', serif;
 }
 
@@ -56,20 +93,6 @@
      background-color: #5D6967;
      color: #FCFAF7;
      font-family:  = 'Noto Serif', serif;
-}
-
-.homebutton {
-     background-color: #004A4F;
-     color: #29C2BC;
-}
-
-.jumbotron .title {
-     font-family: 'Megrim';
-     color: #F2D65A;
-     font-weight: bolder;
-     font-size: 50px;
-     text-align: center;
-
 }
 
 .form-control{

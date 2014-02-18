@@ -14,17 +14,23 @@
 <body class="wholepage">
 	<div class="container">
 		<div class="jumbotron">
+			<nav class="navbar navbar-fixed-top" role="navigation">
+				<div class="navbar-inner">
+					<div class="container">
+						<form class="pull-right" id="signOutForm" role="form" method="get" action="/user_logout">
+							<input class="btn" type="submit" value="Sign Out"></input>
+						</form>
+					</div>
+				</div>
+			</nav>
 			<div>
-				<form class="navbar-form navbar-right" id="signOutForm" role="form" method="get" action="/user_logout">
-					<input class="btn" type="submit" value="Sign Out"></input>
-				</form>
 				<h1>Welcome {{userName}}</h1>
-			</div>
+			</div>			
 		</div>
 
 		<form id="selectClassForm" role="form" method="get" action="/useExistingClassStudent">
 			<div class="form-group">
-				<label for="classList">Select a current class:</label>
+				<label class="inputText" for="classList">Select a current class:</label>
 			    <select form="selectClassForm" class="form-control" id="classList" name="classList">
 			      <option id="-" value='{"classID":0,"className":""}' name="-">-</option>
 			    {{#each classes}}
@@ -32,21 +38,22 @@
 			    {{/each}}
 			    </select>
 			</div>
-			<p>{{selectError}}</p>
+			<p class="errorText" >{{selectError}}</p>
 			<input class="btn" type="submit" id="existingClassBtn" value="Proceed"></input>
 		</form>
 
 		<form id="createClassForm" role="form" method="get" action="/enrollInClass">
 		    <div class="form-group">
-			    <label for="newClassName">Enter a code to join a class:</label>
+			    <label class="inputText" for="newClassName">Enter a code to join a class:</label>
 				<input type="text" class="form-control" placeHolder="Class code" id="classCode" name="classCode">
 			</div>
-			<p>{{joinError}}</p>
+			<p class="errorText" >{{joinError}}</p>
 			<input class="btn" type="submit" id="enrollClassBtn" value="Enroll in Class"></input>
 		</form>
+
 		<form id="removeClassForm" role="form" method="get" action="/removeClass">
 			<div class="form-group">
-				<label for="classList">Remove a class:</label>
+				<label class="inputText" for="classList">Remove a class:</label>
 			    <select form="removeClassForm" class="form-control" id="classList" name="classList">
 			      <option id="-" value='{"classID":0,"className":""}' name="-">-</option>
 			    {{#each classes}}
@@ -54,7 +61,7 @@
 			    {{/each}}
 			    </select>
 			</div>
-			<p>{{removeError}}</p>
+			<p class="errorText" >{{removeError}}</p>
 			<input type="hidden" name="prevPage" value="studentHome"></input>
 			<input class="btn" type="submit" id="removeClassBtn" value="Remove Class"></input>
 		</form>

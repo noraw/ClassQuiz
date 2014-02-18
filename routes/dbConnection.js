@@ -400,11 +400,12 @@ exports.getStudentAnswer = function(userName, questionID, callback){
 }
 
 exports.getNumStudentsInClass = function(classID, callback){
-	database.Classes.find({'_id':classID}, function(err, students){
+	database.Classes.findOne({'_id':classID}, function(err, classData){
 		if(err){console.log(err)}else{
 			console.log(classID);
-			console.log(students);
-			callback(students.length - 1);
+			console.log(classData);
+			console.log(classData.userNames);
+			callback(classData.userNames.length - 1);
 		}
 	});
 }

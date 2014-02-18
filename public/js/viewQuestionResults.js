@@ -17,13 +17,21 @@ function createPieChart(e){
 	var classID = document.getElementById("classID").value;
 	console.log(classID);
 	$.get("/pieChartData?questionID="+questionID+"&classID="+classID, function(jsonData){
-		console.log("gotData");
-		var data = new google.visualization.DataTable();
-		data.addColumn('string', "Answers");
-		data.addColumn('number', "Number of Students");
-		data.addRows(jsonData.array.length);
-		for(var i=0; i<jsonData.array.length; i++){
-			data.setValue(jsonData.array[i][0], jsonData.array[i][1]);
+		console.log(jsonData);
+		var data = google.visualization.arrayToDataTable(jsonData.array);
+
+		var slices = {};
+		for(var i=1; i<jsonData.array.length; i++){
+			var slice = jsonData.array[i];
+			console.log(i);
+			console.log(slice[0])
+			if(slice[0]=="Unanswered"){
+				slices[i-1] = {color: 'grey'};
+			}else if(slice[0]==jsonData.correctAnswer){
+				slices[i-1] = {color: 'green'};
+			}else{
+				slices[i-1] = {color: 'red'};
+			}
 		}
 	      
 		var options = {
@@ -31,13 +39,8 @@ function createPieChart(e){
 	      legend: 'none',
 	      pieSliceText: 'label',
 	      tooltip: {text: 'value'},
-	      slices: {
-	        0: { color: 'yellow' },
-	        1: { color: 'transparent' }
-	      }
+	      slices: slices
 	    };
-	    // Create our data table out of JSON data loaded from server.
-        var data = new google.visualization.DataTable(jsonData);
 
 	    // Instantiate and draw our chart, passing in some options.
 		var chart = new google.visualization.PieChart(document.getElementById('piechart'));

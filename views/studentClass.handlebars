@@ -13,21 +13,27 @@
 
 <body class="wholepage">
 	<div class="container">
-		<nav class="navbar navbar-default" role="navigation">
-			<button class="homebutton btn-default" class="navbar-btn navbar-left" id="homeForm" onClick="self.location='/studentHome'">
-				<span class="glyphicon glyphicon-home"></span>
-			</button>
-			<form class="navbar-form navbar-right" id="signOutForm" role="form" method="get" action="/user_logout">
-				<div class="form-group">
-					<input class="btn" type="submit" value="Sign Out"></input>
-				</div>	
-			</form>
-			<h1>{{className}}</h1>
-		</nav>
+		<div class="jumbotron">
+			<nav class="navbar navbar-fixed-top" role="navigation">
+				<div class="navbar-inner">
+					<div class="container">
+						<a class="pull-left homebutton" href="/studentHome" data-role="button" data-icon="home">
+							<span class="glyphicon glyphicon-home"></span>
+						</a>
+						<form class="pull-right" id="signOutForm" role="form" method="get" action="/user_logout">
+							<input class="btn" type="submit" value="Sign Out"></input>
+						</form>
+					</div>
+				</div>
+			</nav>
+			<div>
+				<h1>{{className}}</h1><br>
+			</div>
+		</div>
 
 		<form id="answerQuestionForm" role="form" method="get" action="/answerQuestion">
 			<div class="form-group">
-				<label for="questionList">Questions to Answer:</label>
+				<label class="inputText" for="questionList">Questions to Answer:</label>
 			    <select form="answerQuestionForm" class="form-control" id="questionList" name="questionList">
 			      <option id="-" value="-" name="-">-</option>
 			    {{#each answerQuestions}}
@@ -35,7 +41,7 @@
 			    {{/each}}
 			    </select>
 			</div>
-			<p>{{answerError}}</p>
+			<p class="errorText" >{{answerError}}</p>
 			<input class="btn" type="submit" id="answerBtn" value="Answer Question"></input>
 		</form>
 
@@ -43,7 +49,7 @@
 		<br>
 		<form id="resultsQuestionForm" role="form" method="get" action="/resultsQuestionStudent">
 			<div class="form-group">
-				<label for="questionList">Previously Answered Questions:</label>
+				<label class="inputText" for="questionList">Previously Answered Questions:</label>
 			    <select form="resultsQuestionForm" class="form-control" id="questionList" name="questionList">
 			      <option id="-" value="-" name="-">-</option>
 			    {{#each resultsQuestions}}
@@ -51,11 +57,9 @@
 			    {{/each}}
 			    </select>
 			</div>
-			<p>{{resultsError}}</p>
+			<p class="errorText" >{{resultsError}}</p>
 			<input class="btn" type="submit" id="viewResultsBtn" value="View Previous Results"></input>
 		</form>
-		
-	
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>

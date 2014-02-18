@@ -37,7 +37,7 @@ var fillAnswers = function(data){
 exports.pieChartData = function(req, res){
 	var answers = {};
 	var jsonData = 	{
-		"array": []
+		"array": [["Answers", "Number of Students"]]
 	};
 
 	database.getNumStudentsInClass(req.query.classID, function(numStudents){
@@ -57,8 +57,12 @@ exports.pieChartData = function(req, res){
 				jsonData.array.push([answer, answers[answer]]);
 			}
 			jsonData.array.push(["Unanswered", unAnswered]);
-			console.log(jsonData);
-			res.json(jsonData);
+
+			database.getQuestionInfo(req.query.questionID, function(questionData){
+				jsonData["correctAnswer"] = questionData.correctAnswer;
+				console.log(jsonData);
+				res.json(jsonData);
+			});
 		});
 	});
 }
