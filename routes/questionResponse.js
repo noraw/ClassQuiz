@@ -6,14 +6,26 @@ exports.view = function(req, res){
 	console.log(req.query);
 	database.getQuestionInfo(req.query.questionList, function(data){
 		console.log(data);
+		var answers = [];
+		answers.push({'answer': "a. " + data.answerA});
+		answers.push({'answer': "b. " + data.answerB});
+		if(data.answerC != ""){
+			answers.push({'answer': "c. " + data.answerC});
+			if(data.answerD != ""){
+				answers.push({'answer': "d. " + data.answerD});
+				answers.push({'answer': "e. I don't know"});
+			}else{
+				answers.push({'answer': "d. I don't know"});
+			}
+		}else{
+			answers.push({'answer': "c. I don't know"});
+		}
+
 		res.render('questionResponse', {
 			'className': req.session.className,
 			'questionID': data._id,
 			'questionText': data.text,
-		    'answerA': "a. " + data.answerA,
-		    'answerB': "b. " + data.answerB,
-		    'answerC': "c. " + data.answerC,
-		    'answerD': "d. " + data.answerD,
+		    'answers': answers
 	  	});
 	});
 }

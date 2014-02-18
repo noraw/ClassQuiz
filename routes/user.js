@@ -60,6 +60,19 @@ exports.login = function(req, res) {
 
 exports.logout = function(req, res) {
   req.session.userName = null;
-
   res.redirect('/');
+}
+
+exports.removeClass = function(req, res){
+	console.log(req.query);
+	var classList = JSON.parse(req.query.classList);
+	if(classList.classID == 0){
+		var error = encodeURIComponent('Please select a class.');
+		res.redirect('/'+req.query.prevPage+'?removeError='+error);
+	}else{
+		database.removeClass(req.session.userName, classList.classID, function(){
+			var error = encodeURIComponent("You have removed '"+ classList.className +"'.");
+			res.redirect('/'+req.query.prevPage+'?removeError='+error);
+		});
+	}
 }

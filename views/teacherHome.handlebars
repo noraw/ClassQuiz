@@ -44,7 +44,7 @@
 			    </select>
 			</div>
 			<p>{{selectError}}</p>
-			<input class="btn" type="submit" id="existingClassBtn" value="Use Existing Class"></input>
+			<input class="btn" type="submit" id="existingClassBtn" value="Proceed"></input>
 		</form>
 
 		<form id="createClassForm" role="form" method="get" action="/createClass">
@@ -55,18 +55,21 @@
 			<p>{{createError}}</p>
 			<input class="btn" type="submit" id="createClassBtn" value="Create New Class"></input>
 		</form>
-
-
-		<p>Remove a class:</p><br>
-	    <select>
-	    {{#each classes}}
-	      <option value="{{class}}">{{class}}</option>
-	    {{/each}}
-	    </select>
-	    
-	    <button class="btn" type="button" onClick="removeClassBtn();">Remove Class</button><br><br><br>
-
-		
+		<form id="removeClassForm" role="form" method="get" action="/removeClass">
+			<div class="form-group">
+				<label for="classList">Remove a class:</label>
+			    <select form="removeClassForm" class="form-control" id="classList" name="classList">
+			      <option id="-" value='{"classID":0,"className":""}' name="-">-</option>
+			    {{#each classes}}
+			      <option id="{{_id}}" value='{"classID":"{{_id}}","className":"{{name}}" }' name="{{_id}}">{{name}}</option>
+			    {{/each}}
+			    </select>
+			</div>
+			<p>{{selectError}}</p>
+			<input type="hidden" name="prevPage" value="teacherHome"></input>
+			<input class="btn" type="submit" id="removeClassBtn" value="Remove Class"></input>
+		</form>
+		<br>			
 	</div>
 	
 

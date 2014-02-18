@@ -89,6 +89,7 @@ app.get('/publishQuestion', teacherClass.publishQuestion);
 app.get('/user_login', user.login);
 app.get('/user_logout', user.logout);
 app.get('/createUser', user.createUser);
+app.get('/removeClass', user.removeClass);
 app.get('/createClass', teacherHome.createClass);
 app.get('/useExistingClass', teacherHome.useExistingClass);
 app.get('/enrollInClass', studentHome.enrollInClass);
