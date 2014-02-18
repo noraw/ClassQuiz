@@ -26,16 +26,16 @@
 
 	    <form id="addQuestionForm" role="form" method="get" action="/createQuestion">
 			<label for="questionText">Question Text:</label>
-			<input type="text" name="questionText"><br>
+			<input type="text" name="questionText" value="{{questionText}}"><br>
 			<label for="aText">a.</label>
-			<input type="text" name="aText"><br>
+			<input type="text" name="aText" value="{{aText}}"><br>
 			<label for="bText">b.</label>
-			<input type="text" name="bText"><br>
+			<input type="text" name="bText" value="{{bText}}"><br>
 			<label for="cText">c.</label>
-			<input type="text" name="cText"><br>
+			<input type="text" name="cText" value="{{cText}}"><br>
 			<label for="dText">d.</label>
-			<input type="text" name="dText"><br>
-			<label for="eText">e. I don't know.</label>
+			<input type="text" name="dText" value="{{dText}}"><br>
+			<label for="eText">e. I don't know.</label><br>
 			<label for="correctAnswer">Select the correct answer.</label>
 		    <select form="addQuestionForm" class="form-control" id="correctAnswer" name="correctAnswer">
 			      <option id="-" value="-" name="-">-</option>

@@ -6,7 +6,12 @@ exports.view = function(req, res){
 	console.log(req.body);
 	res.render('addQuestion', {
 		'className': req.session.className,
-		'error': req.query.error
+		'error': req.query.error,
+		'questionText': req.query.questionText,
+		'aText': req.query.aText,
+		'bText': req.query.bText,
+		'cText': req.query.cText,
+		'dText': req.query.dText
   	});
 }
 
@@ -15,16 +20,30 @@ exports.createQuestion = function(req, res){
 	if(req.query.questionText === "" || 
 		req.query.aText === "" || 
 		req.query.bText === ""){
-		var error = encodeURIComponent('Please fill in the question text,' +
-			' and the text for answer A and B.');
-		res.redirect('/addQuestion?error='+error);
+		var error = encodeURIComponent('Please fill in the text fields.');
+		res.redirect('/addQuestion?error='+error+
+			"&questionText="+req.query.questionText+
+			"&aText="+req.query.aText+
+			"&bText="+req.query.bText+
+			"&cText="+req.query.cText+
+			"&dText="+req.query.dText);
 	}else if(req.query.cText === "" && req.query.dText != ""){
-		var error = encodeURIComponent('Please if you have an answer D you' +
+		var error = encodeURIComponent('If you have an answer D you' +
 			' must have an answer C.');
-		res.redirect('/addQuestion?error='+error);
+		res.redirect('/addQuestion?error='+error+
+			"&questionText="+req.query.questionText+
+			"&aText="+req.query.aText+
+			"&bText="+req.query.bText+
+			"&cText="+req.query.cText+
+			"&dText="+req.query.dText);
 	}else if(req.query.correctAnswer === "-"){
 		var error = encodeURIComponent('Please select which answer is correct.');
-		res.redirect('/addQuestion?error='+error);
+		res.redirect('/addQuestion?error='+error+
+			"&questionText="+req.query.questionText+
+			"&aText="+req.query.aText+
+			"&bText="+req.query.bText+
+			"&cText="+req.query.cText+
+			"&dText="+req.query.dText);
 	}else {
 		var data = req.query;
 		var correctAnswer;
@@ -38,7 +57,9 @@ exports.createQuestion = function(req, res){
 			correctAnswer = "d. " + data.aText;
 		}
 		database.addQuestion(req.session.classID, data.questionText, 
-			data.aText, data.bText, data.cText, data.dText, correctAnswer);
-		res.redirect('/teacherClass');
+			data.aText, data.bText, data.cText, data.dText, correctAnswer,
+			function(){
+			res.redirect('/teacherClass');
+		});
 	}
 }

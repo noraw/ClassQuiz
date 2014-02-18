@@ -9,6 +9,7 @@ exports.view = function(req, res){
 			'userName': req.session.userName,
 			'createError': req.query.createError,
 			'selectError': req.query.selectError,
+			'removeError': req.query.removeError,
 			'classes': classes
 	  	});		
 	});

@@ -106,6 +106,26 @@ exports.isAlreadyEnrolled = function(userName, classID, callback){
 	});
 }
 
+exports.removeClass = function(userName, classID, callback){
+	console.log("removeClass("+userName+", "+classID+"): start");
+	database.Users.findOneAndUpdate({'name':userName}, 
+		{ $pull: {'classesIDArray': classID}},
+		function(err, user){
+		if(err){console.log(err)}else{
+			if(user.type == 'teacher'){
+				database.Users.findAndUpdate({'classesIDArray': classID}, 
+					{ $pull: {'classesIDArray': classID}},
+					function(err){
+					callback();
+				});
+			}else{
+				callback();
+			}
+		}
+	});
+}
+
+
 // creates a new class and sets the teacher as enrolled in that class
 // returns the classId
 exports.createClass = function(userName, className, callback){
@@ -167,7 +187,7 @@ exports.getUsersClassesNames = function(userName, callback){
 
 // creates a question and adds it to the class
 // return true if successful and false otherwise
-exports.addQuestion = function(classID, questionText, answerA, answerB, answerC, answerD, correctAnswer){
+exports.addQuestion = function(classID, questionText, answerA, answerB, answerC, answerD, correctAnswer, callback){
 	var questionData = {
 		classID: classID,
 		text: questionText,
@@ -190,6 +210,7 @@ exports.addQuestion = function(classID, questionText, answerA, answerB, answerC,
 			classData.save(function(err){
 				if(err){console.log(err)}else{
 					console.log("addQuestion: successful");
+					callback();
 				}
 			});
 		}

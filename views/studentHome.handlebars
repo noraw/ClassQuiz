@@ -8,20 +8,10 @@
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="/css/introHCI.css" rel="stylesheet">
-	<!-- this is a comment in HTML -->
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->        
 </head>
 
 <body>
 	<div class="container">
-		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
-		<!-- p means paragraph -->
 		<div class="jumbotron">
 			<div>
 				<form id="signOutForm" role="form" method="get" action="/user_logout">
@@ -42,7 +32,7 @@
 			    </select>
 			</div>
 			<p>{{selectError}}</p>
-			<input type="submit" id="existingClassBtn" value="Use Existing Class"></input>
+			<input type="submit" id="existingClassBtn" value="Proceed"></input>
 		</form>
 
 		<form id="createClassForm" role="form" method="get" action="/enrollInClass">
@@ -55,18 +45,22 @@
 		</form>
 
 
-		<p>Remove a class:</p><br>
-	    <select>
-	    {{#each classes}}
-	      <option value="{{class}}">{{class}}</option>
-	    {{/each}}
-	    </select>
-	    
-	    <button type="button" onClick="removeClassBtn();">Remove Class</button><br><br><br>
-
-		
+		<form id="removeClassForm" role="form" method="get" action="/removeClass">
+			<div class="form-group">
+				<label for="classList">Remove a class:</label>
+			    <select form="removeClassForm" class="form-control" id="classList" name="classList">
+			      <option id="-" value='{"classID":0,"className":""}' name="-">-</option>
+			    {{#each classes}}
+			      <option id="{{_id}}" value='{"classID":"{{_id}}","className":"{{name}}" }' name="{{_id}}">{{name}}</option>
+			    {{/each}}
+			    </select>
+			</div>
+			<p>{{removeError}}</p>
+			<input type="hidden" name="prevPage" value="studentHome"></input>
+			<input type="submit" id="removeClassBtn" value="Remove Class"></input>
+		</form>
+		<br>		
 	</div>
-	
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
