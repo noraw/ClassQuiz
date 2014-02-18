@@ -4,15 +4,13 @@ var database = require('./database.js');
 // takes in the username and password and 
 // returns true if the user exists and false otherwise
 exports.isUser = function(name, pwd, callback){
-	var userInfo = [];
-	console.log("isUser(" +name+ ", "+pwd+")");
 	database.Users.findOne({'name':name, 'pwd':pwd}, function(err, userInfo){
 		if(err){console.log(err)}else{
 			if(userInfo == null){
-				console.log("isUser(" +name+ "): false");
+				console.log("isUser(" +name+ ", "+pwd+"): false");
 				callback(false, userInfo);
 			}else{
-				console.log("isUser(" +name+ "): true");
+				console.log("isUser(" +name+ ", "+pwd+"): true");
 				callback(true, userInfo);
 			}
 		}
@@ -22,7 +20,6 @@ exports.isUser = function(name, pwd, callback){
 // Checks to see if the username is already taken by someone else
 // return true if taken, false if free
 exports.isUsername = function(name, callback){
-	var userInfo = [];
 	database.Users.findOne({'name':name}, function(err, userInfo){
 		if(err){console.log(err)}else{
 			console.log(userInfo);
@@ -59,7 +56,6 @@ exports.addUser = function(name, pwd, type, callback){
 //checks to see if the class with classID exsists
 // callback with true or false and the class's data
 exports.isClass = function(classID, callback){
-	console.log("isClass");
 	try{
 		var objectType = require('mongoose').Types.ObjectId; 
 		var objectId = new objectType(classID);
@@ -113,10 +109,16 @@ exports.removeClass = function(userName, classID, callback){
 		function(err, user){
 		if(err){console.log(err)}else{
 			if(user.type == 'teacher'){
-				database.Users.findAndUpdate({'classesIDArray': classID}, 
-					{ $pull: {'classesIDArray': classID}},
-					function(err){
-					callback();
+				database.Classes.findOne({'_id':classID}, function(err, classData){
+					console.log(classID);
+					console.log(classData);
+					if(err){console.log(err)}else if(classData != null){
+						for(var i=0; i < classData.userNames.length; i++){
+							database.Users.findOneAndUpdate({'name':classData.userNames[i]}, 
+								{ $pull: {'classesIDArray': classID}}, function(err){});
+						}
+						callback();
+					}else{callback();}
 				});
 			}else{
 				callback();
@@ -131,7 +133,8 @@ exports.removeClass = function(userName, classID, callback){
 exports.createClass = function(userName, className, callback){
 	console.log("createClass("+userName+", "+className+"): start");
 	var classData = {
-		name: className
+		name: className,
+		userNames: [userName]
 	};
 	var newClass = new database.Classes(classData);
 	newClass.save(function(err, data){
@@ -160,8 +163,17 @@ exports.enrollInClass = function(userName, classID, callback){
 			user.classesIDArray.push(classID);
 			user.save(function(err){
 				if(err){console.log(err)}else{
-					console.log("enrollInClass: successful");
-					callback();
+					database.Classes.findOne({'_id':classID}, function(err, classData){
+						if(err){console.log(err)}else{
+							classData.userNames.push(userName);
+							classData.save(function(err){
+								if(err){console.log(err)}else{
+									console.log("enrollInClass: successful");
+									callback();
+								}
+							});
+						}
+					});
 				}
 			});
 		}
@@ -230,6 +242,17 @@ exports.publishQuestion = function(questionID, callback){
 			});
 		}
 	});
+}
+
+exports.getQuestionResults = function(questionID, callback){
+	database.StudentAnswers.find({questionID:questionID})
+	.exec(function(err, studentAnswers){
+		if(err){console.log(err)}else{
+			console.log("getQuestionResults("+
+				questionID+"): "+ studentAnswers);				
+			callback(studentAnswers);
+		}
+	});	
 }
 
 // gets all the unpublished questions in a class
@@ -372,6 +395,16 @@ exports.getStudentAnswer = function(userName, questionID, callback){
 			console.log("getStudentAnswer("+userName+", "+
 				questionID+"): "+ studentAnswer.answer);				
 			callback(studentAnswer.answer);
+		}
+	});
+}
+
+exports.getNumStudentsInClass = function(classID, callback){
+	database.Classes.find({'_id':classID}, function(err, students){
+		if(err){console.log(err)}else{
+			console.log(classID);
+			console.log(students);
+			callback(students.length - 1);
 		}
 	});
 }

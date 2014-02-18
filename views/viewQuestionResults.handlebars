@@ -9,14 +9,6 @@
 	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="/css/introHCI.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Noto+Serif' rel='stylesheet' type='text/css'>
-	<!-- this is a comment in HTML -->
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->        
 </head>
 
 <body class="wholepage">
@@ -26,23 +18,35 @@
 				<button class="homebutton" class="navbar-form navbar-left" id="homeForm" onClick="self.location='/teacherHome'">
 					<span class="glyphicon glyphicon-home"></span>
 				</button>
-				<h1>Results for '{{questionText}}'</h1>
 				<form class="navbar-form navbar-right" id="signOutForm" role="form" method="get" action="/user_logout">
 					<input class="btn" type="submit" value="Sign Out"></input>
 				</form>
-			</div>
-		
+			</div>		
+			<h1>{{questionText}}</h1>
 		</div>
 
+		<input type="hidden" id="questionID" value="{{questionID}}"></input>
+		<input type="hidden" id="classID" value="{{classID}}"></input>
 		<form id="viewQuestionResponseForm" role="form" method="get" action="/teacherClass">
 			{{#each answers}}
 				<label>{{answer}}</label><br>
 			{{/each}}
- 			<input class="btn" type="submit" id="backBtn" value="Return to {{className}}"></input>
+	 		<div id="piechart" class="pieChart"></div>
+			<input class="btn" type="submit" id="backBtn" value="Return to {{className}}"></input>
 		</form>	
+
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/viewQuestionResults.js"></script>
+
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript">
+	    // Load the Visualization API and the piechart package.
+	    google.load('visualization', '1', {'packages':['corechart']});
+	    // Set a callback to run when the Google Visualization API is loaded.
+	    google.setOnLoadCallback(createPieChart);
+    </script>
 
 </body>
 </html>

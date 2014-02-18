@@ -3,16 +3,17 @@ var Schema = mongoose.Schema;
 
 
 var userSchema = new Schema({
-  name:  String,
-  pwd: String,
-  type: String,
-  classesIDArray: [{type: Schema.ObjectId, ref: 'Classes'}]
+	name:  String,
+	pwd: String,
+	type: String,
+	classesIDArray: [{type: Schema.ObjectId, ref: 'Classes'}]
 }, {collection: 'userSchema'});
 exports.Users = mongoose.model('Users', userSchema);
 
 var classesSchema = new Schema({
 	name: String,
-	questionIDs: [{type: Schema.ObjectId, ref: 'Questions'}]
+	questionIDs: [{type: Schema.ObjectId, ref: 'Questions'}],
+	userNames: [String]
 }, {collection: 'classesSchema'});
 exports.Classes = mongoose.model('Classes', classesSchema);
 

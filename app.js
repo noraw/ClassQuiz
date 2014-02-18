@@ -98,7 +98,7 @@ app.get('/answerQuestion', studentClass.answerQuestion);
 app.get('/resultsQuestionStudent', studentClass.resultsQuestionStudent);
 app.get('/submitStudentAnswer', questionResponse.submitStudentAnswer);
 app.get('/createQuestion', addQuestion.createQuestion);
-
+app.get('/pieChartData', viewQuestionResults.pieChartData);
 
 
 http.createServer(app).listen(app.get('port'), function(){

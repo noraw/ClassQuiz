@@ -9,28 +9,17 @@
 	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="/css/introHCI.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Noto+Serif' rel='stylesheet' type='text/css'>
-	<!-- this is a comment in HTML -->
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->        
 </head>
 
 <body class="wholepage">
 	<div class="container">
-		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
-		<!-- p means paragraph -->
 		<div class="jumbotron">
 			<div>
-				<h1>Home page for {{userName}}</h1>
 				<form class="navbar-form navbar-right" id="signOutForm" role="form" method="get" action="/user_logout">
 					<input class="btn" type="submit" value="Sign Out"></input>
 				</form>
+				<h1>Welcome {{userName}}</h1>
 			</div>
-			
 		</div>
 
 		<form id="selectClassForm" role="form" method="get" action="/useExistingClass">
@@ -55,6 +44,7 @@
 			<p>{{createError}}</p>
 			<input class="btn" type="submit" id="createClassBtn" value="Create New Class"></input>
 		</form>
+
 		<form id="removeClassForm" role="form" method="get" action="/removeClass">
 			<div class="form-group">
 				<label for="classList">Remove a class:</label>
@@ -65,7 +55,7 @@
 			    {{/each}}
 			    </select>
 			</div>
-			<p>{{selectError}}</p>
+			<p>{{removeError}}</p>
 			<input type="hidden" name="prevPage" value="teacherHome"></input>
 			<input class="btn" type="submit" id="removeClassBtn" value="Remove Class"></input>
 		</form>

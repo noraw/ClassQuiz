@@ -67,10 +67,17 @@
      font-family: 'Megrim';
      color: #F2D65A;
      font-weight: bolder;
+     font-size: 50px;
+     text-align: center;
 
 }
 
 .form-control{
      background-color: #F2E2C3;
      font-family:  = 'Noto Serif', serif;
+}
+
+.pieChart{
+     width: 900px;
+     height: 500px;
 }

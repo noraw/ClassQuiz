@@ -50,11 +50,11 @@ exports.createQuestion = function(req, res){
 		if(data.correctAnswer === 'a'){
 			correctAnswer = "a. " + data.aText;
 		}else if(data.correctAnswer === 'b'){
-			correctAnswer = "b. " + data.aText;
+			correctAnswer = "b. " + data.bText;
 		}else if(data.correctAnswer === 'c'){
-			correctAnswer = "c. " + data.aText;
+			correctAnswer = "c. " + data.cText;
 		}else if(data.correctAnswer === 'd'){
-			correctAnswer = "d. " + data.aText;
+			correctAnswer = "d. " + data.dText;
 		}
 		database.addQuestion(req.session.classID, data.questionText, 
 			data.aText, data.bText, data.cText, data.dText, correctAnswer,

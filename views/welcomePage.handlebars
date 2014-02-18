@@ -9,32 +9,22 @@
 	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="/css/introHCI.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Noto+Serif' rel='stylesheet' type='text/css'>
-	<!-- this is a comment in HTML -->
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->        
 </head>
 
 <body class="wholepage">
 	<div class="container">
-		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
-		<!-- p means paragraph -->
 	<center>
 		<div class="jumbotron">
 			<h1 class="title">CourseMate</h1>
 		</div>
-	<form role="form" method="get" action ="/newUser">
+		<form role="form" method="get" action ="/newUser">
 			<input class="btn" type="submit" id="newUser" value="New User? Sign Up Here"></input>
 		</form><br><br>
 		<h4>Please enter your username and password.</h4>
 	</center>
 		<form role="form" method="get" action ="/user_login">
 			<label class="inputText" for="userName">Name:</label>
-			<input type="text" class="form-control" id="userName" placeholder="Username" name="userName">
+			<input type="text" class="form-control" id="userName" placeholder="Username" name="userName"><br>
 			<label class="inputText" for="description">Password:</label>
 			<input type="password" class="form-control" id="password" placeholder="Password" name="password">
 			<p>{{error}}</p>
