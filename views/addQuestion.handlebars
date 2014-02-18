@@ -8,20 +8,22 @@
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="/css/introHCI.css" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Noto+Serif' rel='stylesheet' type='text/css'>
 </head>
 
-<body>
+<body class="wholepage">
 	<div class="container">
 		<div class="jumbotron">
 			<div>
-				<form id="homeForm" role="form" method="get" action="/teacherHome">
-					<input type="submit" value="Home"></input>
-				</form>
-				<form id="signOutForm" role="form" method="get" action="/user_logout">
-					<input type="submit" value="Sign Out"></input>
+				<button class="homebutton" class="navbar-form navbar-left" id="homeForm" onClick="self.location='/teacherHome'">
+					<span class="glyphicon glyphicon-home"></span>
+				</button>
+				<h1>{{className}}</h1>
+				<form class="navbar-form navbar-right" id="signOutForm" role="form" method="get" action="/user_logout">
+					<input class="btn" type="submit" value="Sign Out"></input>
 				</form>
 			</div>
-			<h1>{{className}}</h1>
+			
 		</div>
 
 	    <form id="addQuestionForm" role="form" method="get" action="/createQuestion">
@@ -47,10 +49,10 @@
 
 			<p>{{error}}</p>
 			<br>
-			<input type="submit" id="submitBtn" value="Submit Question"></input>
+			<input class="btn" type="submit" id="submitBtn" value="Submit Question"></input>
 	   	</form>
 	    <form id="addQuestionForm" role="form" method="get" action="/teacherClass">
-			<input type="submit" id="backBtn" value="Back"></input>
+			<input class="btn" type="submit" id="backBtn" value="Back"></input>
 	   	</form>
 	
 

@@ -8,21 +8,22 @@
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="/css/introHCI.css" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Noto+Serif' rel='stylesheet' type='text/css'>
 </head>
 
-<body>
+<body class="wholepage">
 	<div class="container">
-		<div class="jumbotron">
-			<div>
-				<form id="homeForm" role="form" method="get" action="/studentHome">
-					<input type="submit" value="Home"></input>
+		<nav class="navbar navbar-default" role="navigation">
+				<button class="homebutton btn-default" class="navbar-btn navbar-left" id="homeForm" onClick="self.location='/studentHome'">
+					<span class="glyphicon glyphicon-home"></span>
+				</button>
+				<h1>{{className}}</h1>
+				<form class="navbar-form navbar-right" id="signOutForm" role="form" method="get" action="/user_logout">
+					<div class="form-group">
+						<input class="btn" type="submit" value="Sign Out"></input>
+					</div>	
 				</form>
-				<form id="signOutForm" role="form" method="get" action="/user_logout">
-					<input type="submit" value="Sign Out"></input>
-				</form>
-			</div>
-			<h1>{{className}}</h1>
-		</div>
+		</nav>
 
 		<form id="answerQuestionForm" role="form" method="get" action="/answerQuestion">
 			<div class="form-group">
@@ -35,7 +36,7 @@
 			    </select>
 			</div>
 			<p>{{answerError}}</p>
-			<input type="submit" id="answerBtn" value="Answer Question"></input>
+			<input class="btn" type="submit" id="answerBtn" value="Answer Question"></input>
 		</form>
 
 
@@ -51,7 +52,7 @@
 			    </select>
 			</div>
 			<p>{{resultsError}}</p>
-			<input type="submit" id="viewResultsBtn" value="View Previous Results"></input>
+			<input class="btn" type="submit" id="viewResultsBtn" value="View Previous Results"></input>
 		</form>
 		
 	

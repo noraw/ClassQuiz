@@ -8,9 +8,10 @@
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="/css/introHCI.css" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Noto+Serif' rel='stylesheet' type='text/css'>
 </head>
 
-<body>
+<body class="wholepage">
 	<div class="container">
 		<div class="jumbotron">
 			<h1>Create New User</h1>
@@ -26,11 +27,11 @@
 			<label for="password">Confirm Password:</label>
 			<input class="form-control" type="password" id="passwordConfirm" placeholder="Password" name="passwordConfirm">
 			<p>{{error}}</p>
-			<input type="submit" id="submitBtn" name="button" value="Create New User">
+			<input class="btn" type="submit" id="submitBtn" name="button" value="Create New User">
 		</form>
 		
 	    <form id="backForm" role="form" method="get" action="/">
-			<input type="submit" id="backBtn" value="Back"></input>
+			<input class="btn" type="submit" id="backBtn" value="Back"></input>
 	   	</form>
 
 	<script src="https://code.jquery.com/jquery.js"></script>

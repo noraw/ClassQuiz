@@ -8,6 +8,7 @@
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="/css/introHCI.css" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Noto+Serif' rel='stylesheet' type='text/css'>
 	<!-- this is a comment in HTML -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -18,17 +19,19 @@
     <![endif]-->        
 </head>
 
-<body>
+<body class="wholepage">
 	<div class="container">
 		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
 		<!-- p means paragraph -->
 		<div class="jumbotron">
+			
+			
 			<div>
-				<form id="signOutForm" role="form" method="get" action="/user_logout">
-					<input type="submit" value="Sign Out"></input>
+				<h1>Home page for {{userName}}</h1>
+				<form class="navbar-form navbar-right" id="signOutForm" role="form" method="get" action="/user_logout">
+					<input class="btn" type="submit" value="Sign Out"></input>
 				</form>
 			</div>
-			<h1>Home page for {{userName}}</h1>
 		</div>
 
 		<form id="selectClassForm" role="form" method="get" action="/useExistingClassStudent">
@@ -42,7 +45,7 @@
 			    </select>
 			</div>
 			<p>{{selectError}}</p>
-			<input type="submit" id="existingClassBtn" value="Use Existing Class"></input>
+			<input class="btn" type="submit" id="existingClassBtn" value="Use Existing Class"></input>
 		</form>
 
 		<form id="createClassForm" role="form" method="get" action="/enrollInClass">
@@ -51,7 +54,7 @@
 				<input type="text" class="form-control" placeHolder="Class code" id="classCode" name="classCode">
 			</div>
 			<p>{{joinError}}</p>
-			<input type="submit" id="enrollClassBtn" value="Enroll in Class"></input>
+			<input class="btn" type="submit" id="enrollClassBtn" value="Enroll in Class"></input>
 		</form>
 
 
@@ -62,7 +65,7 @@
 	    {{/each}}
 	    </select>
 	    
-	    <button type="button" onClick="removeClassBtn();">Remove Class</button><br><br><br>
+	    <button class="btn" type="button" onClick="removeClassBtn();">Remove Class</button><br><br><br>
 
 		
 	</div>

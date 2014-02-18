@@ -12,11 +12,12 @@
 .jumbotron {
 	position: relative;
 	background: none;
+     color: #FCFAF7;
 }
 
 .jumbotron:after {
      content:"";
-     background: url("../images/lorempixel.jumbotron.jpeg");
+     color: #18D9D9;
      opacity: 0.2;
      top: 0;
      left: 0;
@@ -32,4 +33,44 @@
 
 .project a {
      text-align: center;
+}
+
+.wholepage {
+     background: #004A4F;
+     /*5A4A41 brown*/
+     /*FA996B orange*/
+
+}
+
+.container .inputText{
+     color: #FCFAF7;
+     font-family: 'Noto Serif', serif;
+}
+
+.container h4{
+     color: #FCFAF7;
+     font-family: 'Noto Serif', serif;
+}
+
+.btn {
+     background-color: #5D6967;
+     color: #FCFAF7;
+     font-family:  = 'Noto Serif', serif;
+}
+
+.homebutton {
+     background-color: #004A4F;
+     color: #29C2BC;
+}
+
+.jumbotron .title {
+     font-family: 'Megrim';
+     color: #F2D65A;
+     font-weight: bolder;
+
+}
+
+.form-control{
+     background-color: #F2E2C3;
+     font-family:  = 'Noto Serif', serif;
 }
