@@ -22,9 +22,19 @@ btn-gray: #5D6967;
 	color: #CC00AA;
 }
 
+body {
+     padding-top: 20px; 
+     padding-botom: 10px; 
+}
+
+.page-header {
+     border: none;
+     color: #FCFAF7;
+}
+
 .wholepage {
      background: #004A4F;
-}
+ }
 
 .jumbotron {
 	position: relative;
@@ -59,24 +69,50 @@ btn-gray: #5D6967;
 
 .homebutton {
      color: #29C2BC;
+     vertical-align: middle;
+}
+
+span {
+     vertical-align: middle;
 }
 
 .navbar-inner {
-     background-color: #004A4F;        
+     background-color: #004A4F;
+     padding: 5px;   
 }
 
 .navbar {
      background-color: #FA996B;        
-     border-color: #FA996B;               
+     border-color: #FA996B;              
 }
 
 .project a {
      text-align: center;
 }
 
-.container .inputText{
+fieldset {
+     border:2px groove #FCFAF7;
+     border-radius: 10px;
+     padding-left: 1em;
+     padding-right: 1em;
+     padding-top: none;
+     padding-bottom: 1em;
+     margin-top: 5px;
+     margin-bottom: 2px;
+}
+
+legend {
+     padding-left: 1em;
+     padding-bottom: none;
+     border: none;
+     text-align: left;
+     font-size: 16px;
+}
+
+.inputText{
      color: #FCFAF7;
      font-family: 'Noto Serif', serif;
+     font-size: 14px
 }
 
 .container .errorText{
@@ -93,6 +129,7 @@ btn-gray: #5D6967;
      background-color: #5D6967;
      color: #FCFAF7;
      font-family:  = 'Noto Serif', serif;
+     font-size: 14px;
 }
 
 .form-control{
@@ -101,6 +138,7 @@ btn-gray: #5D6967;
 }
 
 .pieChart{
-     width: 900px;
-     height: 500px;
+     width: 350px;
+     height: 300px;
+     vertical-align: middle;
 }

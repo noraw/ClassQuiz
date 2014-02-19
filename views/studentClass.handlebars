@@ -12,53 +12,50 @@
 </head>
 
 <body class="wholepage">
-	<div class="container">
-		<div class="jumbotron">
-			<nav class="navbar navbar-fixed-top" role="navigation">
-				<div class="navbar-inner">
-					<div class="container">
-						<a class="pull-left homebutton" href="/studentHome" data-role="button" data-icon="home">
-							<span class="glyphicon glyphicon-home"></span>
-						</a>
-						<form class="pull-right" id="signOutForm" role="form" method="get" action="/user_logout">
-							<input class="btn" type="submit" value="Sign Out"></input>
-						</form>
-					</div>
-				</div>
-			</nav>
-			<div>
-				<h1>{{className}}</h1><br>
+	<nav class="navbar navbar-fixed-top" role="navigation">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="pull-left homebutton" href="/studentHome">
+					<span class="glyphicon glyphicon-home"></span>
+				</a>
+				<form class="pull-right" id="signOutForm" role="form" method="get" action="/user_logout">
+					<input class="btn" type="submit" value="Sign Out"></input>
+				</form>
 			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="page-header">
+			<h1>{{className}}</h1>
 		</div>
 
 		<form id="answerQuestionForm" role="form" method="get" action="/answerQuestion">
-			<div class="form-group">
-				<label class="inputText" for="questionList">Questions to Answer:</label>
+			<fieldset>
+				<legend class="inputText" for="questionList">Step 1: Answer a Question</legend>
 			    <select form="answerQuestionForm" class="form-control" id="questionList" name="questionList">
 			      <option id="-" value="-" name="-">-</option>
 			    {{#each answerQuestions}}
 			      <option id="{{_id}}" value="{{_id}}" name="{{_id}}">{{text}}</option>
 			    {{/each}}
 			    </select>
-			</div>
-			<p class="errorText" >{{answerError}}</p>
-			<input class="btn" type="submit" id="answerBtn" value="Answer Question"></input>
+				<p class="errorText" >{{answerError}}</p>
+				<input class="btn pull-right" type="submit" id="answerBtn" value="Answer Question"></input>
+			</fieldset>
 		</form>
 
-
-		<br>
 		<form id="resultsQuestionForm" role="form" method="get" action="/resultsQuestionStudent">
-			<div class="form-group">
-				<label class="inputText" for="questionList">Previously Answered Questions:</label>
+			<fieldset>
+				<legend class="inputText" for="questionList">Step 2: View Results</legend>
 			    <select form="resultsQuestionForm" class="form-control" id="questionList" name="questionList">
 			      <option id="-" value="-" name="-">-</option>
 			    {{#each resultsQuestions}}
 			      <option id="{{_id}}" value="{{_id}}" name="{{_id}}">{{text}}</option>
 			    {{/each}}
 			    </select>
-			</div>
-			<p class="errorText" >{{resultsError}}</p>
-			<input class="btn" type="submit" id="viewResultsBtn" value="View Previous Results"></input>
+				<p class="errorText" >{{resultsError}}</p>
+				<input class="btn pull-right" type="submit" id="viewResultsBtn" value="View Previous Results"></input>
+			</fieldset>
 		</form>
 
 	<script src="https://code.jquery.com/jquery.js"></script>

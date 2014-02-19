@@ -13,7 +13,7 @@
 
 <body class="wholepage">
 	<div class="container">
-		<div class="jumbotron">
+		<div class="page-header">
 			<h1>Create New User</h1>
 		</div>
 		<form id="addUserForm" role="form" method="get" action ="/createUser">
@@ -21,17 +21,17 @@
 			<input class="inputText" type="radio" id="teacherRadio" name="personType" value="teacher">Teacher</input>
 			<br>
 			<label class="inputText" for="userName">Username:</label>
-			<input class="form-control" type="text" id="username" placeholder="username" name="userName"><br>
+			<input class="form-control" type="text" id="username" placeholder="Username" name="userName"><br>
 			<label class="inputText" for="password">Password:</label>
 			<input class="form-control" type="password" id="password" placeholder="Password" name="password"><br>
 			<label class="inputText" for="password">Confirm Password:</label>
 			<input class="form-control" type="password" id="passwordConfirm" placeholder="Password" name="passwordConfirm">
 			<p class="errorText" >{{error}}</p>
-			<input class="btn" type="submit" id="submitBtn" name="button" value="Create New User">
+			<input class="btn pull-right" type="submit" id="submitBtn" name="button" value="Create New User">
 		</form>
 		
 	    <form id="backForm" role="form" method="get" action="/">
-			<input class="btn" type="submit" id="backBtn" value="Back"></input>
+			<input class="btn pull-left" type="submit" id="backBtn" value="Back"></input>
 	   	</form>
 
 	<script src="https://code.jquery.com/jquery.js"></script>

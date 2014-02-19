@@ -12,58 +12,57 @@
 </head>
 
 <body class="wholepage">
-	<div class="container">
-		<div class="jumbotron">
-			<nav class="navbar navbar-fixed-top" role="navigation">
-				<div class="navbar-inner">
-					<div class="container">
-						<form class="pull-right" id="signOutForm" role="form" method="get" action="/user_logout">
-							<input class="btn" type="submit" value="Sign Out"></input>
-						</form>
-					</div>
-				</div>
-			</nav>
-			<div>
-				<h1>Welcome {{userName}}</h1>
-			</div>			
+	<nav class="navbar navbar-fixed-top" role="navigation">
+		<div class="navbar-inner">
+			<div class="container">
+				<form class="pull-right" id="signOutForm" role="form" method="get" action="/user_logout">
+					<input class="btn" type="submit" value="Sign Out"></input>
+				</form>
+			</div>
 		</div>
+	</nav>
+
+	<div class="container">
+		<div class="page-header">
+			<h1>Welcome {{userName}}</h1>
+		</div>			
 
 		<form id="selectClassForm" role="form" method="get" action="/useExistingClass">
-			<div class="form-group">
-				<label class="inputText" for="classList">Select a current class:</label>
+			<fieldset>
+				<legend class="inputText" for="classList">Select a current class:</legend>
 			    <select form="selectClassForm" class="form-control" id="classList" name="classList">
-			      <option id="-" value='{"classID":0,"className":""}' name="-">-</option>
-			    {{#each classes}}
-			      <option id="{{_id}}" value='{"classID":"{{_id}}","className":"{{name}}" }' name="{{_id}}">{{name}}</option>
-			    {{/each}}
+				      <option id="-" value='{"classID":0,"className":""}' name="-">-</option>
+				    {{#each classes}}
+				      <option id="{{_id}}" value='{"classID":"{{_id}}","className":"{{name}}" }' name="{{_id}}">{{name}}</option>
+				    {{/each}}
 			    </select>
-			</div>
-			<p class="errorText" >{{selectError}}</p>
-			<input class="btn" type="submit" id="existingClassBtn" value="Proceed"></input>
+				<p class="errorText" >{{selectError}}</p>
+				<input class="btn pull-right" type="submit" id="existingClassBtn" value="Proceed"></input>
+			</fieldset>
 		</form>
 
 		<form id="createClassForm" role="form" method="get" action="/createClass">
-		    <div class="form-group">
-			    <label class="inputText" for="newClassName">Create a new class:</label>
+			<fieldset>
+				<legend class="inputText" for="newClassName">Create a new class:</legend>
 				<input type="text" class="form-control" placeHolder="New Class Name" id="newClassName" name="newClassName">
-			</div>
-			<p class="errorText">{{createError}}</p>
-			<input class="btn" type="submit" id="createClassBtn" value="Create New Class"></input>
+				<p class="errorText">{{createError}}</p>
+				<input class="btn pull-right" type="submit" id="createClassBtn" value="Create New Class"></input>
+			</fieldset>
 		</form>
 
 		<form id="removeClassForm" role="form" method="get" action="/removeClass">
-			<div class="form-group">
-				<label class="inputText" for="classList">Remove a class:</label>
+			<fieldset>
+				<legend class="inputText" for="classList">Remove a class:</legend>
 			    <select form="removeClassForm" class="form-control" id="classList" name="classList">
-			      <option id="-" value='{"classID":0,"className":""}' name="-">-</option>
-			    {{#each classes}}
-			      <option id="{{_id}}" value='{"classID":"{{_id}}","className":"{{name}}" }' name="{{_id}}">{{name}}</option>
-			    {{/each}}
+				      <option id="-" value='{"classID":0,"className":""}' name="-">-</option>
+				    {{#each classes}}
+				      <option id="{{_id}}" value='{"classID":"{{_id}}","className":"{{name}}" }' name="{{_id}}">{{name}}</option>
+				    {{/each}}
 			    </select>
-			</div>
-			<p class="errorText">{{removeError}}</p>
-			<input type="hidden" name="prevPage" value="teacherHome"></input>
-			<input class="btn" type="submit" id="removeClassBtn" value="Remove Class"></input>
+				<p class="errorText">{{removeError}}</p>
+				<input type="hidden" name="prevPage" value="teacherHome"></input>
+				<input class="btn pull-right" type="submit" id="removeClassBtn" value="Remove Class"></input>
+			</fieldset>
 		</form>
 		<br>			
 	</div>
