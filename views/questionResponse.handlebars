@@ -12,24 +12,22 @@
 </head>
 
 <body class="wholepage">
-	<div class="container">
-		<div class="jumbotron">
-			<nav class="navbar navbar-fixed-top" role="navigation">
-				<div class="navbar-inner">
-					<div class="container">
-						<a class="pull-left homebutton" href="/studentHome" data-role="button" data-icon="home">
-							<span class="glyphicon glyphicon-home"></span>
-						</a>
-						<form class="pull-right" id="signOutForm" role="form" method="get" action="/user_logout">
-							<input class="btn" type="submit" value="Sign Out"></input>
-						</form>
-					</div>
-				</div>
-			</nav>
-			<div>
-				<h1>{{className}}</h1><br>
+	<nav class="navbar navbar-fixed-top" role="navigation">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="pull-left homebutton" href="/studentHome">
+					<span class="glyphicon glyphicon-home"></span>
+				</a>
+				<form class="pull-right" id="signOutForm" role="form" method="get" action="/user_logout">
+					<input class="btn" type="submit" value="Sign Out"></input>
+				</form>
 			</div>
-			
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="page-header">
+			<h1>{{className}}</h1>
 		</div>
 
 		<form id="answerQuestionForm" role="form" method="get" action="/submitStudentAnswer">
@@ -38,11 +36,12 @@
 			{{#each answers}}
 				<input class="inputText" type="radio" name="answerChoices" value="{{answer}}" checked>{{answer}}</input><br>
 			{{/each}}
- 			<input class="btn" type="submit" id="submitBtn" value="Submit"></input>
+			<br><br>
+ 			<input class="btn pull-right" type="submit" id="submitBtn" value="Submit"></input>
 		</form>	
 
 		<form id="backForm" role="form" method="get" action="/studentClass">
-			<input class="btn" type="submit" id="backBtn" value="Back"></input>
+			<input class="btn pull-left" type="submit" id="backBtn" value="Back"></input>
 		<form>	
 
 	<script src="https://code.jquery.com/jquery.js"></script>

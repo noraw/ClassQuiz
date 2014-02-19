@@ -30,11 +30,20 @@
 			<h1>{{questionText}}</h1>
 		</div>
 
-		<form id="viewQuestionResponseForm" role="form" method="get" action="/studentClass">
-			<p class="inputText">Your Answer:</p>
-			<p class="inputText">{{studentAnswer}}</p><br>
-			<p class="inputText">Correct Answer:</p>
-			<p class="inputText">{{correctAnswer}}</p><br>
+		<form id="viewQuestionResponseForm" class="form-horizontal" role="form" method="get" action="/studentClass">
+	    	<div class="form-group">
+				<label class="col-xs-5 inputText control-label">Your Answer:</label>
+				<div class="col-xs-7">
+					<label class="inputText control-label">{{studentAnswer}}</label>
+				</div>
+			</div>
+	    	<div class="form-group">
+				<label class="col-xs-5 inputText control-label">Correct Answer</label>
+				<div class="col-xs-7">
+					<label class="inputText control-label">{{correctAnswer}}</label>
+				</div>
+			</div>
+			<br><br><br>
  			<input class="btn pull-right" type="submit" id="backBtn" value="Return to {{className}}"></input>
 		</form>	
 	

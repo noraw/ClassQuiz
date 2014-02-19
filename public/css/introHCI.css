@@ -24,12 +24,12 @@ btn-gray: #5D6967;
 
 body {
      padding-top: 20px; 
-     padding-botom: 10px; 
 }
 
 .page-header {
      border: none;
      color: #FCFAF7;
+     margin-bottom: -5px;
 }
 
 .wholepage {
@@ -97,8 +97,8 @@ fieldset {
      padding-right: 1em;
      padding-top: none;
      padding-bottom: 1em;
-     margin-top: 5px;
-     margin-bottom: 2px;
+     margin-top: none;
+     margin-bottom: 5px;
 }
 
 legend {
@@ -116,6 +116,10 @@ legend {
      color: #FCFAF7;
      font-family: 'Noto Serif', serif;
      font-size: 14px
+}
+
+.control-label{
+     text-align: right;
 }
 
 .container .errorText{
