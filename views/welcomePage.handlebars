@@ -20,15 +20,12 @@
 		<form role="form" method="get" action ="/newUser">
 			<input class="btn" type="submit" id="newUser" value="New User? Sign Up Here"></input>
 		</form><br><br>
-		<h4>Please enter your username and password.</h4>
 	</center>
-		<form role="form" method="get" action ="/user_login">
-			<label class="inputText" for="userName">Name:</label>
+		<form class="signInBox" role="form" method="get" action ="/user_login">
 			<input type="text" class="form-control" id="userName" placeholder="Username" name="userName"><br>
-			<label class="inputText" for="description">Password:</label>
 			<input type="password" class="form-control" id="password" placeholder="Password" name="password">
-			<p>{{error}}</p>
-			<input class="btn" type="submit" id="signIn" value="Sign In"></input>
+			<p class="errorText">{{error}}</p>
+			<input class="btn pull-right" type="submit" id="signIn" value="Sign In"></input>
 		</form>
 
 	<script src="https://code.jquery.com/jquery.js"></script>
