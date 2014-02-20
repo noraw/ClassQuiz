@@ -1,6 +1,21 @@
 var mongoose = require('mongoose');
 var database = require('./database.js');
 
+exports.initialize = function(callback){
+	var data = {
+		name: "classID",
+		idNumber: 1000
+	}
+	var newClassID = new database.ClassID(data);
+	newClassID.save(function(err, data){
+		if(err){console.log(err)}else{
+			console.log("initialize: successful");
+			callback();
+		}
+	});
+	
+}
+
 // takes in the username and password and 
 // returns true if the user exists and false otherwise
 exports.isUser = function(name, pwd, callback){
@@ -42,8 +57,6 @@ exports.addUser = function(name, pwd, type, callback){
 		pwd: pwd,
 		type: type
 	};
-	console.log("UserData");
-	console.log(userData);
 	var newUser = new database.Users(userData);
 	newUser.save(function(err, data){
 		if(err){console.log(err)}else{

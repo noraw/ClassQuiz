@@ -1,6 +1,11 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+var classIDSchema = new Schema({
+	var name: String,
+	var idNumber: Number
+}, {collection: 'classIDSchema'})
+exports.ClassID = mongoose.model('ClassID', classIDSchema);
 
 var userSchema = new Schema({
 	name:  String,
@@ -11,6 +16,7 @@ var userSchema = new Schema({
 exports.Users = mongoose.model('Users', userSchema);
 
 var classesSchema = new Schema({
+	_id: Number,
 	name: String,
 	questionIDs: [{type: Schema.ObjectId, ref: 'Questions'}],
 	userNames: [String]

@@ -34,7 +34,8 @@
 			<input type="hidden" name="questionID" value="{{questionID}}"></input>
 			<h4>{{questionText}}</h4>
 			{{#each answers}}
-				<input class="inputText" type="radio" name="answerChoices" value="{{answer}}" checked>{{answer}}</input><br>
+				<input class="inputText" type="radio" name="answerChoices" id="{{answer}}" value="{{answer}}" checked></input>
+				<label class="inputText radioText" for="{{answer}}">{{answer}}</label><br>
 			{{/each}}
 			<br><br>
  			<input class="btn pull-right" type="submit" id="submitBtn" value="Submit"></input>

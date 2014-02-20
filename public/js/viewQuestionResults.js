@@ -39,7 +39,8 @@ function createPieChart(e){
 	      legend: 'none',
 	      pieSliceText: 'label',
 	      tooltip: {text: 'value'},
-	      slices: slices
+	      slices: slices,
+	      chartArea: {left:0,top:20,width:"100%",height:"85%"},
 	    };
 
 	    // Instantiate and draw our chart, passing in some options.
