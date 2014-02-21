@@ -83,7 +83,6 @@ app.get('/teacherClass', teacherClass.view);
 app.get('/addQuestion', addQuestion.view);
 app.get('/viewQuestionResults', viewQuestionResults.view);
 
-
 app.get('/resultsQuestion', teacherClass.resultsQuestion);
 app.get('/publishQuestion', teacherClass.publishQuestion);
 app.get('/user_login', user.login);
@@ -104,3 +103,4 @@ app.get('/pieChartData', viewQuestionResults.pieChartData);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+

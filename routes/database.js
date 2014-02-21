@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var classIDSchema = new Schema({
-	var name: String,
-	var idNumber: Number
+	name: String,
+	idNumber: Number
 }, {collection: 'classIDSchema'})
 exports.ClassID = mongoose.model('ClassID', classIDSchema);
 
@@ -11,7 +11,7 @@ var userSchema = new Schema({
 	name:  String,
 	pwd: String,
 	type: String,
-	classesIDArray: [{type: Schema.ObjectId, ref: 'Classes'}]
+	classesIDArray: [{type: Number, ref: 'Classes'}]
 }, {collection: 'userSchema'});
 exports.Users = mongoose.model('Users', userSchema);
 
@@ -24,7 +24,7 @@ var classesSchema = new Schema({
 exports.Classes = mongoose.model('Classes', classesSchema);
 
 var questionsSchema = new Schema({
-	classID: {type: Schema.ObjectId, ref: 'Classes'},
+	classID: {type: Number, ref: 'Classes'},
 	text: String,
 	answerA: String,
 	answerB: String,
@@ -38,7 +38,7 @@ exports.Questions = mongoose.model('Questions', questionsSchema);
 
 var studentAnswers = new Schema({
 	studentName: String,
-	classID: String,
+	classID: Number,
 	questionID: String,
 	answer: String
 }, {collection: 'studentAnswers'});

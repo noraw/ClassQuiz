@@ -35,7 +35,7 @@ function createPieChart(e){
 		}
 	      
 		var options = {
-		  backgroundColor: '#004A4F',
+		  backgroundColor: '#FCFAF7',
 	      legend: 'none',
 	      pieSliceText: 'label',
 	      tooltip: {text: 'value'},

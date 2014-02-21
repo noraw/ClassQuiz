@@ -13,7 +13,6 @@ exports.initialize = function(callback){
 			callback();
 		}
 	});
-	
 }
 
 // takes in the username and password and 
@@ -70,8 +69,8 @@ exports.addUser = function(name, pwd, type, callback){
 // callback with true or false and the class's data
 exports.isClass = function(classID, callback){
 	try{
-		var objectType = require('mongoose').Types.ObjectId; 
-		var objectId = new objectType(classID);
+//		var objectType = require('mongoose').Types.ObjectId; 
+//		var objectId = new objectType(classID);
 		database.Classes.findOne({'_id':classID}, function(err, classData){
 			if(err){console.log(err)}else{
 				if(classData == null){
@@ -145,21 +144,32 @@ exports.removeClass = function(userName, classID, callback){
 // returns the classId
 exports.createClass = function(userName, className, callback){
 	console.log("createClass("+userName+", "+className+"): start");
-	var classData = {
-		name: className,
-		userNames: [userName]
-	};
-	var newClass = new database.Classes(classData);
-	newClass.save(function(err, data){
+	database.ClassID.findOne({'name':'classID'}, function(err, classIDDAta){
 		if(err){console.log(err)}else{
-			database.Users.findOne({'name':userName}, function(err, user){
+			var number = classIDDAta.idNumber + 1;
+			console.log(number);
+			database.ClassID.update({'name':'classID'}, {$set:{idNumber:number}}, function(err){
 				if(err){console.log(err)}else{
-					user.classesIDArray.push(newClass);
-					user.save(function(err){
+					var classData = {
+						_id: number,
+						name: className,
+						userNames: [userName]
+					};
+					var newClass = new database.Classes(classData);
+					newClass.save(function(err, data){
 						if(err){console.log(err)}else{
-							console.log("createClass("+userName+", "+className+
-								"): classID - "+ data._id);
-							callback(data);
+							database.Users.findOne({'name':userName}, function(err, user){
+								if(err){console.log(err)}else{
+									user.classesIDArray.push(newClass);
+									user.save(function(err){
+										if(err){console.log(err)}else{
+											console.log("createClass("+userName+", "+className+
+												"): classID - "+ data._id);
+											callback(data);
+										}
+									});
+								}
+							});
 						}
 					});
 				}

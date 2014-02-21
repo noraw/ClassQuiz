@@ -4,6 +4,7 @@ bright-blue: #18D9D9
 home-blue: #29C2BC
 brown: #5A4A41
 orange: #FA996B
+red-orange: #ED4A18;
 tan-orange: #F2E2C3;
 yellow-orange: #F2D65A;
 off-white: #FCFAF7
@@ -26,14 +27,29 @@ body {
      padding-top: 20px; 
 }
 
+.h1 {
+     font-size: 15px;
+}
+
 .page-header {
+     border: none;
+     color: #004A4F;
+     margin-bottom: -5px;
+}
+
+.page-headerWhite {
      border: none;
      color: #FCFAF7;
      margin-bottom: -5px;
 }
 
-.wholepage {
+.wholepageBlue {
      background: #004A4F;
+ }
+
+.wholepage {
+     background: #FCFAF7;
+     margin-bottom: 10px;
  }
 
 .jumbotron {
@@ -42,29 +58,13 @@ body {
      color: #FCFAF7;
 }
 
-.jumbotron:after {
-     content:"";
-     color: #18D9D9;
-     opacity: 0.2;
-     top: 0;
-     left: 0;
-     bottom: 0;
-     right: 0;
-     position: absolute;
-     z-index: -1;	
-}
-
-.jumbotron p {
-     color: #6e6e6e;
-}
-
 .jumbotron .title {
      font-family: 'Megrim';
      color: #F2D65A;
      font-weight: bolder;
-     font-size: 45px;
+     font-size: 1.5em;
      text-align: center;
-
+     margin: none;
 }
 
 .homebutton {
@@ -91,7 +91,7 @@ span {
 }
 
 fieldset {
-     border:2px groove #FCFAF7;
+     border:2px solid #004A4F;
      border-radius: 10px;
      padding-left: 1em;
      padding-right: 1em;
@@ -112,14 +112,20 @@ legend {
 .signInBox{
      padding: 10px 40px;
 }
-.inputText{
+
+.inputTextWhite{
      color: #FCFAF7;
+     font-family: 'Noto Serif', serif;
+     font-size: 14px
+}
+.inputText{
+     color: #004A4F;
      font-family: 'Noto Serif', serif;
      font-size: 14px
 }
 
 .radioText{
-     margin-right: 30px;
+     margin-right: 25px;
      margin-left: 5px;
 }
 
@@ -128,12 +134,12 @@ legend {
 }
 
 .container .errorText{
-     color: #FA996B;
+     color: #ED4A18;
      font-family: 'Noto Serif', serif;
 }
 
 .container h4{
-     color: #FCFAF7;
+     color: #004A4F;
      font-family: 'Noto Serif', serif;
 }
 
@@ -148,6 +154,10 @@ legend {
      background-color: #F2E2C3;
      font-family:  = 'Noto Serif', serif;
 }
+
+.form-control:focus{
+     outline-color: #004A4F;
+ }
 
 .pieChart{
      width: 250px;

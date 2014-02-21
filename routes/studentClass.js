@@ -13,7 +13,7 @@ exports.view = function(req, res){
 				'classID': req.session.classID,
 				'answerQuestions': answerQuestions,
 				'resultsQuestions': resultsQuestions,
-				'answerError': req.query.publishError,
+				'answerError': req.query.answerError,
 				'resultsError': req.query.resultsError
 		  	});
 		});
