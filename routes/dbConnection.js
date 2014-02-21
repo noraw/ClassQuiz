@@ -68,9 +68,10 @@ exports.addUser = function(name, pwd, type, callback){
 //checks to see if the class with classID exsists
 // callback with true or false and the class's data
 exports.isClass = function(classID, callback){
+	if(!(!isNaN(parseFloat(classID)) && isFinite(classID))){
+		callback(false, null);
+	}
 	try{
-		var objectType = require('mongoose').Types.Number; 
-		var objectId = new objectType(classID);
 		database.Classes.findOne({'_id':classID}, function(err, classData){
 			if(err){console.log(err)}else{
 				if(classData == null){

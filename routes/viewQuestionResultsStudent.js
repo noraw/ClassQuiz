@@ -7,17 +7,22 @@ exports.view = function(req, res){
 	database.getQuestionInfo(req.query.questionList, function(data){
 		database.getStudentAnswer(req.session.userName, req.query.questionList, 
 			function(studentAnswer){
-			var feedback = "Incorrect";
-			var color = "red";
-			if(studentAnswer == data.correctAnswer){
-				feedback = "Correct!";
-				color = "green";
+			var feedback = "Correct!";
+			var color = "green";
+			var correctAnswerText = "";
+			var correctAnswer = "";
+			if(studentAnswer != data.correctAnswer){
+				feedback = "Incorrect";
+				color = "red";
+				correctAnswerText = "Correct Answer:";
+				correctAnswer = data.correctAnswer;
 			}
 			res.render('viewQuestionResultsStudent', {
 				'className': req.session.className,
 				'questionText': data.text,
 			    'studentAnswer': studentAnswer,
-			    'correctAnswer': data.correctAnswer,
+			    'correctAnswer': correctAnswer,
+			    'correctAnswerText': correctAnswerText,
 			    'feedback': feedback,
 			    'color':color
 		  	});

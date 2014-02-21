@@ -8,13 +8,16 @@ exports.viewNewUser = function(req, res){
 
 exports.createUser = function(req, res){
 	var userName = req.query.userName;
+	userName = userName.replace(/(^\s+|\s+$)/g,'')
 	var type = req.query.personType;
 	var pwd = req.query.password;
 	var pwdConfirm = req.query.passwordConfirm;
 	console.log("createUser");
 	console.log(req.query);
-
-	if(pwd === pwdConfirm){
+	if(userName === ""){
+		var error = encodeURIComponent('Please enter a username.');
+		res.redirect('/newUser?error='+error);
+	}else if(pwd === pwdConfirm){
 		database.isUsername(userName, function(isUser){
 			if(!isUser){
 				database.addUser(userName, pwd, type, function(){
