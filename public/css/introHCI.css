@@ -9,6 +9,7 @@ white: #FFFFFF;
  
 unused colors:
 bright-blue: #18D9D9
+red-orange: #ED4A18;
 tan-orange: #F2E2C3;
 yellow-orange: #F2D65A;
 brown: #5A4A41
@@ -32,19 +33,32 @@ body {
      padding-top: 20px; 
 }
 
+.h1 {
+     font-size: 15px;
+}
+
 .page-header {
      border: none;
-     color: #FFFFFF;
+     color: #4489E3;
+     margin-bottom: -5px;
+}
+
+.page-headerWhite {
+     border: none;
+     color: #FCFAF7;
      margin-bottom: -5px;
      font-family: 'Noto Serif', serif;
 }
 
-.homepage {
+
+.wholepageBlue {
      background: #4489E3;
+     margin-bottom: 10px;
  }
 
- .otherpages {
-     background: #4489E3;
+.wholepage {
+     background: #FCFAF7;
+     
  }
 
 .jumbotron {
@@ -52,6 +66,7 @@ body {
 	background: none;
      color: #FFFFFF;
 }
+
 
 .jumbotron:after {
      content:"";
@@ -73,10 +88,12 @@ body {
      font-family: 'Megrim';
      color: #FAE455;
      font-weight: bolder;
-     font-size: 40px;
-     text-align: center;
      /*E39E44*/
 
+
+     font-size: 1.5em;
+     text-align: center;
+     margin: none;
 }
 
 .homebutton {
@@ -103,7 +120,8 @@ span {
 }
 
 fieldset {
-     border:2px groove #F2E2C3;
+
+     border:2px solid #4489E3;
      border-radius: 10px;
      padding-left: 1em;
      padding-right: 1em;
@@ -124,14 +142,25 @@ legend {
 .signInBox{
      padding: 10px 40px;
 }
+
+/*.inputText{
+     color: #FFFFFF;*/
+
+
+.inputTextWhite{
+     color: #FCFAF7;
+     font-family: 'Noto Serif', serif;
+     font-size: 14px
+}
+
 .inputText{
-     color: #FFFFFF;
+     color: #4489E3;
      font-family: 'Noto Serif', serif;
      font-size: 14px
 }
 
 .radioText{
-     margin-right: 30px;
+     margin-right: 25px;
      margin-left: 5px;
 }
 
@@ -140,12 +169,17 @@ legend {
 }
 
 .container .errorText{
+
      color: #FAE455;
+     /*color: #ED4A18;*/
+
      font-family: 'Noto Serif', serif;
 }
 
 .container h4{
-     color: #FFFFFF;
+
+     /*color: #FFFFFF;*/
+     color: #4489E3;
      font-family: 'Noto Serif', serif;
 }
 
@@ -160,6 +194,10 @@ legend {
      background-color: #FAF3C3;
      font-family:  = 'Noto Serif', serif;
 }
+
+.form-control:focus{
+     outline-color: #4489E3;
+ }
 
 .pieChart{
      width: 250px;

@@ -11,25 +11,28 @@
 	<link href='http://fonts.googleapis.com/css?family=Noto+Serif' rel='stylesheet' type='text/css'>
 </head>
 
-<body class="homepage">
+
+
+<body class="wholepageBlue">
+
 	<div class="container">
-		<div class="page-header" style="margin-top:-15px;margin-bottom:10px;">
+		<div class="page-headerWhite" style="margin-top:-15px;margin-bottom:10px;">
 			<h1>Create a New User</h1>
 		</div>
 		<form id="addUserForm" role="form" method="get" action ="/createUser">
-			<input class="inputText" type="radio" id="studentRadio" name="personType" value="student" checked></input>
-			<label class="inputText radioText" for="studentRadio">Student</label>
-			<input class="inputText" type="radio" id="teacherRadio" name="personType" value="teacher"></input>
-			<label class="inputText radioText" for="teacherRadio">Teacher</label>
-			<br><br>
-			<label class="inputText" for="userName">Username:</label>
+			<input class="inputTextWhite" type="radio" id="studentRadio" name="personType" value="student" checked></input>
+			<label class="inputTextWhite radioText" for="studentRadio">Student</label>
+			<input class="inputTextWhite" type="radio" id="teacherRadio" name="personType" value="teacher"></input>
+			<label class="inputTextWhite radioText" for="teacherRadio">Teacher</label>
+			<br>
+			<label class="inputTextWhite" for="userName">Username:</label>
 			<input class="form-control" type="text" id="username" placeholder="Username" name="userName"><br>
-			<label class="inputText" for="password">Password:</label>
+			<label class="inputTextWhite" for="password">Password:</label>
 			<input class="form-control" type="password" id="password" placeholder="Password" name="password"><br>
-			<label class="inputText" for="password">Confirm Password:</label>
+			<label class="inputTextWhite" for="password">Confirm Password:</label>
 			<input class="form-control" type="password" id="passwordConfirm" placeholder="Password" name="passwordConfirm">
 			<p class="errorText" >{{error}}</p>
-			<br><br>
+			<br>
 			<input class="btn pull-right" type="submit" id="submitBtn" name="button" value="Create New User">
 		</form>
 		
