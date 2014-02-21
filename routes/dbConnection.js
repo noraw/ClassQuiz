@@ -282,18 +282,10 @@ exports.getQuestionResults = function(questionID, callback){
 // gets all the unpublished questions in a class
 // calls the callback function each time for a found question
 exports.getNewQuestionsList = function(classID, callback){
-	database.Classes.findOne({'_id':classID})
-	.populate('questionIDs')
-	.exec(function(err, classData){
+	database.Questions.find({'classID':classID, 'isPublished': false})
+	.sort('date')
+	.exec(function(err, questions){
 		if(err){console.log(err)}else{
-			var questions = [];
-			if(classData != null){
-				for(var i=0; i < classData.questionIDs.length; i++){
-					if(classData.questionIDs[i].isPublished == false){
-						questions.push(classData.questionIDs[i]);
-					}
-				}
-			}
 			console.log("getNewQuestionsList("+classID+"): "+questions);
 			callback(questions);
 		}
@@ -303,18 +295,10 @@ exports.getNewQuestionsList = function(classID, callback){
 // gets all the published questions in a class
 // returns a list of classNames and classIDs
 var getPublishedQuestionsListPrivate = function(classID, callback){
-	database.Classes.findOne({'_id':classID})
-	.populate('questionIDs')
-	.exec(function(err, classData){
+	database.Questions.find({'classID':classID, 'isPublished': true})
+	.sort('-date')
+	.exec(function(err, questions){
 		if(err){console.log(err)}else{
-			var questions = [];
-			if(classData != null){
-				for(var i=0; i < classData.questionIDs.length; i++){
-					if(classData.questionIDs[i].isPublished == true){
-						questions.push(classData.questionIDs[i]);
-					}
-				}
-			}
 			console.log("getPublishedQuestionsListPrivate("+classID+"): "+questions);
 			callback(questions);
 		}

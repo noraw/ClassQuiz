@@ -6,6 +6,7 @@ exports.view = function(req, res){
 	console.log(req.query);
 	database.getQuestionInfo(req.query.questionList, function(data){
 		var answers = fillAnswers(data);
+		console.log(answers);
 		res.render('viewQuestionResults', {
 			'className': req.session.className,
 			'classID': req.session.classID,
@@ -18,12 +19,28 @@ exports.view = function(req, res){
 
 var fillAnswers = function(data){
 	var answers = [];
-	answers.push({'answer': "a. " + data.answerA});
-	answers.push({'answer': "b. " + data.answerB});
+	if("a. " + data.answerA == data.correctAnswer){
+		answers.push({'answer': "a. " + data.answerA, 'color': 'green'});
+	}else{
+		answers.push({'answer': "a. " + data.answerA, 'color': ''});		
+	}
+	if("b. " + data.answerB == data.correctAnswer){
+		answers.push({'answer': "b. " + data.answerB, 'color': 'green'});
+	}else{
+		answers.push({'answer': "b. " + data.answerB, 'color': ''});		
+	}
 	if(data.answerC != ""){
-		answers.push({'answer': "c. " + data.answerC});
+		if("c. " + data.answerC == data.correctAnswer){
+			answers.push({'answer': "c. " + data.answerC, 'color': 'green'});
+		}else{
+			answers.push({'answer': "c. " + data.answerC, 'color': ''});		
+		}
 		if(data.answerD != ""){
-			answers.push({'answer': "d. " + data.answerD});
+			if("d. " + data.answerD == data.correctAnswer){
+				answers.push({'answer': "d. " + data.answerD, 'color': 'green'});
+			}else{
+				answers.push({'answer': "d. " + data.answerD, 'color': ''});		
+			}
 			answers.push({'answer': "e. I don't know"});
 		}else{
 			answers.push({'answer': "d. I don't know"});

@@ -34,7 +34,7 @@
 		<input type="hidden" id="classID" value="{{classID}}"></input>
 		<form id="viewQuestionResponseForm" role="form" method="get" action="/teacherClass">
 			{{#each answers}}
-				<label class="inputText">{{answer}}</label><br>
+				<label class="inputText" style="color:{{color}};">{{answer}}</label><br>
 			{{/each}}
 	 		<div id="piechart" class="pieChart"></div>
 	 		<br><br>

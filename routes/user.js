@@ -2,7 +2,8 @@ var database = require('./dbConnection');
 
 exports.viewNewUser = function(req, res){
 	res.render('newUser', {
-		'error': req.query.error
+		'error': req.query.error,
+		'userName': req.query.userName
 	});
 }
 
@@ -35,7 +36,7 @@ exports.createUser = function(req, res){
 		});
 	}else{
 		var error = encodeURIComponent('Please make your passwords match.');
-		res.redirect('/newUser?error='+error);
+		res.redirect('/newUser?error='+error+"&userName="+userName);
 	}
 }
 
