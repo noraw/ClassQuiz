@@ -1,15 +1,21 @@
 /*
-blue: #004A4F
-bright-blue: #18D9D9
+colors to use:
+old background-blue: #004A4F
+new background-blue: #4489E3
 home-blue: #29C2BC
-brown: #5A4A41
 orange: #FA996B
+btn-gray: #5D6967;
+white: #FFFFFF;
+ 
+unused colors:
+bright-blue: #18D9D9
 red-orange: #ED4A18;
 tan-orange: #F2E2C3;
 yellow-orange: #F2D65A;
+brown: #5A4A41
 off-white: #FCFAF7
 medium-gray: #6e6e6e
-btn-gray: #5D6967;
+
 */
 
 /* applies to anything of class "example-class-selector" */
@@ -33,7 +39,7 @@ body {
 
 .page-header {
      border: none;
-     color: #004A4F;
+     color: #4489E3;
      margin-bottom: -5px;
 }
 
@@ -41,27 +47,50 @@ body {
      border: none;
      color: #FCFAF7;
      margin-bottom: -5px;
+     font-family: 'Noto Serif', serif;
 }
 
+
 .wholepageBlue {
-     background: #004A4F;
+     background: #4489E3;
+     margin-bottom: 10px;
  }
 
 .wholepage {
      background: #FCFAF7;
-     margin-bottom: 10px;
+     
  }
 
 .jumbotron {
 	position: relative;
 	background: none;
-     color: #FCFAF7;
+     color: #FFFFFF;
+}
+
+
+.jumbotron:after {
+     content:"";
+     color: #29C2BC;
+     opacity: 0.2;
+     top: 0;
+     left: 0;
+     bottom: 0;
+     right: 0;
+     position: absolute;
+     z-index: -1;	
+}
+
+.jumbotron p {
+     color: #5D6967;
 }
 
 .jumbotron .title {
      font-family: 'Megrim';
-     color: #F2D65A;
+     color: #FAE455;
      font-weight: bolder;
+     /*E39E44*/
+
+
      font-size: 1.5em;
      text-align: center;
      margin: none;
@@ -77,13 +106,13 @@ span {
 }
 
 .navbar-inner {
-     background-color: #004A4F;
+     background-color: #4489E3;
      padding: 5px;   
 }
 
 .navbar {
-     background-color: #FA996B;        
-     border-color: #FA996B;              
+     background-color: #FAE455;        
+     border-color: #FAE455;              
 }
 
 .project a {
@@ -91,7 +120,8 @@ span {
 }
 
 fieldset {
-     border:2px solid #004A4F;
+
+     border:2px solid #4489E3;
      border-radius: 10px;
      padding-left: 1em;
      padding-right: 1em;
@@ -113,13 +143,18 @@ legend {
      padding: 10px 40px;
 }
 
+/*.inputText{
+     color: #FFFFFF;*/
+
+
 .inputTextWhite{
      color: #FCFAF7;
      font-family: 'Noto Serif', serif;
      font-size: 14px
 }
+
 .inputText{
-     color: #004A4F;
+     color: #4489E3;
      font-family: 'Noto Serif', serif;
      font-size: 14px
 }
@@ -134,29 +169,34 @@ legend {
 }
 
 .container .errorText{
-     color: #ED4A18;
+
+     color: #FAE455;
+     /*color: #ED4A18;*/
+
      font-family: 'Noto Serif', serif;
 }
 
 .container h4{
-     color: #004A4F;
+
+     /*color: #FFFFFF;*/
+     color: #4489E3;
      font-family: 'Noto Serif', serif;
 }
 
 .btn {
      background-color: #5D6967;
-     color: #FCFAF7;
+     color: #FFFFFF;
      font-family:  = 'Noto Serif', serif;
      font-size: 14px;
 }
 
 .form-control{
-     background-color: #F2E2C3;
+     background-color: #FAF3C3;
      font-family:  = 'Noto Serif', serif;
 }
 
 .form-control:focus{
-     outline-color: #004A4F;
+     outline-color: #4489E3;
  }
 
 .pieChart{
