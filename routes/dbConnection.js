@@ -283,7 +283,6 @@ exports.getQuestionResults = function(questionID, callback){
 exports.getNewQuestionsList = function(classID, callback){
 	database.Classes.findOne({'_id':classID})
 	.populate('questionIDs')
-	.sort('-date')
 	.exec(function(err, classData){
 		if(err){console.log(err)}else{
 			var questions = [];
@@ -305,7 +304,6 @@ exports.getNewQuestionsList = function(classID, callback){
 var getPublishedQuestionsListPrivate = function(classID, callback){
 	database.Classes.findOne({'_id':classID})
 	.populate('questionIDs')
-	.sort('date')
 	.exec(function(err, classData){
 		if(err){console.log(err)}else{
 			var questions = [];
