@@ -69,8 +69,8 @@ exports.addUser = function(name, pwd, type, callback){
 // callback with true or false and the class's data
 exports.isClass = function(classID, callback){
 	try{
-//		var objectType = require('mongoose').Types.ObjectId; 
-//		var objectId = new objectType(classID);
+		var objectType = require('mongoose').Types.Number; 
+		var objectId = new objectType(classID);
 		database.Classes.findOne({'_id':classID}, function(err, classData){
 			if(err){console.log(err)}else{
 				if(classData == null){
@@ -231,7 +231,7 @@ exports.addQuestion = function(classID, questionText, answerA, answerB, answerC,
 		answerC: answerC,
 		answerD: answerD,
 		correctAnswer: correctAnswer,
-		//date: new Date(),
+		date: new Date(),
 		isPublished: false
 	}
 	var newQuestion = new database.Questions(questionData);
@@ -283,6 +283,7 @@ exports.getQuestionResults = function(questionID, callback){
 exports.getNewQuestionsList = function(classID, callback){
 	database.Classes.findOne({'_id':classID})
 	.populate('questionIDs')
+	.sort('-date')
 	.exec(function(err, classData){
 		if(err){console.log(err)}else{
 			var questions = [];
@@ -304,6 +305,7 @@ exports.getNewQuestionsList = function(classID, callback){
 var getPublishedQuestionsListPrivate = function(classID, callback){
 	database.Classes.findOne({'_id':classID})
 	.populate('questionIDs')
+	.sort('date')
 	.exec(function(err, classData){
 		if(err){console.log(err)}else{
 			var questions = [];
