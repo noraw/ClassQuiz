@@ -35,7 +35,7 @@
 				      <option id="{{_id}}" value='{"classID":"{{_id}}","className":"{{name}}" }' name="{{_id}}">{{name}}</option>
 				    {{/each}}
 			    </select>
-				<p class="errorText" >{{selectError}}</p>
+				<p class="errorTextOther" >{{selectError}}</p>
 				<input class="btn pull-right" type="submit" id="existingClassBtn" value="Proceed"></input>
 			</fieldset>
 		</form>
@@ -44,7 +44,7 @@
 			<fieldset>
 				<legend class="inputText" for="newClassName">Create a new class:</legend>
 				<input type="text" class="form-control" placeHolder="New Class Name" id="newClassName" name="newClassName">
-				<p class="errorText">{{createError}}</p>
+				<p class="errorTextOther">{{createError}}</p>
 				<input class="btn pull-right" type="submit" id="createClassBtn" value="Create New Class"></input>
 			</fieldset>
 		</form>
@@ -58,7 +58,7 @@
 				      <option id="{{_id}}" value='{"classID":"{{_id}}","className":"{{name}}" }' name="{{_id}}">{{name}}</option>
 				    {{/each}}
 			    </select>
-				<p class="errorText">{{removeError}}</p>
+				<p class="errorTextOther">{{removeError}}</p>
 				<input type="hidden" name="prevPage" value="teacherHome"></input>
 				<input class="btn pull-right" type="submit" id="removeClassBtn" value="Remove Class"></input>
 			</fieldset>

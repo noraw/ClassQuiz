@@ -97,7 +97,7 @@ body {
 }
 
 .homebutton {
-     color: #29C2BC;
+     color: #FAE455;
      vertical-align: middle;
 }
 
@@ -168,9 +168,14 @@ legend {
      text-align: right;
 }
 
-.container .errorText{
+.container .errorTextHome{
+     font-family: 'Noto Serif', serif;
+     color: #FAF3C3;
 
-     color: #FAE455;
+}
+.container .errorTextOther{
+
+     color: #4489E3;
      /*color: #ED4A18;*/
 
      font-family: 'Noto Serif', serif;
