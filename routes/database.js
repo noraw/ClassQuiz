@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var classIDSchema = new Schema({
-	var name: String,
-	var idNumber: Number
+	name: String,
+	idNumber: Number,
 }, {collection: 'classIDSchema'})
 exports.ClassID = mongoose.model('ClassID', classIDSchema);
 

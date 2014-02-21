@@ -1,14 +1,20 @@
 /*
-blue: #004A4F
-bright-blue: #18D9D9
+colors to use:
+old background-blue: #004A4F
+new background-blue: #4489E3
 home-blue: #29C2BC
-brown: #5A4A41
 orange: #FA996B
+btn-gray: #5D6967;
+white: #FFFFFF;
+ 
+unused colors:
+bright-blue: #18D9D9
 tan-orange: #F2E2C3;
 yellow-orange: #F2D65A;
+brown: #5A4A41
 off-white: #FCFAF7
 medium-gray: #6e6e6e
-btn-gray: #5D6967;
+
 */
 
 /* applies to anything of class "example-class-selector" */
@@ -28,23 +34,28 @@ body {
 
 .page-header {
      border: none;
-     color: #FCFAF7;
+     color: #FFFFFF;
      margin-bottom: -5px;
+     font-family: 'Noto Serif', serif;
 }
 
-.wholepage {
-     background: #004A4F;
+.homepage {
+     background: #4489E3;
+ }
+
+ .otherpages {
+     background: #4489E3;
  }
 
 .jumbotron {
 	position: relative;
 	background: none;
-     color: #FCFAF7;
+     color: #FFFFFF;
 }
 
 .jumbotron:after {
      content:"";
-     color: #18D9D9;
+     color: #29C2BC;
      opacity: 0.2;
      top: 0;
      left: 0;
@@ -55,15 +66,16 @@ body {
 }
 
 .jumbotron p {
-     color: #6e6e6e;
+     color: #5D6967;
 }
 
 .jumbotron .title {
      font-family: 'Megrim';
-     color: #F2D65A;
+     color: #FAE455;
      font-weight: bolder;
-     font-size: 45px;
+     font-size: 40px;
      text-align: center;
+     /*E39E44*/
 
 }
 
@@ -77,13 +89,13 @@ span {
 }
 
 .navbar-inner {
-     background-color: #004A4F;
+     background-color: #4489E3;
      padding: 5px;   
 }
 
 .navbar {
-     background-color: #FA996B;        
-     border-color: #FA996B;              
+     background-color: #FAE455;        
+     border-color: #FAE455;              
 }
 
 .project a {
@@ -91,7 +103,7 @@ span {
 }
 
 fieldset {
-     border:2px groove #FCFAF7;
+     border:2px groove #F2E2C3;
      border-radius: 10px;
      padding-left: 1em;
      padding-right: 1em;
@@ -113,7 +125,7 @@ legend {
      padding: 10px 40px;
 }
 .inputText{
-     color: #FCFAF7;
+     color: #FFFFFF;
      font-family: 'Noto Serif', serif;
      font-size: 14px
 }
@@ -128,24 +140,24 @@ legend {
 }
 
 .container .errorText{
-     color: #FA996B;
+     color: #FAE455;
      font-family: 'Noto Serif', serif;
 }
 
 .container h4{
-     color: #FCFAF7;
+     color: #FFFFFF;
      font-family: 'Noto Serif', serif;
 }
 
 .btn {
      background-color: #5D6967;
-     color: #FCFAF7;
+     color: #FFFFFF;
      font-family:  = 'Noto Serif', serif;
      font-size: 14px;
 }
 
 .form-control{
-     background-color: #F2E2C3;
+     background-color: #FAF3C3;
      font-family:  = 'Noto Serif', serif;
 }
 
