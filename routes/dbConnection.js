@@ -246,7 +246,7 @@ exports.addQuestion = function(classID, questionText, answerA, answerB, answerC,
 			classData.save(function(err){
 				if(err){console.log(err)}else{
 					console.log("addQuestion: successful");
-					callback();
+					callback(newQuestion._id);
 				}
 			});
 		}

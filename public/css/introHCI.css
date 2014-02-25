@@ -1,13 +1,15 @@
 /*
 colors to use:
-old background-blue: #004A4F
-new background-blue: #4489E3
+new background-blue2: #003A85
 home-blue: #29C2BC
-orange: #FA996B
 btn-gray: #5D6967;
 white: #FFFFFF;
+yellow: #FAE455;
  
 unused colors:
+orange: #FA996B
+old background-blue: #004A4F
+new background-blue: #003A85
 bright-blue: #18D9D9
 red-orange: #ED4A18;
 tan-orange: #F2E2C3;
@@ -33,13 +35,13 @@ body {
      padding-top: 20px; 
 }
 
-.h1 {
-     font-size: 15px;
+h1 {
+     font-size: 25px;
 }
 
 .page-header {
      border: none;
-     color: #4489E3;
+     color: #003A85;
      margin-bottom: -5px;
 }
 
@@ -52,7 +54,7 @@ body {
 
 
 .wholepageBlue {
-     background: #4489E3;
+     background: #003A85;
      margin-bottom: 10px;
  }
 
@@ -80,17 +82,10 @@ body {
      z-index: -1;	
 }
 
-.jumbotron p {
-     color: #5D6967;
-}
-
 .jumbotron .title {
      font-family: 'Megrim';
      color: #FAE455;
      font-weight: bolder;
-     /*E39E44*/
-
-
      font-size: 1.5em;
      text-align: center;
      margin: none;
@@ -106,7 +101,7 @@ span {
 }
 
 .navbar-inner {
-     background-color: #4489E3;
+     background-color: #003A85;
      padding: 5px;   
 }
 
@@ -121,12 +116,12 @@ span {
 
 fieldset {
 
-     border:2px solid #4489E3;
+     border:2px solid #003A85;
      border-radius: 10px;
-     padding-left: 1em;
-     padding-right: 1em;
+     padding-left: 8px;
+     padding-right: 8px;
      padding-top: none;
-     padding-bottom: 1em;
+     padding-bottom: 8px;
      margin-top: none;
      margin-bottom: 5px;
 }
@@ -143,10 +138,6 @@ legend {
      padding: 10px 40px;
 }
 
-/*.inputText{
-     color: #FFFFFF;*/
-
-
 .inputTextWhite{
      color: #FCFAF7;
      font-family: 'Noto Serif', serif;
@@ -154,7 +145,7 @@ legend {
 }
 
 .inputText{
-     color: #4489E3;
+     color: #003A85;
      font-family: 'Noto Serif', serif;
      font-size: 14px
 }
@@ -174,17 +165,12 @@ legend {
 
 }
 .container .errorTextOther{
-
-     color: #4489E3;
-     /*color: #ED4A18;*/
-
+     color: #ED4A18;
      font-family: 'Noto Serif', serif;
 }
 
 .container h4{
-
-     /*color: #FFFFFF;*/
-     color: #4489E3;
+     color: #003A85;
      font-family: 'Noto Serif', serif;
 }
 
@@ -192,16 +178,24 @@ legend {
      background-color: #5D6967;
      color: #FFFFFF;
      font-family:  = 'Noto Serif', serif;
-     font-size: 14px;
+     font-size: 12px;
+     padding: none;
 }
 
 .form-control{
      background-color: #FAF3C3;
      font-family:  = 'Noto Serif', serif;
-}
+     font-size: 12px;
+     padding: none;
+     height: 30px;
+ }
+
+ .form-group {
+     margin-bottom: 5px;
+ }
 
 .form-control:focus{
-     outline-color: #4489E3;
+     outline-color: #003A85;
  }
 
 .pieChart{

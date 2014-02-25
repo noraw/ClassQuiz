@@ -36,6 +36,7 @@ exports.createQuestion = function(req, res){
 			"&bText="+req.query.bText+
 			"&cText="+req.query.cText+
 			"&dText="+req.query.dText);
+	/*
 	}else if(req.query.correctAnswer === "-"){
 		var error = encodeURIComponent('Please select which answer is correct.');
 		res.redirect('/addQuestion?error='+error+
@@ -44,9 +45,10 @@ exports.createQuestion = function(req, res){
 			"&bText="+req.query.bText+
 			"&cText="+req.query.cText+
 			"&dText="+req.query.dText);
+	*/
 	}else {
 		var data = req.query;
-		var correctAnswer;
+		var correctAnswer = "";
 		if(data.correctAnswer === 'a'){
 			correctAnswer = "a. " + data.aText;
 		}else if(data.correctAnswer === 'b'){
@@ -56,10 +58,21 @@ exports.createQuestion = function(req, res){
 		}else if(data.correctAnswer === 'd'){
 			correctAnswer = "d. " + data.dText;
 		}
-		database.addQuestion(req.session.classID, data.questionText, 
-			data.aText, data.bText, data.cText, data.dText, correctAnswer,
-			function(){
-			res.redirect('/teacherClass');
-		});
+
+		if(req.query.button == "Save Question for Later"){
+			database.addQuestion(req.session.classID, data.questionText, 
+				data.aText, data.bText, data.cText, data.dText, correctAnswer,
+				function(questionID){
+				res.redirect('/teacherClass');
+			});
+		}else{
+			database.addQuestion(req.session.classID, data.questionText, 
+				data.aText, data.bText, data.cText, data.dText, correctAnswer,
+				function(questionID){
+				database.publishQuestion(questionID, function(){
+					res.redirect("/viewQuestionResults?questionList="+questionID);
+				});
+			});
+		}
 	}
 }
