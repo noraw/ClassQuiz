@@ -26,9 +26,19 @@
 		<div class="page-header">
 			<h1>Welcome, {{userName}}!</h1>
 		</div>
+
+		<form id="createClassForm" role="form" method="get" action="/createClass">
+			<fieldset>
+				<legend class="inputText" for="newClassName">Create a New Class:</legend>
+				<input type="text" class="form-control" placeHolder="New Class Name" id="newClassName" name="newClassName">
+				<p class="errorTextOther">{{createError}}</p>
+				<input class="btn pull-right" type="submit" id="createClassBtn" value="Create New Class"></input>
+			</fieldset>
+		</form>
+
 		<form id="selectClassForm" role="form" method="get" action="/useExistingClass">
 			<fieldset>
-				<legend class="inputText" for="classList">Select a current class:</legend>
+				<legend class="inputText" for="classList">Select an Existing Class:</legend>
 			    <select form="selectClassForm" class="form-control" id="classList" name="classList">
 				      <option id="-" value='{"classID":0,"className":""}' name="-">-</option>
 				    {{#each classes}}
@@ -37,15 +47,6 @@
 			    </select>
 				<p class="errorTextOther" >{{selectError}}</p>
 				<input class="btn pull-right" type="submit" id="existingClassBtn" value="Proceed"></input>
-			</fieldset>
-		</form>
-
-		<form id="createClassForm" role="form" method="get" action="/createClass">
-			<fieldset>
-				<legend class="inputText" for="newClassName">Create a new class:</legend>
-				<input type="text" class="form-control" placeHolder="New Class Name" id="newClassName" name="newClassName">
-				<p class="errorTextOther">{{createError}}</p>
-				<input class="btn pull-right" type="submit" id="createClassBtn" value="Create New Class"></input>
 			</fieldset>
 		</form>
 

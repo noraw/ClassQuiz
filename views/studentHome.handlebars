@@ -27,10 +27,18 @@
 			<h1>Welcome, {{userName}}!</h1>
 		</div>			
 
+		<form id="createClassForm" role="form" method="get" action="/enrollInClass">
+			<fieldset>
+				<legend class="inputText" for="newClassName">Join a New Class</legend>
+				<input type="text" class="form-control" placeHolder="Class code" id="classCode" name="classCode">
+				<p class="errorTextOther" >{{joinError}}</p>
+				<input class="btn pull-right" type="submit" id="enrollClassBtn" value="Enroll in Class"></input>
+			</fieldset>
+		</form>
 
 		<form id="selectClassForm" role="form" method="get" action="/useExistingClassStudent">
 			<fieldset>
-				<legend class="inputText" for="classList">Select a Class</legend>
+				<legend class="inputText" for="classList">Select an Existing Class</legend>
 			    <select form="selectClassForm" class="form-control" id="classList" name="classList">
 			      <option id="-" value='{"classID":0,"className":""}' name="-">-</option>
 			    {{#each classes}}
@@ -39,15 +47,6 @@
 			    </select>
 				<p class="errorTextOther" >{{selectError}}</p>
 				<input class="btn pull-right" type="submit" id="existingClassBtn" value="Proceed"></input>
-			</fieldset>
-		</form>
-
-		<form id="createClassForm" role="form" method="get" action="/enrollInClass">
-			<fieldset>
-				<legend class="inputText" for="newClassName">Join a Class</legend>
-				<input type="text" class="form-control" placeHolder="Class code" id="classCode" name="classCode">
-				<p class="errorTextOther" >{{joinError}}</p>
-				<input class="btn pull-right" type="submit" id="enrollClassBtn" value="Enroll in Class"></input>
 			</fieldset>
 		</form>
 
