@@ -5,7 +5,7 @@ $(document).ready(function() {
 	initializePage();
 });
 
-$(".newClassBtn").click(function () {
+$(".enrollClassBtn").click(function () {
 	registerClick();
 });
 

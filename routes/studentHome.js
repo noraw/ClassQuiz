@@ -11,7 +11,8 @@ exports.view = function(req, res){
 			'createError': req.query.createError,
 			'joinError': req.query.joinError,
 			'removeError': req.query.removeError,
-			'classes': classes
+			'classes': classes,
+			'testS': false
 	  	});		
 	});
 }
@@ -26,7 +27,8 @@ exports.viewAlternate = function(req, res){
 			'createError': req.query.createError,
 			'joinError': req.query.joinError,
 			'removeError': req.query.removeError,
-			'classes': classes
+			'classes': classes,
+			'testS': true
 	  	});		
 	});
 }
