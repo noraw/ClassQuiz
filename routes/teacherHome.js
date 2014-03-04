@@ -2,6 +2,22 @@ var database = require('./dbConnection');
 
 
 exports.view = function(req, res){
+	database.testT = false;
+	req.session.classID = null;
+	req.session.className = null; 
+	database.getUsersClassesNames(req.session.userName, function(classes){
+		res.render('teacherHome', {
+			'userName': req.session.userName,
+			'createError': req.query.createError,
+			'selectError': req.query.selectError,
+			'removeError': req.query.removeError,
+			'classes': classes
+	  	});		
+	});
+}
+
+exports.viewAlternate = function(req, res){
+	database.testT = true;
 	req.session.classID = null;
 	req.session.className = null; 
 	database.getUsersClassesNames(req.session.userName, function(classes){

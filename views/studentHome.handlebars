@@ -26,7 +26,7 @@
 		<div class="page-header">
 			<h1>Welcome, {{userName}}!</h1>
 		</div>			
-
+		{{#if testS}}
 		<form id="createClassForm" role="form" method="get" action="/enrollInClass">
 			<fieldset>
 				<legend class="inputText" for="newClassName">Join a New Class</legend>
@@ -50,6 +50,33 @@
 			</fieldset>
 		</form>
 
+		{{else}}
+		<form id="selectClassForm" role="form" method="get" action="/useExistingClassStudent">
+			<fieldset>
+				<legend class="inputText" for="classList">Select an Existing Class</legend>
+			    <select form="selectClassForm" class="form-control" id="classList" name="classList">
+			      <option id="-" value='{"classID":0,"className":""}' name="-">-</option>
+			    {{#each classes}}
+			      <option id="{{_id}}" value='{"classID":"{{_id}}","className":"{{name}}" }' name="{{_id}}">{{name}}</option>
+			    {{/each}}
+			    </select>
+				<p class="errorTextOther" >{{selectError}}</p>
+				<input class="btn pull-right" type="submit" id="existingClassBtn" value="Proceed"></input>
+			</fieldset>
+		</form>
+
+		<form id="createClassForm" role="form" method="get" action="/enrollInClass">
+			<fieldset>
+				<legend class="inputText" for="newClassName">Join a New Class</legend>
+				<input type="text" class="form-control" placeHolder="Class code" id="classCode" name="classCode">
+				<p class="errorTextOther" >{{joinError}}</p>
+				<input class="btn newClassBtn pull-right" type="submit" id="enrollClassBtn" value="Enroll in Class"></input>
+			</fieldset>
+		</form>
+
+		{{/if}}
+
+
 		<form id="removeClassForm" role="form" method="get" action="/removeClass">
 			<fieldset>
 				<legend class="inputText" for="newClassName">Remove a Class</legend>
@@ -68,6 +95,16 @@
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48623615-1', { 'cookieDomain': 'none'});
+  ga('send', 'pageview');
+
+</script>
 
 </body>
 </html>
