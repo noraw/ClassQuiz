@@ -98,8 +98,6 @@ app.get('/resultsQuestionStudent', studentClass.resultsQuestionStudent);
 app.get('/submitStudentAnswer', questionResponse.submitStudentAnswer);
 app.get('/createQuestion', addQuestion.createQuestion);
 app.get('/pieChartData', viewQuestionResults.pieChartData);
-app.get('/studentHomeAlternate', studentHome.viewAlternate);
-app.get('/teacherHomeAlternate', teacherHome.viewAlternate);
 
 
 http.createServer(app).listen(app.get('port'), function(){

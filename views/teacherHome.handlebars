@@ -2,21 +2,6 @@
 
 <html>
 <head>
-	<!-- Google Analytics Content Experiment code -->
-	<script>function utmx_section(){}function utmx(){}(function(){var
-	k='82945923-0',d=document,l=d.location,c=d.cookie;
-	if(l.search.indexOf('utm_expid='+k)>0)return;
-	function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
-	indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
-	length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
-	'<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
-	'://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
-	'&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
-	valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
-	'" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
-	</script><script>utmx('url','A/B');</script>
-	<!-- End of Google Analytics Content Experiment code -->
-
 	<title>CourseMate</title>	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,32 +29,6 @@
 			<h1>Welcome, {{userName}}!</h1>
 		</div>
 
-		{{#if testT}}
-
-		<form id="createClassForm" role="form" method="get" action="/createClass">
-			<fieldset>
-				<legend class="inputText" for="newClassName">Create a New Class:</legend>
-				<input type="text" class="form-control" placeHolder="New Class Name" id="newClassName" name="newClassName">
-				<p class="errorTextOther">{{createError}}</p>
-				<input class="btn pull-right" type="submit" id="createClassBtn" value="Create New Class"></input>
-			</fieldset>
-		</form>
-
-		<form id="selectClassForm" role="form" method="get" action="/useExistingClass">
-			<fieldset>
-				<legend class="inputText" for="classList">Select an Existing Class:</legend>
-			    <select form="selectClassForm" class="form-control" id="classList" name="classList">
-				      <option id="-" value='{"classID":0,"className":""}' name="-">-</option>
-				    {{#each classes}}
-				      <option id="{{_id}}" value='{"classID":"{{_id}}","className":"{{name}}" }' name="{{_id}}">{{name}}</option>
-				    {{/each}}
-			    </select>
-				<p class="errorTextOther" >{{selectError}}</p>
-				<input class="btn pull-right" type="submit" id="existingClassBtn" value="Proceed"></input>
-			</fieldset>
-		</form>
-
-		{{else}}
 		<form id="selectClassForm" role="form" method="get" action="/useExistingClass">
 			<fieldset>
 				<legend class="inputText" for="classList">Select an Existing Class:</legend>
@@ -93,7 +52,6 @@
 			</fieldset>
 		</form>
 
-		{{/if}}
 		<form id="removeClassForm" role="form" method="get" action="/removeClass">
 			<fieldset>
 				<legend class="inputText" for="classList">Remove a class:</legend>
@@ -114,16 +72,5 @@
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-	<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-	  ga('create', 'UA-48623615-1', 'course-mate.herokuapp.com');
-	  ga('send', 'pageview');
-
-	</script>
-
 </body>
 </html>
