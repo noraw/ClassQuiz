@@ -31,39 +31,38 @@
 
 		<form id="selectClassForm" role="form" method="get" action="/useExistingClass">
 			<fieldset>
-				<legend class="inputText" for="classList">Select an Existing Class:</legend>
-			    <select form="selectClassForm" class="form-control" id="classList" name="classList">
-				      <option id="-" value='{"classID":0,"className":""}' name="-">-</option>
-				    {{#each classes}}
-				      <option id="{{_id}}" value='{"classID":"{{_id}}","className":"{{name}}" }' name="{{_id}}">{{name}}</option>
-				    {{/each}}
-			    </select>
-				<p class="errorTextOther" >{{selectError}}</p>
-				<input class="btn pull-right" type="submit" id="existingClassBtn" value="Proceed"></input>
+				<legend class="inputText" for="classList">Select an Existing Class</legend>
+			    {{#each classes}}
+					<input class="btn class-btn pull-left" type="submit" id="existingClassBtn" name="{{_id}}" value='{{name}}'></input>
+			    {{/each}}
 			</fieldset>
 		</form>
 
 		<form id="createClassForm" role="form" method="get" action="/createClass">
-			<fieldset>
+			<fieldset class="fieldsetCollapse">
 				<legend class="inputText" for="newClassName">Create a New Class:</legend>
-				<input type="text" class="form-control" placeHolder="New Class Name" id="newClassName" name="newClassName">
-				<p class="errorTextOther">{{createError}}</p>
-				<input class="btn pull-right" type="submit" id="createClassBtn" value="Create New Class"></input>
+				<div class="content">
+					<input type="text" class="form-control" placeHolder="New Class Name" id="newClassName" name="newClassName">
+					<p class="errorTextOther">{{createError}}</p>
+					<input class="btn pull-right" type="submit" id="createClassBtn" value="Create New Class"></input>
+				</div>
 			</fieldset>
 		</form>
 
 		<form id="removeClassForm" role="form" method="get" action="/removeClass">
-			<fieldset>
-				<legend class="inputText" for="classList">Remove a class:</legend>
-			    <select form="removeClassForm" class="form-control" id="classList" name="classList">
-				      <option id="-" value='{"classID":0,"className":""}' name="-">-</option>
-				    {{#each classes}}
-				      <option id="{{_id}}" value='{"classID":"{{_id}}","className":"{{name}}" }' name="{{_id}}">{{name}}</option>
-				    {{/each}}
-			    </select>
-				<p class="errorTextOther">{{removeError}}</p>
-				<input type="hidden" name="prevPage" value="teacherHome"></input>
-				<input class="btn pull-right" type="submit" id="removeClassBtn" value="Remove Class"></input>
+			<fieldset class="fieldsetCollapse">
+				<legend class="inputText" for="classList">Remove a Class:</legend>
+				<div class="content">
+				    <select form="removeClassForm" class="form-control" id="classList" name="classList">
+					      <option id="-" value='{"classID":0,"className":""}' name="-">-</option>
+					    {{#each classes}}
+					      <option id="{{_id}}" value='{"classID":"{{_id}}","className":"{{name}}" }' name="{{_id}}">{{name}}</option>
+					    {{/each}}
+				    </select>
+					<p class="errorTextOther">{{removeError}}</p>
+					<input type="hidden" name="prevPage" value="teacherHome"></input>
+					<input class="btn pull-right" type="submit" id="removeClassBtn" value="Remove Class"></input>
+				</div>
 			</fieldset>
 		</form>
 		<br>			
@@ -72,5 +71,6 @@
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/teacherHome.js"></script>
 </body>
 </html>

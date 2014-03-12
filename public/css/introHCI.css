@@ -115,7 +115,6 @@ span {
 }
 
 fieldset {
-
      border:2px solid #003A85;
      border-radius: 10px;
      padding-left: 8px;
@@ -124,6 +123,10 @@ fieldset {
      padding-bottom: 8px;
      margin-top: none;
      margin-bottom: 5px;
+}
+
+.fieldsetCollapse .content {
+     display: none;
 }
 
 legend {
@@ -180,6 +183,11 @@ legend {
      font-family:  = 'Noto Serif', serif;
      font-size: 12px;
      padding: none;
+}
+
+.class-btn {
+     width: 100%;
+     margin-bottom: 5px;
 }
 
 .form-control{

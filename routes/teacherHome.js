@@ -17,22 +17,6 @@ exports.view = function(req, res){
 	});
 }
 
-exports.viewAlternate = function(req, res){
-	database.testT = true;
-	req.session.classID = null;
-	req.session.className = null; 
-	database.getUsersClassesNames(req.session.userName, function(classes){
-		res.render('teacherHome', {
-			'userName': req.session.userName,
-			'createError': req.query.createError,
-			'selectError': req.query.selectError,
-			'removeError': req.query.removeError,
-			'classes': classes,
-			'testT': true
-	  	});		
-	});
-}
-
 exports.createClass = function(req, res){
 	console.log(req);
 	console.log(req.session);
@@ -51,15 +35,9 @@ exports.createClass = function(req, res){
 
 exports.useExistingClass = function(req, res){
 	console.log(req.query);
-	console.log(req.session);
-	console.log(JSON.parse(req.query.classList).classID);
-	var classList = JSON.parse(req.query.classList);
-	if(classList.classID == 0){
-		var error = encodeURIComponent('Please select a class.');
-		res.redirect('/teacherHome?selectError='+error);
-	}else{
-		req.session.classID = classList.classID;
-		req.session.className = classList.className; 
+	for(var key in req.query){
+		req.session.classID = key;
+		req.session.className = req.query[key]; 
 		res.redirect('/teacherClass');
 	}
 }

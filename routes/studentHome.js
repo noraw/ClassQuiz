@@ -8,27 +8,9 @@ exports.view = function(req, res){
 	database.getUsersClassesNames(req.session.userName, function(classes){
 		res.render('studentHome', {
 			'userName': req.session.userName,
-			'createError': req.query.createError,
 			'joinError': req.query.joinError,
 			'removeError': req.query.removeError,
-			'classes': classes,
-			'testS': false
-	  	});		
-	});
-}
-
-exports.viewAlternate = function(req, res){
-	database.testS = true;
-	req.session.classID = null;
-	req.session.className = null; 
-	database.getUsersClassesNames(req.session.userName, function(classes){
-		res.render('studentHome', {
-			'userName': req.session.userName,
-			'createError': req.query.createError,
-			'joinError': req.query.joinError,
-			'removeError': req.query.removeError,
-			'classes': classes,
-			'testS': true
+			'classes': classes
 	  	});		
 	});
 }
@@ -67,15 +49,9 @@ exports.enrollInClass = function(req, res){
 
 exports.useExistingClass = function(req, res){
 	console.log(req.query);
-	console.log(req.session);
-	console.log(JSON.parse(req.query.classList).classID);
-	var classList = JSON.parse(req.query.classList);
-	if(classList.classID == 0){
-		var error = encodeURIComponent('Please select a class.');
-		res.redirect('/studentHome?selectError='+error);
-	}else{
-		req.session.classID = classList.classID;
-		req.session.className = classList.className; 
+	for(var key in req.query){
+		req.session.classID = key;
+		req.session.className = req.query[key]; 
 		res.redirect('/studentClass');
 	}
 }
