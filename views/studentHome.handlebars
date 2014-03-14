@@ -39,18 +39,18 @@
 
 		<form id="createClassForm" role="form" method="get" action="/enrollInClass">
 			<fieldset class="fieldsetCollapse">
-				<legend class="inputText">Join a New Class</legend>
+				<legend class="inputText">Click to Join a New Class</legend>
 				<div class="content">
 					<input type="text" class="form-control" placeHolder="Class code" id="classCode" name="classCode">
 					<p class="errorTextOther" >{{joinError}}</p>
-					<input class="btn newClassBtn pull-right" type="submit" id="enrollClassBtn" value="Enroll in Class"></input>
+					<input class="btn newClassBtn pull-right" type="submit" id="enrollClassBtn" value="Join Class"></input>
 				</div>
 			</fieldset>
 		</form>
 
 		<form id="removeClassForm" role="form" method="get" action="/removeClass">
 			<fieldset class="fieldsetCollapse">
-				<legend class="inputText">Remove a Class</legend>
+				<legend class="inputText">Click to Remove a Class</legend>
 				<div class="content">
 				    <select form="removeClassForm" class="form-control" id="classList" name="classList">
 				      <option id="-" value='{"classID":0,"className":""}' name="-">-</option>

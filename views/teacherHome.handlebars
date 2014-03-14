@@ -40,7 +40,7 @@
 
 		<form id="createClassForm" role="form" method="get" action="/createClass">
 			<fieldset class="fieldsetCollapse">
-				<legend class="inputText" for="newClassName">Create a New Class:</legend>
+				<legend class="inputText" for="newClassName">Click to Create a New Class:</legend>
 				<div class="content">
 					<input type="text" class="form-control" placeHolder="New Class Name" id="newClassName" name="newClassName">
 					<p class="errorTextOther">{{createError}}</p>
@@ -51,7 +51,7 @@
 
 		<form id="removeClassForm" role="form" method="get" action="/removeClass">
 			<fieldset class="fieldsetCollapse">
-				<legend class="inputText" for="classList">Remove a Class:</legend>
+				<legend class="inputText" for="classList">Click to Remove a Class:</legend>
 				<div class="content">
 				    <select form="removeClassForm" class="form-control" id="classList" name="classList">
 					      <option id="-" value='{"classID":0,"className":""}' name="-">-</option>
